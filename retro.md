@@ -1,6 +1,5 @@
 SPRINT 2 
 
-
 Algunas reflexiones sobre nuestro último sprint y cómo nos hemos enfrentado a desafíos de comunicación y organización.
 
 Durante este último sprint, nos encontramos con dificultades familiares al primero: la comunicación no fue tan fluida como esperábamos y nos dimos cuenta de que nuestra organización podría haber sido más sólida. Sin embargo, lo que realmente nos emociona es que hemos mantenido una atmósfera donde la libertad de opinión es bienvenida y valorada. Todos hemos tenido la oportunidad de expresar nuestras ideas, y eso es algo que deberíamos celebrar.
