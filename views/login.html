@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+</head>
+
+<body>
+
+    <header class="header-login">
+        <a href="/index.html" class="logo">
+            <img src="./assets/images/logo.svg" width="200" height="65" alt="Logo">
+          </a>
+        <h4 class="info-datos">Protegemos tus datos<i class="fa-solid fa-user-shield"></i></h4>
+        <p class="help-center"><a href=""><i class="fa-solid fa-headphones-simple"></i>Centro de Ayuda</a></p>
+    </header>
+
+    <main>
+        <section class="login-form">
+            
+            <h1 class="bienvenida-msg article-title">¡Nos alegra verte! <i class="fa-regular fa-face-laugh-beam"></i></h1>
+            
+            <div class="data-form">
+                <article class="left-menu">
+                    <form action="" method="">
+                        <div class="e-mail text-form">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" placeholder="Direccion de correo*" name="email" required>
+                        </div>
+                        <div class="password text-form">
+                            <label for="user-password">Contraseña</label>
+                            <input type="password" id="user-password" name="user-password" required>
+                        </div>
+                        <div class="remember-user-line">
+                            <label for="remember-user">Recordarme</label>
+                            <input type="checkbox" id="remember-user" value="remember-user" name="remember-user">
+                        </div>
+                        <div class="login-join-button">
+                            <input type="submit" value="Iniciar Sesión" class="login-button">
+                            <span class="rec-password"><a href="">Olvidé mi contraseña</a></span>
+                        </div>
+                    </form>
+                    <div class="login-options">
+                        <div class="redirect-register">
+                            <span>¿No tenés cuenta?</span>
+                            <span class="new-account"><a href="/registro.html">Crear Cuenta</a></span>
+                        </div>
+                    </div>
+                </article>
+                <article class="right-menu">
+                    <div class="another-login-menu">
+                        <h3 class="article-title">Continuar con...</h3>
+                        <p class="another-login">
+                            <button><img class="google" src="/assets/images/google-small.png" alt=""></button>
+                        </p>
+                        <p class="another-login">
+                            <button><img class="facebook" src="/assets/images/facebook-small.png" alt=""></button>
+                        </p>
+                    </div>
+                    <div class="legal-resources">
+                        <p><a href="">Términos y Condiciones</a></p>
+                        <p><a href="">Política de Privacidad</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
