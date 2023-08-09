@@ -3,8 +3,6 @@ Tienda de Productos Artesanales
 
 SPRINT 1
 
-SPRINT 1
-
 Nuestra e-commerce es un tributo a la rica cultura y tradiciones de esta pintoresca provincia, donde la creatividad y el talento se fusionan para dar vida a piezas únicas y representativas.
 ¿Que productos ofrecemos?
 - Artesanias tradicionales jujeñas: textiles, cerámicas, cestería, tallados en madera, etc.
