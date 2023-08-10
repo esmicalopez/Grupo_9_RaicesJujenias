@@ -1,0 +1,137 @@
+/* Estilos para el cuerpo del documento */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(https://media.elpatagonico.com/p/cd622f1a0c8d4ac307cf8b2bca19dcff/adjuntos/193/imagenes/009/984/0009984335/1200x675/smart/7ajpg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Contenedor principal */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 1000px;
+  max-width: 400px;
+  background-color: rgba(10, 12, 10, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: wheat;
+}
+
+
+.logo h2 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* formulario */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #79787e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+/* texto y select */
+input,
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* boton de registro */
+button {
+  padding: 12px;
+  background-color: #0c1610;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #170e7b;
+}
+
+
+
+/* Checkbox */
+input[type="checkbox"] {
+  margin-right: 290px;
+}
+
+
+/*  iniciar sesión con redes sociales */
+.social-login {
+  text-align: center;
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* redes sociales */
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.buttons button {
+  background-color: #4285F4;
+}
+
+.buttons button:last-child {
+  background-color: #3b5998;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media screen and (max-width: 600px) {
+  .main-container {
+    max-width: 100%;
+  }
+}
+
+
