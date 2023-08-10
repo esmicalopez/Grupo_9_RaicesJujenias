@@ -44,3 +44,6 @@ Integrantes
 - Fernando Javier Ruiz, estudiante de Ingeniería Informática. Aunque no soy excesivamente social, disfruto de momentos íntimos con amigos cercanos y valoro la compañía de mi familia. Mi enfoque principal está en la informática y el desarrollo de software. La tecnología me fascina, y mi interés se centra en aspectos prácticos de esta.
 - Cristian Rafael Zamora, estudiante de Analista Programador. Me gusta el mundo de la tecnología, especialmente el desarrollo de software. Mi objetivo es ser un profesional en esta área. también me gusta la electrónica, aunque esta área la tengo algo olvidada.
 - Soy Lucas Ramos, tengo 18 años y he estado cursando el 1er año de la carrera de administración de empresas. Desde chico que me interesa mucho el tema de la programación ya que me veía influenciado por mi padre que es programador y al estar haciendo el curso de full stack, me di cuenta que es a lo que me quiero dedicar. En mis tiempos libres me gusta juntarme con amigos, jugar a la computadora e intento aprender a tocar instrumentos.
+
+Tablero de Trabajo:
+https://trello.com/invite/b/BAkj6ozQ/ATTI1a32741929667bfc818cf0cf131f2f6e261514DA/grupo9-raices-jujenas
