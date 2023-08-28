@@ -10,7 +10,8 @@ const productoRoutes = require("./routes/producto")
 const PORT = process.env.PORT || 3000;
 
 // Archivos estáticos desde la carpeta "views"
-app.use(express.static(path.join(__dirname, 'views')));
+app.set("view engine", "ejs")
+app.set("views", __dirname + "/views")
 
 // Archivos estáticos desde la carpeta "assets"
 app.use('/assets', express.static(path.join(__dirname, '../assets')));

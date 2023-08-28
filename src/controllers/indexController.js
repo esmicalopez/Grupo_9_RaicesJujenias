@@ -2,13 +2,13 @@ const path = require("path")
 
 let controllers = {
     index: (req, res) => {
-        res.sendFile(path.join(__dirname, '../views', 'index.html'));
+        res.render('index');
       },
     register: (req, res) => {
-        res.sendFile(path.join(__dirname, '../views', 'registro.html'));
+        res.render('registro');
       },
     login: (req, res) => {
-        res.sendFile(path.join(__dirname, "../views", "login.html"))
+        res.render("login")
       }
 }
 

@@ -5,6 +5,6 @@ let controllers = require("../controllers/indexController")
 
 router.get("/", controllers.index)
 router.get("/login", controllers.login)
-router.get("/register", controllers.register)
+router.get("/registro", controllers.register)
 
 module.exports = router

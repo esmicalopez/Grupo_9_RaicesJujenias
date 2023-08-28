@@ -6,16 +6,16 @@
 }
 
 .header-login{
-    background-color: #D5BDAF;
+    background-color: #f1d3c7e1;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 20px 0;
+    padding: 10px 0;
     border: 0px solid ;
     font-size: 30px;
 }
 .header-login .logo{
-    padding: 15px;
+    padding: 15px 0;
 }
 .header-login .info-datos{
     color: #22223B;
@@ -39,10 +39,10 @@ main{
 }
 main .login-form{
     text-align: left;
-    border: solid 5px #D6CCC2;
+    border: solid 5px #cb6843;
     border-radius: 10px;
     padding: 15px;
-    background-color: #EDEDE9;
+    background-color: white;
     margin-bottom: 130px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
@@ -106,7 +106,7 @@ main .login-form{
     justify-content: space-between;
 }
 .login-form .left-menu .login-button{
-    background-color: #D5BDAF;
+    background-color: #f7a486e1;
     border: #D5BDAF 0px solid;
     border-radius: 8px;
     padding: 8px;
@@ -145,13 +145,14 @@ main .login-form{
 .login-form .right-menu .another-login button{
     margin: 10px;
     padding: 5px 15px;
+    background-color: white;
     border: 0px #EDEDE9 solid;
     align-self: center;
     border-radius: 8px;
     transition: border 0.08s;
 }
 .login-form .right-menu .another-login button:hover{
-    border: 3px gray solid;
+    border: 3px #f7a486e1 solid;
 }
 .login-form .right-menu .another-login .google{
     max-width: 120px;

@@ -1,7 +1,8 @@
 /* Estilos para el cuerpo del documento */
 body {
   font-family: Arial, sans-serif;
-  background-image: url(https://media.elpatagonico.com/p/cd622f1a0c8d4ac307cf8b2bca19dcff/adjuntos/193/imagenes/009/984/0009984335/1200x675/smart/7ajpg.jpg);
+  /*background-image: url(https://media.elpatagonico.com/p/cd622f1a0c8d4ac307cf8b2bca19dcff/adjuntos/193/imagenes/009/984/0009984335/1200x675/smart/7ajpg.jpg);*/
+  background-color: #f1d3c7e1;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
@@ -20,7 +21,7 @@ body {
   height: auto;
   width: 1000px;
   max-width: 400px;
-  background-color: rgba(10, 12, 10, 0.3);
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -37,7 +38,7 @@ body {
 
 
 .logo h2 {
-  color: #fff;
+  color:  #666;
   font-size: 16px;
   margin: 0;
 }
@@ -52,7 +53,7 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #79787e;
+  color: #666; 
 }
 
 form {
@@ -70,7 +71,7 @@ form {
 label {
   font-weight: bold;
   margin-bottom: 8px;
-  color: #fff;
+  color:  #666;
 }
 
 /* texto y select */
@@ -84,8 +85,8 @@ select {
 /* boton de registro */
 button {
   padding: 12px;
-  background-color: #0c1610;
-  color: #fff;
+  background-color: #cb6843;
+  color:  white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -108,7 +109,7 @@ input[type="checkbox"] {
 /*  iniciar sesión con redes sociales */
 .social-login {
   text-align: center;
-  color: #fff;
+  color:  #666;
   margin-top: 20px;
 }
 
