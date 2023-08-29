@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 
 const indexRoutes = require("./routes/index")
 const carritoRoutes = require("./routes/carrito")
@@ -11,13 +10,12 @@ const PORT = process.env.PORT || 3000;
 
 // Archivos estáticos desde la carpeta "views"
 app.set("view engine", "ejs")
-app.set("views", __dirname + "/views")
+app.set("views", "./src/views")
 
 // Archivos estáticos desde la carpeta "assets"
-app.use('/assets', express.static(path.join(__dirname, '../assets')));
+app.use(express.static('assets'));
 
 // Para las solicitudes del sitio
-
 app.use('/', indexRoutes);  //Index, Login, Register
 
 app.use('/carrito', carritoRoutes);

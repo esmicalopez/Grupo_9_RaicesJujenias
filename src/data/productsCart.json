@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "name": "Mate",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
+        "price": 599,
+        "image": "images/product-1.png"
+    },
+    
+    {
+        "id": 2,
+        "name": "Mate",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
+        "price": 599,
+        "image": "images/product-1.png"
+    },
+
+    {
+        "id": 3,
+        "name": "Mate",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
+        "price": 599,
+        "image": "images/product-1.png"
+    },
+
+    {
+        "id": 4,
+        "name": "Mate",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
+        "price": 599,
+        "image": "images/product-1.png"
+    },
+
+    {
+        "id": 5,
+        "name": "Mate",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
+        "price": 599,
+        "image": "images/product-1.png"
+    }
+]

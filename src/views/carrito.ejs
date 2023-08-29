@@ -8,12 +8,12 @@
     <meta name="theme-color" content ="#f7a486e1">
     <title>Raíces Jujeñas | Carrito</title>
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <script src="https://kit.fontawesome.com/a00d13e606.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/carrito.css">
+    <link rel="stylesheet" href="css/carrito.css">
 
 </head>
 
@@ -27,7 +27,21 @@
                 <div class="">
                     <span>Productos</span>
                 </div>
-                <article class="producto">
+
+                <% products.forEach(product => { %>
+                    <article class="producto">
+                        <div class="">
+                            <a href="producto.html">
+                                <img src="<%= product.image %>" alt="">
+                            </a>
+                        </div>
+                        <a href="producto.html" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
+                        <p class="producto-precio">$<%= product.price %></p>
+                        <i class="fa-solid fa-xmark"></i>
+                    </article>
+                <% }) %>
+
+                <!-- <article class="producto">
                     <div class="">
                         <a href="producto.html">
                             <img src="./../assets/images/product-1.png" alt="">
@@ -58,7 +72,7 @@
                     <a href="producto.html" class="producto-nombre">Producto N°1, descripcion del producto...</a>
                     <p class="producto-precio">$640</p>
                     <i class="fa-solid fa-xmark"></i>
-                </article>
+                </article> -->
             </section>
 
             <section class="main-resumen_compra">

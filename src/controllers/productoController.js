@@ -1,6 +1,4 @@
-const path = require("path")
-
-let controllers = {
+const controllers = {
     producto: (req, res) => {
         res.render('producto');
       }

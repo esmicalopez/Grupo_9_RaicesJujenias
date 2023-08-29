@@ -1,9 +1,13 @@
 const path = require("path")
+const products = require("../data/productsCart.json")
 
-let controllers = {
-    carrito: (req, res) => {
-        res.render('carrito');
-      }
+const controllers = {
+  carrito: (req, res) => {
+    res.render('carrito', {
+      products
+    });
+  },
+
 }
 
 module.exports = controllers

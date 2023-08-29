@@ -1,6 +1,4 @@
-const path = require("path")
-
-let controllers = {
+const controllers = {
     index: (req, res) => {
         res.render('index');
       },
