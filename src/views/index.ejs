@@ -170,248 +170,68 @@
 
           <ul class="product-list">
 
-            <li class="product-item">
-              <div class="product-card" tabindex="0">
-
-                <figure class="card-banner">
-                  <img src="images/product-1.png" width="312" height="350" loading="lazy"
-                    alt="Producto" class="image-contain">
-
-                  <div class="card-badge">Oferta %</div>
-
-                  <ul class="card-action-list">
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-1">
-                        <ion-icon name="cart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-2">
-                        <ion-icon name="heart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-3">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-4">
-                        <ion-icon name="repeat-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                    </li>
-
-                  </ul>
-                </figure>
-
-                <div class="card-content">
-                  <div class="card-cat">
-                    <a href="#" class="card-cat-link">Categoria</a> /
-                    <a href="#" class="card-cat-link">Artesano</a>
+            <% products.forEach( product => { %>
+              <li class="product-item">
+                  <div class="product-card" tabindex="0">
+  
+                      <figure class="card-banner">
+                          <img src="images/product-1.png" width="312" height="350" loading="lazy" alt="Producto"
+                              class="image-contain">
+  
+                          <div class="card-badge">Oferta <%= product.offer %>%</div>
+  
+                          <ul class="card-action-list">
+  
+                              <li class="card-action-item">
+                                  <button class="card-action-btn" aria-labelledby="card-label-1">
+                                      <ion-icon name="cart-outline"></ion-icon>
+                                  </button>
+  
+                                  <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
+                              </li>
+  
+                              <li class="card-action-item">
+                                  <button class="card-action-btn" aria-labelledby="card-label-2">
+                                      <ion-icon name="heart-outline"></ion-icon>
+                                  </button>
+  
+                                  <div class="card-action-tooltip" id="card-label-2">Guardar</div>
+                              </li>
+  
+                              <li class="card-action-item">
+                                  <button class="card-action-btn" aria-labelledby="card-label-3">
+                                      <ion-icon name="eye-outline"></ion-icon>
+                                  </button>
+  
+                                  <div class="card-action-tooltip" id="card-label-3">Detalles</div>
+                              </li>
+  
+                              <li class="card-action-item">
+                                  <button class="card-action-btn" aria-labelledby="card-label-4">
+                                      <ion-icon name="repeat-outline"></ion-icon>
+                                  </button>
+  
+                                  <div class="card-action-tooltip" id="card-label-4">Comparar</div>
+                              </li>
+  
+                          </ul>
+                      </figure>
+  
+                      <div class="card-content">
+                          <div class="card-cat">
+                              <a href="#" class="card-cat-link">Categoria</a> /
+                              <a href="#" class="card-cat-link"> <%= product.category %></a>
+                          </div>
+  
+                          <h3 class="h3 card-title">
+                              <a href="#"><%= product.name %></a>
+                          </h3>
+                          <data class="card-price" value="180.85">$<%= product.price %></data>
+                      </div>
+  
                   </div>
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Nombre del Producto</a>
-                  </h3>
-                  <data class="card-price" value="180.85">$$$ Precio</data>
-                </div>
-
-              </div>
-            </li>
-            <li class="product-item">
-              <div class="product-card" tabindex="0">
-
-                <figure class="card-banner">
-                  <img src="images/product-1.png" width="312" height="350" loading="lazy"
-                    alt="Producto" class="image-contain">
-
-                  <div class="card-badge">Oferta %</div>
-
-                  <ul class="card-action-list">
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-1">
-                        <ion-icon name="cart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-2">
-                        <ion-icon name="heart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-3">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-4">
-                        <ion-icon name="repeat-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                    </li>
-
-                  </ul>
-                </figure>
-
-                <div class="card-content">
-                  <div class="card-cat">
-                    <a href="#" class="card-cat-link">Categoria</a> /
-                    <a href="#" class="card-cat-link">Artesano</a>
-                  </div>
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Nombre del Producto</a>
-                  </h3>
-                  <data class="card-price" value="180.85">$$$ Precio</data>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="product-item">
-              <div class="product-card" tabindex="0">
-
-                <figure class="card-banner">
-                  <img src="images/product-1.png" width="312" height="350" loading="lazy"
-                    alt="Producto" class="image-contain">
-
-                  <div class="card-badge">Oferta %</div>
-
-                  <ul class="card-action-list">
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-1">
-                        <ion-icon name="cart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-2">
-                        <ion-icon name="heart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-3">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-4">
-                        <ion-icon name="repeat-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                    </li>
-
-                  </ul>
-                </figure>
-
-                <div class="card-content">
-                  <div class="card-cat">
-                    <a href="#" class="card-cat-link">Categoria</a> /
-                    <a href="#" class="card-cat-link">Artesano</a>
-                  </div>
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Nombre del Producto</a>
-                  </h3>
-                  <data class="card-price" value="180.85">$$$ Precio</data>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="product-item">
-              <div class="product-card" tabindex="0">
-
-                <figure class="card-banner">
-                  <img src="images/product-1.png" width="312" height="350" loading="lazy"
-                    alt="Producto" class="image-contain">
-
-                  <div class="card-badge">Oferta %</div>
-
-                  <ul class="card-action-list">
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-1">
-                        <ion-icon name="cart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-2">
-                        <ion-icon name="heart-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-3">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                    </li>
-
-                    <li class="card-action-item">
-                      <button class="card-action-btn" aria-labelledby="card-label-4">
-                        <ion-icon name="repeat-outline"></ion-icon>
-                      </button>
-
-                      <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                    </li>
-
-                  </ul>
-                </figure>
-
-                <div class="card-content">
-                  <div class="card-cat">
-                    <a href="#" class="card-cat-link">Categoria</a> /
-                    <a href="#" class="card-cat-link">Artesano</a>
-                  </div>
-
-                  <h3 class="h3 card-title">
-                    <a href="#">Nombre del Producto</a>
-                  </h3>
-                  <data class="card-price" value="180.85">$$$ Precio</data>
-                </div>
-
-              </div>
-            </li>
+              </li>
+            <% }) %>
 
           </ul>
 

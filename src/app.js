@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs")
 app.set("views", "./src/views")
 
+
 // Archivos estáticos desde la carpeta "assets"
 app.use(express.static('assets'));
 
@@ -20,7 +21,7 @@ app.use('/', indexRoutes);  //Index, Login, Register
 
 app.use('/carrito', carritoRoutes);
 
-app.use('/producto', productoRoutes);
+app.use('/productos', productoRoutes);
 
 
 // ...

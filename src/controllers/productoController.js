@@ -1,7 +1,14 @@
+const products = require("../data/products.json")
+
 const controllers = {
-    producto: (req, res) => {
-        res.render('producto');
-      }
+  productos: (req, res) => {
+    res.render('productos', {
+      products
+    });
+  },
+  detallesProducto: (req, res) => {
+    res.render('detallesProducto');
+  },
 }
 
 module.exports = controllers
