@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content ="#f7a486e1">
+    <meta name="theme-color" content="#f7a486e1">
     <title>Raíces Jujeñas | Carrito</title>
     <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
 
@@ -14,8 +14,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
-    rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/carrito.css">
 </head>
 
@@ -23,385 +24,146 @@
 
     <%- include("./partials/header.ejs") %>
 
-    <main class="main">
-        <div>
-            <section class="main-productos">
-                <div class="">
-                    <span>Productos</span>
-                </div>
+        <main class="main">
+            <div>
+                <section class="main-productos">
+                    <div class="">
+                        <span>Productos</span>
+                    </div>
 
-                <% productsCart.forEach(product => { %>
-                    <article class="producto">
-                        <div class="">
-                            <a href="producto.html">
-                                <img src="<%= product.image %>" alt="">
+                    <% productsCart.forEach(product=> { %>
+                        <article class="producto">
+                            <div class="">
+                                <a href="producto.html">
+                                    <img src="<%= product.image %>" alt="">
+                                </a>
+                            </div>
+                            <a href="producto.html" class="producto-nombre">
+                                <%= product.name %>, <%= product.description %>
                             </a>
-                        </div>
-                        <a href="producto.html" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
-                        <p class="producto-precio">$<%= product.price %></p>
-                        <i class="fa-solid fa-xmark"></i>
-                    </article>
-                <% }) %>
+                            <p class="producto-precio">$<%= product.price %>
+                            </p>
+                            <i class="fa-solid fa-xmark"></i>
+                        </article>
+                        <% }) %>
 
-                <!-- <article class="producto">
-                    <div class="">
-                        <a href="producto.html">
-                            <img src="./../assets/images/product-1.png" alt="">
-                        </a>
-                    </div>
-                    <a href="producto.html" class="producto-nombre">Producto N°1, descripcion del producto...</a>
-                    <p class="producto-precio">$599</p>
-                    <i class="fa-solid fa-xmark"></i>
-                </article>
-
-                <article class="producto">
-                    <div class="">
-                        <a href="producto.html">
-                            <img src="./../assets/images/product-1.png" alt="">
-                        </a>
-                    </div>
-                    <a href="producto.html" class="producto-nombre">Producto N°1, descripcion del producto...</a>
-                    <p class="producto-precio">$750</p>
-                    <i class="fa-solid fa-xmark"></i>
-                </article>
-
-                <article class="producto">
-                    <div class="">
-                        <a href="producto.html">
-                            <img src="./../assets/images/product-1.png" alt="">
-                        </a>
-                    </div>
-                    <a href="producto.html" class="producto-nombre">Producto N°1, descripcion del producto...</a>
-                    <p class="producto-precio">$640</p>
-                    <i class="fa-solid fa-xmark"></i>
-                </article> -->
-            </section>
-
-            <section class="main-resumen_compra">
-
-                <div class="main-resumen_compra-titulo">
-                    <span>Resumen de compra</span>
-                </div>
-
-                <section>
-                    <h5>Productos (N°)</h5>
-                    <div class="main-resumen_compra-info">
-                        <h5>Total</h5>
-                        <h6>$ 1379.30</h6>
-                    </div>
-                    <button>Continuar compra</button>
                 </section>
-            </section>
-        </div>
 
-    </main>
+                <section class="main-resumen_compra">
 
-    <aside class="aside">
-        <div class="">
-
-            <h3>Recomendaciones para vos</h3>
-            <section>
-
-                <article>
-                    <div class="img-box">
-                        <a href="producto.html">
-                            <img src="images/product-1.png" alt="">
-                        </a>
-
-                        <div class="card-badge">Oferta 20%</div>
-
-                            <ul class="card-action-list">
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-1">
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-2">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-3">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-4">
-                                        <ion-icon name="repeat-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                                </li>
-
-                            </ul>
-
+                    <div class="main-resumen_compra-titulo">
+                        <span>Resumen de compra</span>
                     </div>
 
-                    <a href="producto.html" class="info-product">  <!-- div -->
-                            <span class="category">Categoria / Artesano</span>
-                            <span class="name">Producto</span>
-                            <span class="price">$459.77</span>
-                    </a>
-                </article>
+                    <section>
+                        <h5>Productos (N°)</h5>
+                        <div class="main-resumen_compra-info">
+                            <h5>Total</h5>
+                            <h6>$ 1379.30</h6>
+                        </div>
+                        <button>Continuar compra</button>
+                    </section>
+                </section>
+            </div>
 
-                <article>
-                    <div class="img-box">
-                        <img src="images/product-1.png" alt="">
+        </main>
 
-                        <div class="card-badge">Oferta 20%</div>
+        <aside class="aside">
+            <div class="">
 
-                            <ul class="card-action-list">
+                <h3>Recomendaciones para vos</h3>
+                <section class="container">
+                    <ul class="product-list">
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-1">
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                                </li>
+                        <% products.forEach( product => { %>
+                            <li class="product-item">
+                                <a href="productos/<%= product.id %>">
+                                    <div class="product-card" tabindex="0">
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-2">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                                </li>
+                                        <figure class="card-banner">
+                                            <img src="images/product-1.png" width="312" height="350" loading="lazy"
+                                                alt="Producto" class="image-contain">
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-3">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                                </li>
+                                            <div class="card-badge">Oferta <%= product.offer %>%</div>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-4">
-                                        <ion-icon name="repeat-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                                </li>
+                                            <ul class="card-action-list">
 
-                            </ul>
+                                                <li class="card-action-item">
+                                                    <button class="card-action-btn" aria-labelledby="card-label-1">
+                                                        <ion-icon name="cart-outline"></ion-icon>
+                                                    </button>
 
-                    </div>
+                                                    <div class="card-action-tooltip" id="card-label-1">Agregar al
+                                                        Carrito</div>
+                                                </li>
 
-                    <a href="producto.html" class="info-product">
-                        <span class="category">Categoria / Artesano</span>
-                        <span class="name">Producto</span>
-                        <span class="price">$459.77</span>
-                    </a>
-                </article>
+                                                <li class="card-action-item">
+                                                    <button class="card-action-btn" aria-labelledby="card-label-2">
+                                                        <ion-icon name="heart-outline"></ion-icon>
+                                                    </button>
 
-                <article>
-                    <div class="img-box">
-                        <img src="images/product-1.png" alt="">
+                                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
+                                                </li>
 
-                        <div class="card-badge">Oferta 20%</div>
+                                                <li class="card-action-item">
+                                                    <button class="card-action-btn" aria-labelledby="card-label-3">
+                                                        <ion-icon name="eye-outline"></ion-icon>
+                                                    </button>
 
-                            <ul class="card-action-list">
+                                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
+                                                </li>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-1">
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                                </li>
+                                                <li class="card-action-item">
+                                                    <button class="card-action-btn" aria-labelledby="card-label-4">
+                                                        <ion-icon name="repeat-outline"></ion-icon>
+                                                    </button>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-2">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                                </li>
+                                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
+                                                </li>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-3">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                                </li>
+                                            </ul>
+                                        </figure>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-4">
-                                        <ion-icon name="repeat-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                                </li>
+                                        <div class="card-content">
+                                            <div class="card-cat">
+                                                <span class="card-cat-link">Categoria</span> /
+                                                <span class="card-cat-link">
+                                                    <%= product.category %>
+                                                </span>
+                                            </div>
 
-                            </ul>
+                                            <h3 class="h3 card-title">
+                                                <span>
+                                                    <%= product.name %>
+                                                </span>
+                                            </h3>
+                                            <data class="card-price" value="180.85">$<%= product.price %></data>
+                                        </div>
 
-                    </div>
+                                    </div>
+                                </a>
 
-                    <a href="producto.html" class="info-product">
-                        <span class="category">Categoria / Artesano</span>
-                        <span class="name">Producto</span>
-                        <span class="price">$459.77</span>
-                    </a>
-                </article>
+                            </li>
+                        <% }) %>
 
-                <article>
-                    <div class="img-box">
-                        <img src="images/product-1.png" alt="">
+                    </ul>
+                </section>
+            </div>
 
-                        <div class="card-badge">Oferta 20%</div>
+        </aside>
 
-                            <ul class="card-action-list">
+        <%- include("./partials/footer.ejs") %>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-1">
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                                </li>
+            <!-- INICIO DE PAGINA -->
+            <a href="#top" class="go-top-btn" data-go-top>
+                <ion-icon name="arrow-up-outline"></ion-icon>
+            </a>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-2">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                                </li>
+            <script src="js/script.js"></script>
 
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-3">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-4">
-                                        <ion-icon name="repeat-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                                </li>
-
-                            </ul>
-
-                    </div>
-
-                    <a href="producto.html" class="info-product">
-                        <span class="category">Categoria / Artesano</span>
-                        <span class="name">Producto</span>
-                        <span class="price">$459.77</span>
-                    </a>
-                </article>
-
-                <article>
-                    <div class="img-box">
-                        <img src="images/product-1.png" alt="">
-
-                        <div class="card-badge">Oferta 20%</div>
-
-                            <ul class="card-action-list">
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-1">
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-2">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-3">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-4">
-                                        <ion-icon name="repeat-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                                </li>
-
-                            </ul>
-
-                    </div>
-
-                    <a href="producto.html" class="info-product">
-                        <span class="category">Categoria / Artesano</span>
-                        <span class="name">Producto</span>
-                        <span class="price">$459.77</span>
-                    </a>
-                </article>
-
-                <article>
-                    <div class="img-box">
-                        <img src="images/product-1.png" alt="">
-
-                        <div class="card-badge">Oferta 20%</div>
-
-                            <ul class="card-action-list">
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-1">
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-2">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-3">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                                </li>
-
-                                <li class="card-action-item">
-                                    <button class="card-action-btn" aria-labelledby="card-label-4">
-                                        <ion-icon name="repeat-outline"></ion-icon>
-                                    </button>
-                                    <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                                </li>
-
-                            </ul>
-
-                    </div>
-
-                    <a href="producto.html" class="info-product">
-                        <span class="category">Categoria / Artesano</span>
-                        <span class="name">Producto</span>
-                        <span class="price">$777.77</span>
-                    </a>
-                </article>
-            </section>
-        </div>
-
-    </aside>
-
-    <%- include("./partials/footer.ejs") %>
-
-    <!-- INICIO DE PAGINA -->
-    <a href="#top" class="go-top-btn" data-go-top>
-        <ion-icon name="arrow-up-outline"></ion-icon>
-    </a>
-
-    <script src="js/script.js"></script>
-
-    <!-- ICONOS-->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+            <!-- ICONOS-->
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 

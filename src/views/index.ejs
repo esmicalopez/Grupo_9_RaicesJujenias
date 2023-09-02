@@ -172,6 +172,7 @@
 
             <% products.forEach( product => { %>
               <li class="product-item">
+                <a href="productos/<%= product.id %>">
                   <div class="product-card" tabindex="0">
   
                       <figure class="card-banner">
@@ -219,17 +220,19 @@
   
                       <div class="card-content">
                           <div class="card-cat">
-                              <a href="#" class="card-cat-link">Categoria</a> /
-                              <a href="#" class="card-cat-link"> <%= product.category %></a>
+                              <span class="card-cat-link">Categoria</span> /
+                              <span class="card-cat-link"> <%= product.category %></span>
                           </div>
   
                           <h3 class="h3 card-title">
-                              <a href="#"><%= product.name %></a>
+                              <span><%= product.name %></span>
                           </h3>
                           <data class="card-price" value="180.85">$<%= product.price %></data>
                       </div>
   
                   </div>
+                </a>
+                
               </li>
             <% }) %>
 

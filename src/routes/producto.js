@@ -7,4 +7,5 @@ router.get("/", controllers.productos)
 
 router.get("/:id", controllers.detallesProducto)
 
+
 module.exports = router

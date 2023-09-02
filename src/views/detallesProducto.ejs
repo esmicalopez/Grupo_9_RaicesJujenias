@@ -8,7 +8,7 @@
     <meta name="theme-color" content ="#f7a486e1">
     <title>Raíces Jujeñas</title>
     <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/producto.css">
+    <link rel="stylesheet" href="../css/detallesProducto.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,12 +30,12 @@
 
     <main>
         <div class="container-img">
-            <img src="images/product-1.png" alt="imagen-producto" style="margin: auto; display: block;">
+            <img src="../<%= producto.image %>" alt="imagen-producto" style="margin: auto; display: block;">
         </div>
 
         <div class="container-info-product">
             <div class="container-price">
-                <span>$$$ PRECIO</span>
+                <span>$<%= producto.price %></span>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
@@ -45,9 +45,10 @@
                         <option disabled selected value="">
                             Escoge una opción
                         </option>
-                        <option value="rojo">Rojo</option>
-                        <option value="blanco">Blanco</option>
-                        <option value="beige">Beige</option>
+                        <% producto.colors.forEach( color => { %>
+                            <option value="<%= color %>"><%= color %></option>
+                        <% })%>
+
                     </select>
                 </div>
                 <div class="form-group">
@@ -56,9 +57,9 @@
                         <option disabled selected value="">
                             Escoge una opción
                         </option>
-                        <option value="Small">Chico</option>
-                        <option value="Medium">Mediano</option>
-                        <option value="Large">Grande</option>
+                        <% producto.sizes.forEach( tamaño => { %>
+                            <option value="<%= tamaño %>"><%= tamaño %></option>
+                        <% })%>
                     </select>
                 </div>
                 <button class="btn-clean">Limpiar</button>
@@ -117,22 +118,22 @@
         <div class="card-list-products">
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="../<%= producto.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="../<%= producto.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="../<%= producto.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="../<%= producto.image %>" alt="producto-4" />
                 </div>
             </div>
         </div>

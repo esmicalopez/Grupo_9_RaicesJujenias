@@ -7,8 +7,14 @@ const controllers = {
     });
   },
   detallesProducto: (req, res) => {
-    res.render('detallesProducto');
+    const id = req.params.id
+    const producto = products.find( product => product.id == id)
+    
+    res.render('detallesProducto', {
+      producto
+    });
   },
+
 }
 
 module.exports = controllers
