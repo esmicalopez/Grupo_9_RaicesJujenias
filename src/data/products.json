@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Mate",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 199,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -11,9 +11,9 @@
     
     {
         "id": 2,
-        "name": "Mate",
+        "name": "Mate2",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 299,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -21,9 +21,9 @@
 
     {
         "id": 3,
-        "name": "Mate",
+        "name": "Mate3",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 399,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -31,9 +31,9 @@
     
     {
         "id": 4,
-        "name": "Mate",
+        "name": "Mate4",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 499,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -41,7 +41,7 @@
 
     {
         "id": 5,
-        "name": "Mate",
+        "name": "Mate5",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
         "price": 599,
         "offer": 10,
@@ -51,9 +51,9 @@
 
     {
         "id": 6,
-        "name": "Mate",
+        "name": "Mate6",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 699,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -61,9 +61,9 @@
 
     {
         "id": 7,
-        "name": "Mate",
+        "name": "Mate7",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 799,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -71,9 +71,9 @@
 
     {
         "id": 8,
-        "name": "Mate",
+        "name": "Mate8",
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 899,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"

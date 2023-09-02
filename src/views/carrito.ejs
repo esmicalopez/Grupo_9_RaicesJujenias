@@ -33,11 +33,11 @@
                 <% productsCart.forEach(product => { %>
                     <article class="producto">
                         <div class="">
-                            <a href="producto.html">
+                            <a href="/productos/<%= product.id %>">
                                 <img src="<%= product.image %>" alt="">
                             </a>
                         </div>
-                        <a href="producto.html" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
+                        <a href="/productos/<%= product.id %>" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
                         <p class="producto-precio">$<%= product.price %></p>
                         <i class="fa-solid fa-xmark"></i>
                     </article>

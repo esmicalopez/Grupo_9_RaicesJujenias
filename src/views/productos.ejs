@@ -59,7 +59,7 @@
                 <section>
                     <ul class="product-list">
 
-                        <% products.forEach( product=> { %>
+                        <% productsList.forEach( product=> { %>
                             <li class="product-item">
                                 <div class="product-card" tabindex="0">
 
@@ -116,7 +116,7 @@
                                         </div>
 
                                         <h3 class="h3 card-title">
-                                            <a href="#">
+                                            <a href="/productos/<%= product.id %>">
                                                 <%= product.name %>
                                             </a>
                                         </h3>

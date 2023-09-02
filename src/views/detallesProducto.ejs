@@ -8,7 +8,7 @@
     <meta name="theme-color" content ="#f7a486e1">
     <title>Raíces Jujeñas</title>
     <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/producto.css">
+    <link rel="stylesheet" href="/css/detallesProducto.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,12 +30,12 @@
 
     <main>
         <div class="container-img">
-            <img src="images/product-1.png" alt="imagen-producto" style="margin: auto; display: block;">
+            <img src="/<%= product.image %>" alt="imagen-producto" style="margin: auto; display: block;">
         </div>
 
         <div class="container-info-product">
             <div class="container-price">
-                <span>$$$ PRECIO</span>
+                <span>$<%= product.price %></span>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
@@ -82,11 +82,11 @@
 
             <div class="container-additional-information">
                 <div class="title-additional-information">
-                    <h4>Información adicional</h4>
+                    <h4>Descripcion</h4>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 <div class="text-additional-information hidden">
-                    <p>-----------</p>
+                    <p><%= product.description %></p>
                 </div>
             </div>
 
@@ -117,22 +117,22 @@
         <div class="card-list-products">
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="/images/product-1.png" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="/images/product-1.png" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="/images/product-1.png" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="images/product-1.png" alt="producto-4" />
+                    <img src="/images/product-1.png" alt="producto-4" />
                 </div>
             </div>
         </div>
