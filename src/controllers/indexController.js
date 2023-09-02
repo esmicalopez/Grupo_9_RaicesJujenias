@@ -1,10 +1,10 @@
-const products = require("../data/products.json")
+const productsList = require("../data/products.json")
 
 
 const controllers = {
     index: (req, res) => {
         res.render('index', {
-          products
+          productsList
         });
       },
     register: (req, res) => {

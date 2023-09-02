@@ -1,18 +1,22 @@
-const products = require("../data/products.json")
+const productsList = require("../data/products.json")
 
 const controllers = {
   productos: (req, res) => {
     res.render('productos', {
-      products
+      productsList
     });
   },
   detallesProducto: (req, res) => {
     const id = req.params.id
     const producto = products.find( product => product.id == id)
     
-    res.render('detallesProducto', {
+    if (product) {
+      res.render('detallesProducto', {
       producto
     });
+    } else{
+      res.send('Producto no encontrado')
+    }
   },
 
 }

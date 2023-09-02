@@ -3,9 +3,9 @@ const router = express.Router()
 
 const controllers = require("../controllers/productoController")
 
+router.get("/:id", controllers.detallesProducto)
 router.get("/", controllers.productos)
 
-router.get("/:id", controllers.detallesProducto)
 
 
 module.exports = router

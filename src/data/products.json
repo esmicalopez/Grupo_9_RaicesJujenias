@@ -5,7 +5,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo", "negro"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 199,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -17,7 +17,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 299,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -29,7 +29,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 399,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -41,7 +41,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 499,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -65,7 +65,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 699,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -77,7 +77,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 799,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
@@ -89,7 +89,7 @@
         "sizes": ["chico", "mediano", "grande"],
         "colors": ["blanco", "beige", "rojo"],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
+        "price": 899,
         "offer": 10,
         "category": "Artesano",
         "image": "images/product-1.png"
