@@ -8,16 +8,16 @@ const controllers = {
   },
   detallesProducto: (req, res) => {
     const id = req.params.id
-    const producto = products.find( product => product.id == id)
+    const product = productsList.find( product => product.id == id)
     
     if (product) {
       res.render('detallesProducto', {
-      producto
-    });
+        product
+      });
     } else{
       res.send('Producto no encontrado')
     }
-  },
+  }
 
 }
 

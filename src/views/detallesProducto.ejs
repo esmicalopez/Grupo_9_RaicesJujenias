@@ -30,12 +30,12 @@
 
     <main>
         <div class="container-img">
-            <img src="../<%= producto.image %>" alt="imagen-producto" style="margin: auto; display: block;">
+            <img src="../<%= product.image %>" alt="imagen-producto" style="margin: auto; display: block;">
         </div>
 
         <div class="container-info-product">
             <div class="container-price">
-                <span>$<%= producto.price %></span>
+                <span>$<%= product.price %></span>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
@@ -45,7 +45,7 @@
                         <option disabled selected value="">
                             Escoge una opción
                         </option>
-                        <% producto.colors.forEach( color => { %>
+                        <% product.colors.forEach( color => { %>
                             <option value="<%= color %>"><%= color %></option>
                         <% })%>
 
@@ -57,7 +57,7 @@
                         <option disabled selected value="">
                             Escoge una opción
                         </option>
-                        <% producto.sizes.forEach( tamaño => { %>
+                        <% product.sizes.forEach( tamaño => { %>
                             <option value="<%= tamaño %>"><%= tamaño %></option>
                         <% })%>
                     </select>
@@ -118,22 +118,22 @@
         <div class="card-list-products">
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= producto.image %>" alt="producto-4" />
+                    <img src="../<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= producto.image %>" alt="producto-4" />
+                    <img src="../<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= producto.image %>" alt="producto-4" />
+                    <img src="../<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= producto.image %>" alt="producto-4" />
+                    <img src="../<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
         </div>
