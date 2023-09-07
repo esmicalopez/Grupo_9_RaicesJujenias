@@ -34,35 +34,40 @@
         </div>
 
         <div class="container-info-product">
+            <div class="container-name-product">
+                <%= product.name %>
+            </div>
             <div class="container-price">
                 <span>$<%= product.price %></span>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
-                <div class="form-group">
-                    <label for="colour">Color</label>
-                    <select name="colour" id="colour">
-                        <option disabled selected value="">
-                            Escoge una opción
-                        </option>
-                        <% product.colors.forEach( color => { %>
-                            <option value="<%= color %>"><%= color %></option>
-                        <% })%>
-
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="size">Tamaño</label>
-                    <select name="size" id="size">
-                        <option disabled selected value="">
-                            Escoge una opción
-                        </option>
-                        <% product.sizes.forEach( tamaño => { %>
-                            <option value="<%= tamaño %>"><%= tamaño %></option>
-                        <% })%>
-                    </select>
-                </div>
-                <button class="btn-clean">Limpiar</button>
+                <form action="" method="get">
+                    <div class="form-group">
+                        <label for="colour">Color</label>
+                        <select name="colour" id="colour">
+                            <option disabled selected value="">
+                                Escoge una opción
+                            </option>
+                            <% product.colors.forEach( color => { %>
+                                <option value="<%= color %>"><%= color %></option>
+                            <% })%>
+    
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Tamaño</label>
+                        <select name="size" id="size">
+                            <option disabled selected value="">
+                                Escoge una opción
+                            </option>
+                            <% product.sizes.forEach( tamaño => { %>
+                                <option value="<%= tamaño %>"><%= tamaño %></option>
+                            <% })%>
+                        </select>
+                    </div>
+                    <button class="btn-clean" type="reset">Limpiar</button>
+                </form>
             </div>
 
             <div class="container-add-cart">

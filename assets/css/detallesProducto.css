@@ -590,7 +590,7 @@
   
   /** PRODUCTOS*/
   
-  .product .section-title {
+  .section-title {
     text-align: center;
     margin-bottom: 25px;
   }
@@ -1351,6 +1351,12 @@
     justify-content: space-between;
   }
   
+  .container-name-product {
+    font-size: 30px;
+    font-weight: 500;
+    padding: 10px 0;
+  }
+
   .container-price span {
     font-size: 24px;
     font-weight: 300;
