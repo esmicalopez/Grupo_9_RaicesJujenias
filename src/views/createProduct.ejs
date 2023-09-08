@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7a486e1">
+    <title>Crear Producto | Raíces Jujeñas </title>
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="/css/createProduct.css">
+    <script src="https://kit.fontawesome.com/a00d13e606.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    
+<main>
+    <form action="" class="form-container">
+        <h1>Crear Producto</h1>
+        <div class="product-name input-item">
+            <label class="product-name__label" for="name">Nombre del Producto</label>
+            <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre">
+        </div>
+
+        <div class="product-price input-item">
+            <label for="price">Precio</label>
+            <input id="price" type="text" placeholder="Precio" required>
+        </div>
+
+        <div class="input-item">
+            <label for="author">Autor</label>
+            <input id="author" type="text" placeholder="Autor" required>
+        </div>
+
+        <div class="input-item">
+            <label for="category">Cantidad</label>
+            <input id="category" type="number" placeholder="Cantidad" required>
+        </div>
+
+        <div class="product-category input-item">
+            <span>Categoria</span>
+            <select  name="colour" id="colour">
+                <option disabled selected value="">
+                    Escoge una opción
+                </option>
+                <option value="">Textiles</option>
+                <option value="">Decoracion</option>
+                <option value="">Joyeria</option>
+                <option value="">Arte</option>
+                <option value="">Gastronomicos</option>
+
+            </select>
+        </div>
+
+        <div class="product-status input-item">
+            <span>Estado</span>
+
+            <select name="colour" id="colour">
+                <option disabled selected value="">
+                    Escoge una opción
+                </option>
+                <option value="">Nuevo</option>
+                <option value="">Semi-Nuevo</option>
+                <option value="">Usado</option>
+            </select>
+        </div>
+
+        <div class="product-photo input-item">
+            <label for="profile-picture">Foto del Producto</label>
+            <input id="profile-picture" type="file" accept=",jpg" required>
+        </div>
+
+        <div class="product-description input-item">
+            <label class="product-description__label " for="descripcion">Descripcion</label>
+            <textarea class="product-description__textarea" name="" id="descripcion" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="form-button-create">Cargar Producto</button>
+            <button type="button" class="form-button-modify">Modificar Producto</button>
+        </div>
+    </form>
+</main>
+
+
+    <%- include("./partials/footer.ejs") %>
+
+    <!-- INICIO DE PAGINA -->
+    <a href="#top" class="go-top-btn" data-go-top>
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </a>
+
+    <script src="js/script.js"></script>
+
+    <!-- ICONOS-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

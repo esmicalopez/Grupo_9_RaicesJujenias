@@ -6,6 +6,7 @@ const controllers = {
       productsList
     });
   },
+
   detallesProducto: (req, res) => {
     const id = req.params.id
     const product = productsList.find( product => product.id == id)
@@ -17,7 +18,11 @@ const controllers = {
     } else{
       res.send('Producto no encontrado')
     }
-  }
+  },
+
+  crearProducto: (req, res) => {
+    res.render('createProduct')
+  },
 
 }
 
