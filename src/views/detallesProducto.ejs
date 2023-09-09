@@ -38,7 +38,26 @@
                 <%= product.name %>
             </div>
             <div class="container-price">
-                <span>$<%= product.price %></span>
+                <% if(product.offer !== 0){ %>
+                    <div class="card-price-product" style="width: 70%;"  value="180.85">
+                        <div class="card-price-product">
+                            <del class="old-price" style="justify-self: flex-start;">
+                                $<%= product.price %>
+                            </del>
+                            <span>
+                                $<%= offerCalc(product.price, product.offer) %>
+                            </span>
+                        </div>
+                        <div style="font-size: 16px; color: #666;" >
+                             ¡%<%= product.offer %> DE DESCUENTO!
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="card-price-product">
+                        $<%= product.price %>
+                    </div>
+                <% } %>
+                <!--<span>$<%= product.price %></span>-->
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
@@ -99,7 +118,7 @@
                     <h4>Descripcion</h4>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
-                <div class="text-additional-information hidden">
+                <div class="text-additional-information">
                     <p><%= product.description %></p>
                 </div>
             </div>

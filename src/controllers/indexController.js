@@ -1,10 +1,12 @@
 const productsList = require("../data/products.json")
 
+let offerCalc = require("../functions/offerCalcule")
 
 const controllers = {
     index: (req, res) => {
         res.render('index', {
-          productsList
+          productsList,
+          offerCalc
         });
       },
     register: (req, res) => {

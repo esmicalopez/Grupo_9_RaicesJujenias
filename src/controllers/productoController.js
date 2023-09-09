@@ -3,10 +3,17 @@ const path = require("path")
 
 let productsList = require("../data/products.json")
 
+// Calculo del descuento
+let offerCalc = require("../functions/offerCalcule")
+
+
+//  Controladores
 const controllers = {
   productos: (req, res) => {
+
     res.render('productos', {
-      productsList
+      productsList,
+      offerCalc
     });
   },
 
@@ -17,7 +24,9 @@ const controllers = {
 
     if (product) {
       res.render('detallesProducto', {
-        product, newProductsList
+        product, 
+        newProductsList, 
+        offerCalc
       });
     } else{
       res.send('Producto no encontrado')
@@ -36,6 +45,7 @@ const controllers = {
       name: req.body.name,
       price: req.body.price,
       description: req.body.description,
+      offer: 0,
       category: req.body.category,
       image: req.body.image || "incognita.png",
       author: req.body.author,

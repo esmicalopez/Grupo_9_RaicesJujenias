@@ -229,7 +229,20 @@
                           <h3 class="h3 card-title">
                               <span><%= product.name %></span>
                           </h3>
-                          <data class="card-price" value="180.85">$<%= product.price %></data>
+                          <% if(product.offer !== 0){ %>
+                            <div class="card-price-product"  value="180.85">
+                                <del class="old-price">
+                                    $<%= product.price %>
+                                </del>
+                                <span>
+                                    ¡$<%= offerCalc(product.price, product.offer) %>! 
+                                </span>
+                            </div>
+                        <% } else { %>
+                            <div class="card-price-product">
+                                $<%= product.price %>
+                            </div>
+                        <% } %>
                       </div>
   
                   </div>

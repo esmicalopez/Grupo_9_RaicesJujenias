@@ -340,6 +340,23 @@
     font-family: var(--ff-roboto);
     font-weight: var(--fw-600);
   }
+
+  .card-price-product {
+    color: var(--terracota);
+    font-family: var(--ff-roboto);
+    font-weight: var(--fw-600);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+  
+  .card-price-product .old-price {
+    margin: 0 10px;
+    color: #666;
+    font-size: 14px;
+  }
+  
   
   .card-price del {
     color: var(--gray-x-11-gray);
@@ -1505,10 +1522,10 @@
   .text-description,
   .text-additional-information,
   .text-reviews {
-    font-size: 13px;
+    font-size: 16px;
     color: #252525;
     line-height: 22px;
-    margin-top: 25px;
+    margin-top: 10px;
   }
   
   .container-social {

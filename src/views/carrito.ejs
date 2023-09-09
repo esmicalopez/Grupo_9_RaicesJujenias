@@ -17,7 +17,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/carrito.css">
+    <link rel="stylesheet" href="/css/carrito.css">
 </head>
 
 <body>
@@ -39,7 +39,21 @@
                             </a>
                         </div>
                         <a href="/productos/<%= product.id %>" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
-                        <p class="producto-precio">$<%= product.price %></p>
+                        <% if(product.offer !== 0){ %>
+                            <div class="card-price-product"  value="180.85">
+                                <del class="old-price">
+                                    $<%= product.price %>
+                                </del>
+                                <span>
+                                    $<%= offerCalc(product.price, product.offer) %>
+                                </span>
+                            </div>
+                        <% } else { %>
+                            <div class="card-price-product">
+                                $<%= product.price %>
+                            </div>
+                        <% } %>
+                        <!--<p class="producto-precio">$<%= product.price %></p>-->
                         <i class="fa-solid fa-xmark"></i>
                     </article>
                 <% }) %>
@@ -57,7 +71,7 @@
                         <div class="main-resumen_compra-info">
                             <h5>Total</h5>
                             <h6>
-                                <%= precioTotal %>
+                                $<%= totalPrice(productsCart) %>
                             </h6>
                         </div>
                         <button>Continuar compra</button>
@@ -128,17 +142,26 @@
                                         <div class="card-content">
                                             <div class="card-cat">
                                                 <span class="card-cat-link">Categoria</span> /
-                                                <span class="card-cat-link">
-                                                    <%= product.category %>
-                                                </span>
+                                                <span class="card-cat-link"> <%= product.category %></span>
                                             </div>
 
                                             <h3 class="h3 card-title">
-                                                <span>
-                                                    <%= product.name %>
-                                                </span>
+                                                <span><%= product.name %></span>
                                             </h3>
-                                            <data class="card-price" value="180.85">$<%= product.price %></data>
+                                            <% if(product.offer !== 0){ %>
+                                                <div class="card-price-product"  value="180.85">
+                                                    <del class="old-price">
+                                                        $<%= product.price %>
+                                                    </del>
+                                                    <span>
+                                                        ¡$<%= offerCalc(product.price, product.offer) %>! 
+                                                    </span>
+                                                </div>
+                                            <% } else { %>
+                                                <div class="card-price-product">
+                                                    $<%= product.price %>
+                                                </div>
+                                            <% } %>
                                         </div>
 
                                     </div>
