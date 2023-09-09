@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "firstName": "Juan",
+      "lastName": "Pérez",
+      "email": "juan@example.com",
+      "password": "hashed_password_1",
+      "register-date": "2023-09-08",
+      "rol": "usuario",
+      "avatar": "non-avatar.png",
+      "info_contact": {
+        "address": "123 Calle Principal",
+        "phone": "+1234567890"
+      },
+      "preferences": {
+        "language": "español",
+        "notifications": true
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "María",
+      "lastName": "González",
+      "email": "maria@example.com",
+      "password": "hashed_password_2",
+      "register-date": "2023-09-08",
+      "rol": "usuario",
+      "avatar": "non-avatar.png",
+      "info_contact": {
+        "address": "456 Calle Secundaria",
+        "phone": "+9876543210"
+      },
+      "preferences": {
+        "language": "español",
+        "notifications": true
+      }
+    },
+    {
+      "id": 3,
+      "firstName": "Admin",
+      "lastName": "Administrador",
+      "email": "admin@example.com",
+      "password": "hashed_password_3",
+      "register-date": "2023-09-08",
+      "rol": "administrador",
+      "avatar": "non-avatar.png",
+      "info_contact": {
+        "address": "789 Calle de Administración",
+        "phone": "+5555555555"
+      },
+      "preferences": {
+        "language": "inglés",
+        "notifications": true
+      }
+    },
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "johndoe@example.com",
+      "password": "contraseña_segura",
+      "register-date": "2023-09-09",
+      "rol": "usuario",
+      "avatar": "non-avatar.png",
+      "info_contact": {
+        "address": "123 Calle Principal",
+        "phone": "555-123-4567"
+      },
+      "preferences": {
+        "language": "es",
+        "theme": "oscuro",
+        "notifications": true
+      }
+    },
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "email": "alice.smith@example.com",
+      "password": "password123",
+      "registerDate": "2023-09-09",
+      "rol": "administrador",
+      "avatar": "non-avatar.png",
+      "info_contact": {
+        "address": "456 Oak Street",
+        "phone": "555-987-6543"
+      },
+      "preferences": {
+        "language": "en",
+        "theme": "light",
+        "notifications": true
+      }
+    }
+]
+

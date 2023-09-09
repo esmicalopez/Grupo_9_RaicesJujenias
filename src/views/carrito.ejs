@@ -35,7 +35,7 @@
                     <article class="producto">
                         <div class="">
                             <a href="/productos/<%= product.id %>">
-                                <img src="<%= product.image %>" alt="">
+                                <img src="/images/<%= product.image %>" alt="">
                             </a>
                         </div>
                         <a href="/productos/<%= product.id %>" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
@@ -56,7 +56,9 @@
                         <h5>Productos (N°)</h5>
                         <div class="main-resumen_compra-info">
                             <h5>Total</h5>
-                            <h6>$ 1379.30</h6>
+                            <h6>
+                                <%= precioTotal %>
+                            </h6>
                         </div>
                         <button>Continuar compra</button>
                     </section>
@@ -81,7 +83,9 @@
                                             <img src="images/<%= product.image %>" width="312" height="350" loading="lazy"
                                                 alt="Producto" class="image-contain">
 
-                                            <div class="card-badge">Oferta <%= product.offer %>%</div>
+                                            <% if(product.offer !== 0){ %>
+                                                <div class="card-badge">Oferta <%= product.offer %>%</div>
+                                            <% } %>
 
                                             <ul class="card-action-list">
 

@@ -4,9 +4,16 @@ const productsList = require("../data/products.json")
 
 const controllers = {
   carrito: (req, res) => {
+    let precioTotal = 0;
+    
+    for(p of productsCart) {
+      precioTotal += p.price
+    }
+    
     res.render('carrito', {
       productsCart,
-      productsList
+      productsList,
+      precioTotal
     });
   },
 

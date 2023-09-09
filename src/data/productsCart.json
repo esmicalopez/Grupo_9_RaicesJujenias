@@ -2,40 +2,33 @@
     {
         "id": 1,
         "name": "Mate",
+        "sizes": ["Único"],
+        "colors": [
+            "blanco",
+            "beige",
+            "rojo",
+            "negro"
+        ],
         "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
         "price": 199,
-        "image": "images/product-1.png"
+        "offer": 10,
+        "stock": 50,
+        "category": "Artesano",
+        "image": "product-1.png"
     },
-    
-    {
-        "id": 2,
-        "name": "Mate",
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 299,
-        "image": "images/product-1.png"
-    },
-
-    {
-        "id": 3,
-        "name": "Mate",
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 399,
-        "image": "images/product-1.png"
-    },
-
-    {
-        "id": 4,
-        "name": "Mate",
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 499,
-        "image": "images/product-1.png"
-    },
-
     {
         "id": 5,
-        "name": "Mate",
-        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
-        "price": 599,
-        "image": "images/product-1.png"
+        "name": "Poncho de lana",
+        "description": "Poncho tejido a mano con lana de alpaca de Jujuy.",
+        "sizes": ["S"],
+        "colors": [
+            "blanco",
+            "negro"
+        ],
+        "price": 1500,
+        "offer": 0,
+        "stock": 15,
+        "category": "Textiles",
+        "image": "poncho.png"
     }
 ]

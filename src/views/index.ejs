@@ -179,7 +179,9 @@
                           <img src="/images/<%= product.image %>" width="312" height="350" loading="lazy" alt="Producto"
                               class="image-contain">
   
-                          <div class="card-badge">Oferta <%= product.offer %>%</div>
+                          <% if(product.offer !== 0){ %>
+                                <div class="card-badge">Oferta <%= product.offer %>%</div>
+                          <% } %>
   
                           <ul class="card-action-list">
   

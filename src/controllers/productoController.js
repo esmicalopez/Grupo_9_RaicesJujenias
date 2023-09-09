@@ -13,10 +13,11 @@ const controllers = {
   detallesProducto: (req, res) => {
     const id = req.params.id
     const product = productsList.find( product => product.id == id)
-    
+    let newProductsList = productsList.filter((p)=> p.id !== product.id)
+
     if (product) {
       res.render('detallesProducto', {
-        product
+        product, newProductsList
       });
     } else{
       res.send('Producto no encontrado')
