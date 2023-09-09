@@ -16,6 +16,11 @@ for (let i = 0; i < navElems.length; i++) {
   });
 }
 
+$(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
+
+
 /**
  * header & go top btn active on page scroll
  */

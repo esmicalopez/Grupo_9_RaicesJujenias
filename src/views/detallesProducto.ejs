@@ -30,7 +30,7 @@
 
     <main>
         <div class="container-img">
-            <img src="../<%= product.image %>" alt="imagen-producto" style="margin: auto; display: block;">
+            <img src="/images/<%= product.image %>" alt="imagen-producto" style="margin: auto; display: block;">
         </div>
 
         <div class="container-info-product">
@@ -43,20 +43,21 @@
             </div>
             <div class="container-details-product">
                 <form action="" method="get">
+                    <% if(product.colors[0]){ %>
+                        <div class="form-group">
+                            <label for="colour">Color</label>
+                            <select name="colour" id="colour">
+                                <option disabled selected value="">
+                                    Escoge una opción
+                                </option>
+                                    <% product.colors.forEach( color => { %>
+                                        <option value="<%= color %>"><%= color %></option>
+                                    <% })%>
+                            </select>
+                        </div>
+                    <% } %>
                     <div class="form-group">
-                        <label for="colour">Color</label>
-                        <select name="colour" id="colour">
-                            <option disabled selected value="">
-                                Escoge una opción
-                            </option>
-                            <% product.colors.forEach( color => { %>
-                                <option value="<%= color %>"><%= color %></option>
-                            <% })%>
-    
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="size">Tamaño</label>
+                        <label for="size">Tamaño / Talle</label>
                         <select name="size" id="size">
                             <option disabled selected value="">
                                 Escoge una opción
@@ -82,6 +83,13 @@
                     <i class="fa-solid fa-plus"></i>
                     Añadir al carrito
                 </button>
+                <a href="/productos/<%= product.id %>/edit" 
+                    style="align-self: center; color: #cb6843; font-weight: 800;">
+                    Editar Producto
+                </a>
+                <form action="/productos/<%= product.id %>/eliminar?_method=DELETE" method="POST"  style="display: flex;">
+                    <button style="align-self: center; color: #be3503; font-weight: 800;" type="submit">Eliminar Producto</button>
+                </form>
             </div>
 
 
@@ -123,22 +131,22 @@
         <div class="card-list-products">
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= product.image %>" alt="producto-4" />
+                    <img src="/images/<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= product.image %>" alt="producto-4" />
+                    <img src="/images/<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= product.image %>" alt="producto-4" />
+                    <img src="/images/<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
             <div class="card">
                 <div class="card-img">
-                    <img src="../<%= product.image %>" alt="producto-4" />
+                    <img src="/images/<%= product.image %>" alt="producto-4" />
                 </div>
             </div>
         </div>

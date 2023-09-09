@@ -21,37 +21,42 @@
     <%- include("./partials/header.ejs") %>
     
 <main>
-    <form action="/productos/crear" class="form-container" method="POST">
-        <h1>Crear Producto</h1>
+    <form action="/productos/<%= product.id %>/edit?_method=PUT" class="form-container" method="POST">
+        <h1>Editar Producto</h1>
         <div class="product-name input-item">
             <label class="product-name__label" for="name">Nombre del Producto</label>
-            <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre" name="name" >
+            <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre" name="name" value="<%= product.name %>">
         </div>
 
         <div class="product-price input-item">
             <label for="price">Precio</label>
-            <input id="price" type="number" placeholder="Precio"  name="price" required>
+            <input id="price" type="number" placeholder="Precio"  name="price" required value="<%= product.price %>">
+        </div>
+
+        <div class="input-item">
+            <label for="offer">Oferta</label>
+            <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" max="99" required value="<%= product.offer || 0 %>">
         </div>
 
         <div class="input-item">
             <label for="author">Autor</label>
-            <input id="author" type="text" placeholder="Autor"  name="author" required>
+            <input id="author" type="text" placeholder="Autor"  name="author" required value="<%= product.author %>">
         </div>
 
         <div class="input-item">
             <label for="stock">Cantidad</label>
-            <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required>
+            <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required value="<%= product.stock %>"> 
         </div>
 
         <div class="input-item">
             <label for="colors">Colores</label>
-            <input id="colors" type="text" placeholder="Separados por comas. Ej: rojo, verde, azul, ..."  name="colors">
+            <input id="colors" type="text" placeholder="Separados por comas. Ej: rojo, verde, azul, ..."  name="colors" value="<%= product.colors || 'Sin color' %>" >
         </div>
 
         <div class="product-category input-item">
             <span>Categoria</span>
-            <select  name="category" id="category" required>
-                <option disabled selected value="">
+            <select  name="category" id="category" required value="<%= product.category %>">
+                <option disabled value="">
                     Escoge una opción
                 </option>
                 <option value="textile">Textiles</option>
@@ -66,9 +71,9 @@
         <div class="product-status input-item">
             <span>Talle</span>
             
-            <select name="size" id="size" required>
-                <option disabled selected value="">
-                    Escoge el talle
+            <select name="size" id="size" required value="<%= product.sizes %>">
+                <option disabled value="">
+                    Escoge la/s opcion/es
                 </option>
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -80,16 +85,16 @@
 
         <div class="product-photo input-item">
             <label for="profile-picture">Foto del Producto</label>
-            <input id="profile-picture" type="file" accept=",jpg,png" required>
+            <input id="profile-picture" type="file" accept=",jpg,png" required value="<%= product.image || 'Sin imagen' %>">
         </div>
 
         <div class="product-description input-item">
             <label class="product-description__label " for="descripcion">Descripcion</label>
-            <textarea class="product-description__textarea" name="description" id="descripcion" cols="30" rows="10" required></textarea>
+            <textarea class="product-description__textarea" name="description" id="descripcion" cols="30" rows="10" required> <%= product.description %> </textarea>
         </div>
 
         <div class="form-buttons">
-            <button type="submit" class="form-button-create">Cargar Producto</button>
+            <button type="submit" class="form-button-modify">Modificar Producto</button>
         </div>
     </form>
 </main>
