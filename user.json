@@ -1,0 +1,58 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "correo_electronico": "juan@example.com",
+      "contrasena": "hashed_password_1",
+      "fecha_registro": "2023-09-08",
+      "rol": "usuario",
+      "avatar": "https://example.com/avatar/juan.jpg",
+      "informacion_contacto": {
+        "direccion": "123 Calle Principal",
+        "telefono": "+1234567890"
+      },
+      "preferencias": {
+        "idioma": "español",
+        "notificaciones": true
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "María",
+      "apellido": "González",
+      "correo_electronico": "maria@example.com",
+      "contrasena": "hashed_password_2",
+      "fecha_registro": "2023-09-08",
+      "rol": "usuario",
+      "avatar": "https://example.com/avatar/maria.jpg",
+      "informacion_contacto": {
+        "direccion": "456 Calle Secundaria",
+        "telefono": "+9876543210"
+      },
+      "preferencias": {
+        "idioma": "español",
+        "notificaciones": true
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Admin",
+      "apellido": "Administrador",
+      "correo_electronico": "admin@example.com",
+      "contrasena": "hashed_password_3",
+      "fecha_registro": "2023-09-08",
+      "rol": "administrador",
+      "avatar": "https://example.com/avatar/admin.jpg",
+      "informacion_contacto": {
+        "direccion": "789 Calle de Administración",
+        "telefono": "+5555555555"
+      },
+      "preferencias": {
+        "idioma": "inglés",
+        "notificaciones": true
+      }
+    }
+  ]
+}
