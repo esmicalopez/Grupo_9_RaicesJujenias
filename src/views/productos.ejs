@@ -65,7 +65,7 @@
                                     <div class="product-card" tabindex="0">
 
                                         <figure class="card-banner">
-                                            <img src="/images/<%= product.image %>" width="312" height="350" loading="lazy"
+                                            <img src="/images/products/<%= product.image || 'incognita.png' %>" width="312" height="350" loading="lazy"
                                                 alt="Producto" class="image-contain">
                                             <% if(product.offer !== 0){ %>
                                                 <div class="card-badge">Oferta <%= product.offer %>%</div>

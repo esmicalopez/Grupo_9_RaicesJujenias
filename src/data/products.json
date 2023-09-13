@@ -1,1 +1,105 @@
-[{"id":1,"name":"Mate","sizes":["Único"],"colors":["blanco","beige","rojo","negro"],"description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat","price":199,"offer":10,"stock":50,"category":"Artesano","image":"product-1.png"},{"id":2,"name":"Dulces de cayote","sizes":["Único"],"colors":[""],"description":"Deliciosos dulces de cayote, típicos de Jujuy.","price":600,"offer":0,"stock":50,"category":"Gastronomía","image":"dulce-cayote.png"},{"id":3,"name":"Vino torrontés","description":"900ml Vino blanco de uvas torrontés, producido en Jujuy.","sizes":["Único"],"colors":[""],"price":1200,"offer":0,"stock":30,"category":"Gastronomía","image":"vino.png"},{"id":4,"name":"bolso de lana de alpaca","description":"Bolso de lana hecho artesanalmente","sizes":["M"],"colors":["blanco","beige","rojo","negro"],"price":3000,"offer":0,"stock":20,"category":"Textiles","image":"bolso-alpaca.png"},{"id":5,"name":"Poncho de lana","description":"Poncho tejido a mano con lana de alpaca de Jujuy.","sizes":["S"],"colors":["blanco","negro"],"price":1500,"offer":0,"stock":15,"category":"Textiles","image":"poncho.png"},{"id":6,"name":"Zamponia","description":"Instrumento hecho a mano por músicos locales.","sizes":["Único"],"colors":["Madera Natural"],"price":900,"offer":10,"stock":10,"category":"Arte","image":"zamponia.png"}]
+[
+    {
+        "id": 1,
+        "name": "Mate",
+        "sizes": [
+            "Único"
+        ],
+        "colors": [
+            "blanco",
+            "beige",
+            "rojo",
+            "negro"
+        ],
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat iste recusandae, fugiat",
+        "price": 199,
+        "offer": 10,
+        "stock": 50,
+        "category": "Artesano",
+        "image": "product-1.png"
+    },
+    {
+        "id": 2,
+        "name": "Dulces de cayote",
+        "sizes": [
+            "Único"
+        ],
+        "colors": [
+            ""
+        ],
+        "description": "Deliciosos dulces de cayote, típicos de Jujuy.",
+        "price": 600,
+        "offer": 0,
+        "stock": 50,
+        "category": "Gastronomía",
+        "image": "dulce-cayote.png"
+    },
+    {
+        "id": 3,
+        "name": "Vino torrontés",
+        "description": "900ml Vino blanco de uvas torrontés, producido en Jujuy.",
+        "sizes": [
+            "Único"
+        ],
+        "colors": [
+            ""
+        ],
+        "price": 1200,
+        "offer": 0,
+        "stock": 30,
+        "category": "Gastronomía",
+        "image": "vino.png"
+    },
+    {
+        "id": 4,
+        "name": "bolso de lana de alpaca",
+        "description": "Bolso de lana hecho artesanalmente",
+        "sizes": [
+            "M"
+        ],
+        "colors": [
+            "blanco",
+            "beige",
+            "rojo",
+            "negro"
+        ],
+        "price": 3000,
+        "offer": 0,
+        "stock": 20,
+        "category": "Textiles",
+        "image": "bolso-alpaca.png"
+    },
+    {
+        "id": 5,
+        "name": "Poncho de lana",
+        "description": "Poncho tejido a mano con lana de alpaca de Jujuy.",
+        "sizes": [
+            "S"
+        ],
+        "colors": [
+            "blanco",
+            "negro"
+        ],
+        "price": 1500,
+        "offer": 0,
+        "stock": 15,
+        "category": "Textiles",
+        "image": "poncho.png"
+    },
+    {
+        "id": 6,
+        "name": "Zamponia",
+        "description": "Instrumento hecho a mano por músicos locales.",
+        "sizes": [
+            "Único"
+        ],
+        "colors": [
+            "Madera Natural"
+        ],
+        "price": 900,
+        "offer": 10,
+        "stock": 10,
+        "category": "Arte",
+        "image": "zamponia.png"
+    }
+]

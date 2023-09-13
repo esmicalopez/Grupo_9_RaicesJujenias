@@ -35,7 +35,7 @@
                     <article class="producto">
                         <div class="">
                             <a href="/productos/<%= product.id %>">
-                                <img src="/images/<%= product.image %>" alt="">
+                                <img src="/images/products/<%= product.image || 'incognita.png' %>" alt="">
                             </a>
                         </div>
                         <a href="/productos/<%= product.id %>" class="producto-nombre"><%= product.name %>, <%= product.description %></a>
@@ -94,7 +94,7 @@
                                     <div class="product-card" tabindex="0">
 
                                         <figure class="card-banner">
-                                            <img src="images/<%= product.image %>" width="312" height="350" loading="lazy"
+                                            <img src="images/products/<%= product.image || 'incognita.png' %>" width="312" height="350" loading="lazy"
                                                 alt="Producto" class="image-contain">
 
                                             <% if(product.offer !== 0){ %>

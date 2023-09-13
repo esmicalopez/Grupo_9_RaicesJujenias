@@ -534,11 +534,11 @@ body {
 .input-item label, .input-item span {
     font-size: var(--fs-5);
 }
-
+/*
 .product-photo input {
     color: transparent;
 }
-
+*/
 
 .product-description__label {
     display: block;

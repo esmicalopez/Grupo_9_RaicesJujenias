@@ -37,7 +37,7 @@ const controllers = {
     res.render('createProduct')
   },
 
-  crearProducto: (req, res) => {
+  crearProducto: (req, res, next) => {
     let lastProduct = productsList.pop()
     
     let newProduct = {
@@ -47,16 +47,24 @@ const controllers = {
       description: req.body.description,
       offer: 0,
       category: req.body.category,
-      image: req.body.image || "incognita.png",
+      image: req.file ? req.file.filename : null,
       author: req.body.author,
       sizes: [req.body.size],
       colors: req.body.colors.split(",") || "",
       stock: req.body.stock
     }
 
+    /*if (req.file) {
+      newProduct.image = req.file.filename
+    } else{
+      const error = new Error("Porfavor seleccione un archivo")
+      error.httpStatusCode = 400
+      return next(error)
+    }*/
+
     productsList.push(lastProduct, newProduct)
 
-    fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList))
+    fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
 
     res.redirect("/productos")
   },
@@ -75,7 +83,7 @@ const controllers = {
         p.description = req.body.description 
         p.offer = +req.body.offer 
         p.category = req.body.category 
-        p.image = req.body.image || "incognita.png"
+        p.image = req.file ? req.file.filename : p.image
         p.author = req.body.author 
         p.sizes = [req.body.size] 
         p.colors = req.body.colors.split(",") || ""
@@ -84,7 +92,7 @@ const controllers = {
       productsUpdated.push(p)
     })
     
-    fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsUpdated))
+    fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsUpdated, null, 4))
 
     res.redirect(`/productos/${+req.params.id}`)
   },
@@ -92,7 +100,7 @@ const controllers = {
   eliminarProducto: (req, res) => {
     productsList = productsList.filter((p) => p.id !== +req.params.id)
 
-    fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList))
+    fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
 
     res.redirect("/productos")
   }
