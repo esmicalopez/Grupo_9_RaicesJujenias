@@ -9,65 +9,103 @@
     <link rel="stylesheet" type="text/css" href="css/registro.css">
 </head>
 <body>
-    <div class="main-container">
-        <a href="/" class="logo">
-            <img src="images/logo.svg" width="200" height="65" alt="Logo">
-        </a>
-        <div class="form-container">
+
+    <%- include("./partials/header.ejs") %>
+
+
+    <main>
+        <form action="/productos/crear" class="form-container" method="POST" enctype="multipart/form-data">
             <h1>Registro</h1>
-            <form>
-                <div class="input-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required>
+            <div class="product-name input-item">
+                <label class="product-name__label" for="name">Nombre</label>
+                <input class="product-name__input" id="name" type="text" placeholder="Nombre" required autocomplete="nombre" name="name" >
+            </div>
+    
+            <div class="product-last-name input-item">
+                <label for="last-name">Apellido</label>
+                <input id="last-name" type="text" placeholder="Apellido" name="lastName" required>
+            </div>
+    
+            <div class="input-item">
+                <label for="email">Correo Electronico</label>
+                <input id="email" type="email" placeholder="ejemplo@gmail.com"  name="email" required>
+            </div>
+    
+            <div class="input-item">
+                <label for="date">Fecha de Nacimiento</label>
+                <input id="date" type="date" name="date" required>
+            </div>
+    
+            <div class="profile-and-photo">
+                <div class="user-profile input-item">
+                    <h3>Perfil del Usuario</h3>
+                    <div class="user-profile-left">
+                        <input id="comprador" type="radio" name="perfil" value="comprador" required>
+                        <label for="comprador">Comprador</label>
+                    </div>
+                    <div class="user-profile-right">
+                        <input id="vendedor" type="radio" name="perfil" value="vendedor" required>
+                        <label for="vendedor">Vendedor</label>
+                    </div>
                 </div>
-
-                <div class="input-group">
-                    <label for="apellido">Apellido:</label>
-                    <input type="text" id="apellido" name="apellido" required>
+    
+                <div class="product-photo input-item">
+                    <label for="profile-picture">Foto de Usuario</label>
+                    <input id="profile-picture" type="file" accept=",jpg,png" required name="product-image">
                 </div>
+            </div>
 
-                <div class="input-group">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
+            <div class="password input-item">
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" minlength="8" required autocomplete="new-password" placeholder="********">
+            </div>
+        
+            <div class="password input-item">
+                <label for="repeat-password">Repetir contraseña</label>
+                <input id="repeat-password" type="password" minlength="8" required autocomplete="new-password" placeholder="********">
+            </div>
 
-                <div class="input-group">
-                    <label for="email_confirm">Repite el correo electrónico:</label>
-                    <input type="email" id="email_confirm" name="email_confirm" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="mate">Mate:</label>
-                    <select id="mate" name="mate">
-                        <option value="dulce">Dulce</option>
-                        <option value="amargo">Amargo</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <input type="checkbox" id="terminos" name="terminos" required>
-                    <label for="terminos">Aceptar términos y condiciones</label>
-                </div>
-
-                <button type="submit">Registrarse</button>
-            </form>
+            <div class="input-item terms-and-conditions">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Aceptar términos y condiciones</label>
+            </div>
+    
+            <div class="form-buttons">
+                <button type="submit" class="form-button-create">Registrarse</button>
+            </div>
 
             <div class="social-login">
-                <p>
+                <span>
                     ¿Ya tienes cuenta? 
                     <a href="/login">Iniciar sesión</a>
-                </p>
-                <div class="buttons">
+                </span>
+                <div class="login-buttons">
                     <button>Ingresa con Facebook</button>
                     <button>Ingresa con Google</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+    </main>
+
+
+    <%- include("./partials/footer.ejs") %>
+
+    <!-- INICIO DE PAGINA -->
+    <a href="#top" class="go-top-btn" data-go-top>
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </a>
+
+    <script src="js/script.js"></script>
+
+    <!-- ICONOS-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
+
+
+
+<!--  -->
+
+
