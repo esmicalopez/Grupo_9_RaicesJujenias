@@ -14,7 +14,7 @@
 
 
     <main>
-        <form action="/productos/crear" class="form-container" method="POST" enctype="multipart/form-data">
+        <form action="/registro" class="form-container" method="POST" enctype="multipart/form-data">
             <h1>Registro</h1>
             <div class="product-name input-item">
                 <label class="product-name__label" for="name">Nombre</label>
@@ -40,33 +40,33 @@
                 <div class="user-profile input-item">
                     <h3>Perfil del Usuario</h3>
                     <div class="user-profile-left">
-                        <input id="comprador" type="radio" name="perfil" value="comprador" required>
+                        <input id="comprador" type="radio" name="profile" value="comprador" required>
                         <label for="comprador">Comprador</label>
                     </div>
                     <div class="user-profile-right">
-                        <input id="vendedor" type="radio" name="perfil" value="vendedor" required>
+                        <input id="vendedor" type="radio" name="profile" value="vendedor" required>
                         <label for="vendedor">Vendedor</label>
                     </div>
                 </div>
     
                 <div class="product-photo input-item">
                     <label for="profile-picture">Foto de Usuario</label>
-                    <input id="profile-picture" type="file" accept=",jpg,png" required name="product-image">
+                    <input id="profile-picture" type="file" accept=",jpg,png" required name="profile-image">
                 </div>
             </div>
 
             <div class="password input-item">
                 <label for="password">Contraseña</label>
-                <input id="password" type="password" minlength="8" required autocomplete="new-password" placeholder="********">
+                <input id="password" type="password" name="password" minlength="8" required autocomplete="new-password" placeholder="********">
             </div>
         
             <div class="password input-item">
                 <label for="repeat-password">Repetir contraseña</label>
-                <input id="repeat-password" type="password" minlength="8" required autocomplete="new-password" placeholder="********">
+                <input id="repeat-password" name="password" type="password" minlength="8" required autocomplete="new-password" placeholder="********">
             </div>
 
             <div class="input-item terms-and-conditions">
-                <input type="checkbox" id="terminos" name="terminos" required>
+                <input type="checkbox" id="terminos" name="terminos" value ="truee" required>
                 <label for="terminos">Aceptar términos y condiciones</label>
             </div>
     

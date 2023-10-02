@@ -5,6 +5,8 @@ const methodOverride = require("method-override")
 const indexRoutes = require("./routes/index")
 const carritoRoutes = require("./routes/carrito")
 const productoRoutes = require("./routes/producto")
+const usersRoutes = require("./routes/users")
+
 
 // Se define el puerto a usar
 const PORT = process.env.PORT || 3000;
@@ -23,11 +25,15 @@ app.use(express.json())
 app.use(express.static('assets'));
 
 // Para las solicitudes del sitio
-app.use('/', indexRoutes);  //Index, Login, Register
+app.use('/', indexRoutes);  // Index
+
+app.use('/', usersRoutes);  // Login, Register
 
 app.use('/carrito', carritoRoutes);
 
 app.use('/productos', productoRoutes);
+
+
 
 
 // ...
