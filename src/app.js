@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const methodOverride = require("method-override")
+const methodOverride = require("method-override");
+const session = require("express-session");
 
 const indexRoutes = require("./routes/index")
 const carritoRoutes = require("./routes/carrito")
@@ -13,14 +14,16 @@ const PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs")
 app.set("views", "./src/views")
 
-// Configurando express para usar metodo POST, PUT y DELETE
-app.use(methodOverride("_method"))
-
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-
 // Archivos estáticos desde la carpeta "assets"
 app.use(express.static('assets'));
+
+// Middlewares globales
+app.use(session({ secret: "Shhh, esto es un secreto..." }))
+app.use(methodOverride("_method"))
+
+// Configurando express para usar metodo POST, PUT y DELETE
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 // Para las solicitudes del sitio
 app.use('/', indexRoutes);  //Index, Login, Register
