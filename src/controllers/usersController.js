@@ -12,7 +12,7 @@ const controllers = {
         if (req.session.userLogged) {
             return res.redirect("/")
         }
-        return res.render('registro');
+        return res.render('users/registro');
     },
 
     register: (req, res) => {
@@ -68,7 +68,7 @@ const controllers = {
         if (req.session.userLogged) {
             return res.redirect("/")
         }
-        return res.render("login")
+        return res.render("users/login")
     },
 
     login: (req, res) => {

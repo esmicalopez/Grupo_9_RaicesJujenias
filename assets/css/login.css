@@ -1,10 +1,14 @@
 *{
     box-sizing: border-box;
-    font-family: "Tw Cen Mt";
+    /*font-family: "Tw Cen Mt";*/
     margin: 0;
     padding: 0;
 }
 
+span{
+    display: inline;
+}
+/* 
 .header-login{
     background-color: #f1d3c7e1;
     display: flex;
@@ -13,7 +17,17 @@
     padding: 10px 0;
     border: 0px solid ;
     font-size: 30px;
-}
+    background: var(--white);
+    box-shadow: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+   position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: var(--transition-1);
+    z-index: 4;
+   
+
+} */
 .header-login .logo{
     padding: 15px 0;
 }
@@ -30,20 +44,20 @@ main{
     background-size: cover;
     /*background-color: #E3D5CA;*/
     background-color: white;
-    position: fixed;
+    /*position: fixed;*/
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    /*width: 100%;
+    height: 100%;*/
 }
 main .login-form{
     text-align: left;
-    border: solid 5px #cb6843;
+    /*border: solid 5px #cb6843;*/
     border-radius: 10px;
     padding: 15px;
     background-color: white;
-    margin-bottom: 130px;
+    margin: 130px 0;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .login-form a{
@@ -54,8 +68,10 @@ main .login-form{
 .login-form .data-form{
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 .login-form .article-title{
+    font-size: 20px;
     color: #22223B;
 }
 .login-form .bienvenida-msg{
@@ -72,7 +88,7 @@ main .login-form{
     flex-direction: column;
     padding: 15px 20px;
     border-right: 1px #22223B solid;
-    max-width: 380px;
+    width: 600px;
     font-size: 22px;
     color: #22223B;
 }
@@ -102,37 +118,53 @@ main .login-form{
     justify-content: space-between;
 }
 .left-menu .login-join-button{
+    
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
 }
 .login-form .left-menu .login-button{
-    background-color: #f7a486e1;
+    background: var(--terracota);
+    color: var(--white);
     border: #D5BDAF 0px solid;
     border-radius: 8px;
     padding: 8px;
     width: 40%;
-    font-size: 22px;
-    transition: border 0.05s;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s background ease;    
 }
 .login-form .left-menu .login-button:hover{
-    border: #666 2px solid;
+    background: var(--terracota_2);
 }
 .login-form .left-menu .rec-password{
     align-self: center;
-    flex-grow: 0.4;
+    width: 50%;
     margin-left: 15px;
+    display: flex;
+    justify-content: center;
+}
+.login-form .left-menu .rec-password a{
+    text-align: center;
 }
 .login-form .left-menu .redirect-register{
     width: 100%;
+    display: flex;
+    justify-content: center;
     text-align: center;
+}
+.new-account{
+    margin-left: 10px;
 }
 .login-form .right-menu{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
     flex-direction: column;
+    align-items: center;
     padding: 15px 20px;
     justify-content: space-between;
+    width: 30%;
 }
 .right-menu div h3{
     text-decoration: none;
@@ -141,14 +173,20 @@ main .login-form{
 .login-form .right-menu .another-login-menu{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.login-form .right-menu .another-login-menu *{
+    text-align: center;
 }
 .login-form .right-menu .another-login button{
     margin: 10px;
-    padding: 5px 15px;
+    padding: 5px 0px;
     background-color: white;
     border: 0px #EDEDE9 solid;
     align-self: center;
     border-radius: 8px;
+    width: 100%;
     transition: border 0.08s;
 }
 .login-form .right-menu .another-login button:hover{
@@ -156,12 +194,37 @@ main .login-form{
 }
 .login-form .right-menu .another-login .google{
     max-width: 120px;
+    width: 100%;
     margin-top: 5px;
 }
 .login-form .right-menu .another-login .facebook{
-    max-width: 140px;
+    max-width: 160px;
+    width: 100%;
+    min-width: 90px;
 }
 .right-menu .legal-resources a{
     color: #585858;
 
+}
+
+@media (max-width: 768px){
+    .left-menu .remember-user-line,
+    .left-menu .login-join-button,
+    .redirect-register,
+    .article-title{
+        font-size: 18px;
+    }
+    .login-form .left-menu .login-button{
+        width: 50%;
+    }
+    .left-menu .rec-password{
+        width: 45%;
+    }
+    .right-menu .legal-resources a{
+        font-size: 14px;
+        margin: 5px;
+    }
+    .login-form .right-menu .another-login button{
+        margin: 10px 0;
+    }
 }

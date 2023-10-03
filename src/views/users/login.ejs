@@ -2,31 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content ="#f7a486e1">
     <title>Iniciar Sesión</title>
+    <link rel="stylesheet" type="text/css" href="css/registro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
 
-    <header class="header-login">
+
+    <%- include("../partials/header.ejs") %>
+
+  <!--  <header class="header-login">
         <a href="/" class="logo">
             <img src="images/logo.svg" width="200" height="65" alt="Logo">
         </a>
         <h4 class="info-datos">Protegemos tus datos<i class="fa-solid fa-user-shield"></i></h4>
         <p class="help-center"><a href=""><i class="fa-solid fa-headphones-simple"></i>Centro de Ayuda</a></p>
-        
+        -->
     </header>
 
     <main>
-        <section class="login-form">
+        <section class="login-form form-container">
             
             <h1 class="bienvenida-msg article-title">¡Nos alegra verte! <i class="fa-regular fa-face-laugh-beam"></i></h1>
             
             <div class="data-form">
-                <article class="left-menu">
+                <section class="left-menu">
                     <form action="/login" method="POST">
                         <% if (locals.errors && errors.msg) { %>
                          <div style="color: red; padding-bottom: 10px;">
@@ -46,8 +51,8 @@
                             <label for="remember-user">Recordarme</label>
                             <input type="checkbox" id="remember-user" value="true" name="rememberUser">
                         </div>
-                        <div class="login-join-button">
-                            <input type="submit" value="Iniciar Sesión" class="login-button">
+                        <div class="login-join-button ">
+                            <button type="submit" class="login-button">Iniciar Sesión</button>
                             <span class="rec-password"><a href="">Olvidé mi contraseña</a></span>
                         </div>
                     </form>
@@ -57,10 +62,10 @@
                             <span class="new-account"><a href="/registro">Crear Cuenta</a></span>
                         </div>
                     </div>
-                </article>
-                <article class="right-menu">
+                </section>
+                <section class="right-menu">
                     <div class="another-login-menu">
-                        <h3 class="article-title">Continuar con...</h3>
+                        <p class="article-title">Continuar con...</p>
                         <p class="another-login">
                             <button><img class="google" src="images/google-small.png" alt=""></button>
                         </p>
@@ -72,10 +77,25 @@
                         <p><a href="">Términos y Condiciones</a></p>
                         <p><a href="">Política de Privacidad</a></p>
                     </div>
-                </article>  
+                </section>  
             </div>
         </section>
     </main>
+    
+    <!-- FOOTER -->
+
+    <%- include('../partials/footer.ejs') %>
+
+        <!-- INICIO DE PAGINA -->
+    <a href="#top" class="go-top-btn" data-go-top>
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </a>
+
+    <script src="js/script.js"></script>
+
+    <!-- ICONOS-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>
