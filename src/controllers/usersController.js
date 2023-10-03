@@ -78,7 +78,7 @@ const controllers = {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.userLogged = true  
                 req.session.user = user
-                req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id) : ""
+                req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
                 return res.redirect("/")
             }
             return res.render("login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
