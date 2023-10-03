@@ -183,15 +183,15 @@ main .login-form{
     margin: 10px;
     padding: 5px 0px;
     background-color: white;
-    border: 0px #EDEDE9 solid;
     align-self: center;
     border-radius: 8px;
     width: 100%;
-    transition: border 0.08s;
+    /*border: 0px #EDEDE9 solid;
+    transition: border 0.08s;*/
 }
-.login-form .right-menu .another-login button:hover{
+/*.login-form .right-menu .another-login button:hover{
     border: 3px #f7a486e1 solid;
-}
+}*/
 .login-form .right-menu .another-login .google{
     max-width: 120px;
     width: 100%;
