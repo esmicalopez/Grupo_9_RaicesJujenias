@@ -2,10 +2,16 @@ const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
 const session = require("express-session");
+const cookieParser = require("cookie-parser")
 
 const indexRoutes = require("./routes/index")
 const carritoRoutes = require("./routes/carrito")
 const productoRoutes = require("./routes/producto")
+const usersRoutes = require("./routes/users");
+
+const cookieLoggerMid = require("./middlewares/cookieLoggerMid");
+const userLocals = require("./middlewares/userLocals");
+
 
 // Se define el puerto a usar
 const PORT = process.env.PORT || 3000;
@@ -18,19 +24,30 @@ app.set("views", "./src/views")
 app.use(express.static('assets'));
 
 // Middlewares globales
-app.use(session({ secret: "Shhh, esto es un secreto..." }))
+app.use(session({ 
+  secret: "djklfabsodbfdsikjñp",
+  saveUninitialized: true,
+  resave: false
+}))
 app.use(methodOverride("_method"))
+app.use(cookieParser())
+app.use(cookieLoggerMid)
+app.use(userLocals)
 
 // Configurando express para usar metodo POST, PUT y DELETE
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Para las solicitudes del sitio
-app.use('/', indexRoutes);  //Index, Login, Register
+app.use('/', indexRoutes);  // Index
+
+app.use('/', usersRoutes);  // Login, Register
 
 app.use('/carrito', carritoRoutes);
 
 app.use('/productos', productoRoutes);
+
+
 
 
 // ...

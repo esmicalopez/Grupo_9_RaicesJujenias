@@ -509,6 +509,14 @@ main {
   padding: 10px
 }
 
+.error {
+  width: 100%;
+  color: #f00;
+  font-weight: bold;
+  font-size: var(--fs-4);
+  text-align: center;
+}
+
 .form-container {
   padding: 20px 20px 30px;
   margin: 10px 0 50px;
@@ -546,11 +554,11 @@ main {
   cursor: pointer;
   font-size: var(--fs-5);
 }
-
+/*
 .product-photo input {
   color: transparent;
 }
-
+*/
 .user-profile {
   display: flex;
   flex-wrap: wrap;

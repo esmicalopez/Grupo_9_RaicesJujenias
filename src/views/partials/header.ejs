@@ -25,14 +25,24 @@
             <a href="/productos" class="navbar-link">Productos</a>
           </li>
           <li class="navbar-item">
-            <a href="/login" class="navbar-link">Iniciar Sesion</a>
-          </li>
-          <li class="navbar-item">
-            <a href="/registro" class="navbar-link">Registrarse</a>
-          </li>
-          <li class="navbar-item">
             <a href="/carrito" class="navbar-link">Carrito</a>
           </li>
+
+          <% if (userLogged) { %>
+            <form class="navbar-item" action="/logout" method="POST">
+              <button class="navbar-link" type="submit">Cerrar Sesión</button>
+            </form>
+          <% } %>
+
+          <% if (!userLogged) { %>
+            <li class="navbar-item">
+              <a href="/login" class="navbar-link">Iniciar Sesion</a>
+            </li>
+            <li class="navbar-item">
+              <a href="/registro" class="navbar-link">Registrarse</a>
+            </li>
+          <% } %>
+          
         </ul>
 
         <ul class="nav-action-list">
@@ -42,12 +52,15 @@
               <span class="nav-action-text">Buscar</span>
             </button>
           </li>
-          <li>
-            <a href="#" class="nav-action-btn">
-              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-              <span class="nav-action-text">Log In / Sing Up</span>
-            </a>
-          </li>
+          <% if (userLogged) { %>
+            <li>
+              <a href="#" class="nav-action-btn">
+                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                <span class="nav-action-text">Log In / Sing Up</span>
+                <span> <%= user ? user.name : null %> </span>
+              </a>
+            </li>
+          <% } %>
           <li>
             <button class="nav-action-btn">
               <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
