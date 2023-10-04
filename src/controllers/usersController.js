@@ -26,7 +26,7 @@ const controllers = {
         console.log(erroresExpressValidator.mapped())
 
         if (!erroresExpressValidator.isEmpty()) {
-            return res.render("registro", { 
+            return res.render("users/registro", { 
                 errores: erroresExpressValidator.mapped() 
             });
         } else {}

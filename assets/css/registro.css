@@ -598,6 +598,16 @@ main {
   color: #333;
 }
 
+.terms-and-conditions a {
+  display: inline;
+  font-weight: 500;
+  transition: .3s color ease;
+}
+
+.terms-and-conditions a:hover {
+  color: #8437cc;
+}
+
 .terms-and-conditions > input {
   cursor: pointer;
   width: 17px;
