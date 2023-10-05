@@ -17,7 +17,7 @@ const controllers = {
 
     register: (req, res) => {
 
-        const file = req.file;
+        const file = req.file ?? {};
         const userId = users[users.length - 1].id;
 
         //  validacion contraseñas
@@ -42,7 +42,7 @@ const controllers = {
             registerDate: "hoy",
             date: req.body.date,
             rol: req.body.userRole,
-            avatar: file.filename,
+            avatar: file.filename ?? "default.png",
             acceptTerms: true,
             info_contact: {
                 address: "",
@@ -55,7 +55,6 @@ const controllers = {
         }
         // console.log("DATOS FORM: ")
         console.log(req.body);
-
 
         users.push(newUser);
 
@@ -81,11 +80,11 @@ const controllers = {
                 req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
                 return res.redirect("/")
             }
-            return res.render("login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
+            return res.render("users/login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
 
         } else{
-            return res.render("login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
-       }
+            return res.render("users/login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
+        }
     },
 
     logout: (req, res) => {

@@ -92,5 +92,25 @@
             "language": "español",
             "notifications": true
         }
+    },
+    {
+        "id": 6,
+        "name": "cristian",
+        "lastName": "--123",
+        "email": "cr@gmail.com",
+        "password": "$2a$10$aCmRztrIsjpgKFDfSJZicuSgYWlAyM5BVFdFdjTFI53zEhEBivhqi",
+        "registerDate": "hoy",
+        "date": "2002-11-02",
+        "rol": "administrador",
+        "avatar": "default.png",
+        "acceptTerms": true,
+        "info_contact": {
+            "address": "",
+            "phone": ""
+        },
+        "preferences": {
+            "language": "español",
+            "notifications": true
+        }
     }
 ]
