@@ -8,6 +8,8 @@
   <meta name="theme-color" content ="#f7a486e1">
 
   <title>Raíces Jujeñas</title>
+  <script src="https://kit.fontawesome.com/a00d13e606.js" crossorigin="anonymous"></script>
+
   <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
 
@@ -28,6 +30,10 @@
   <!-- HEADER -->
 
   <%- include("./partials/header.ejs") %>
+
+<!-- Alerta de logueo exitoso  -->
+  <%- include("./partials/loginSucessAlert.ejs") %>
+
 
   <!-- MAIN -->
 
@@ -615,6 +621,17 @@
   <!-- ICONOS-->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    function closeMessage() {
+      const idMessege = document.getElementById("success-message")
+      idMessege.classList.remove('show');
+    }
+
+    setTimeout(function() {
+      closeMessage();
+    }, 5000)
+    </script>
 
 </body>
 

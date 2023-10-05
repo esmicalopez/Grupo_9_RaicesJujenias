@@ -552,6 +552,49 @@ body {
 }
 
 
+/* <!-- Alerta de logueo exitoso  --> */
+
+.alert {
+  opacity: 0;
+  position: absolute;
+  background: #e17e5a;;
+  width: 100%;
+  transition: .4s opacity ease;
+
+}
+.alert.show {
+  opacity: 1;
+}
+
+.box {
+  display: flex;
+  padding: 17px 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box button, .box span {
+  color: #FFF;
+  font-size: 2.2rem;
+}
+
+
+
+.alert.shows {
+  opacity: 1;
+}
+
+.close-button {
+  cursor: pointer;
+  border: none;
+  transition: .3s transform ease;
+
+}
+
+.close-button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
 
 
 

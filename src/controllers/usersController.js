@@ -71,18 +71,20 @@ const controllers = {
     },
 
     login: (req, res) => {
-        let user = users.find((u) => u.email === req.body.email)
+        const user = users.find((u) => u.email === req.body.email)
 
         if(user){
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.userLogged = true  
                 req.session.user = user
                 req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
+                req.flash('success', `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!`);
                 return res.redirect("/")
             }
             return res.render("users/login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
 
         } else{
+            req.flash('error', 'Credenciales incorrectas');
             return res.render("users/login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
         }
     },

@@ -1,0 +1,21 @@
+<% if (messages.success) { %>
+    <div class="alert show" id="success-message">
+        <div class="box">
+            <span>
+                <%= messages.success %>
+            </span>
+            <button class="close-button" onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+<% } %>
+
+<% if (messages.error) { %>
+    <div class="alert show" id="success-message">
+        <div class="box">
+            <span>
+                <%= messages.success %>
+            </span>
+            <button class="close-button" onclick="closeMessage()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+<% } %>

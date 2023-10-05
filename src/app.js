@@ -3,6 +3,7 @@ const app = express();
 const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require("cookie-parser")
+const flash = require("express-flash")
 
 const indexRoutes = require("./routes/index")
 const carritoRoutes = require("./routes/carrito")
@@ -33,6 +34,8 @@ app.use(methodOverride("_method"))
 app.use(cookieParser())
 app.use(cookieLoggerMid)
 app.use(userLocals)
+app.use(flash());
+
 
 // Configurando express para usar metodo POST, PUT y DELETE
 app.use(express.urlencoded({ extended: true }))
