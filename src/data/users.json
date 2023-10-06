@@ -101,6 +101,7 @@
         "password": "$2a$10$kxZvZlD8bYeU6eYzC13olOfPl9e4hCrRnDLyEXC5fuVMnPTPkFESq",
         "registerDate": "hoy",
         "date": "0123-03-21",
+        "rol": "user",
         "avatar": "default.png",
         "acceptTerms": true,
         "info_contact": {

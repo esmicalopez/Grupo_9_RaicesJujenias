@@ -94,7 +94,23 @@ const controllers = {
         res.clearCookie("cookieLogger");
         req.session.destroy();
         res.redirect("/")
+    },
+
+    userProfile: (req, res) => {
+        if (!req.session.user) { // Unauthorized
+            return res.sendStatus(401)
+        } 
+
+        const { id, username } = req.params
+
+        const user = users.find(u => u.id === +id && u.name === username)
+
+        console.log("hola")
+        console.log(res.locals)
+        res.render("users/userProfile")
     }
+
+
 }
 
 module.exports = controllers

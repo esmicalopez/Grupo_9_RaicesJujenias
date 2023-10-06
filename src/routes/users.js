@@ -21,6 +21,8 @@ const validator = [
 
 router.get("/login", controllers.loginView)
 router.get("/registro", controllers.registerView)
+router.get("/:id/:username", controllers.userProfile)
+
 
 router.post("/login", controllers.login)
 router.post("/logout", controllers.logout)
