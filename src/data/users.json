@@ -6,7 +6,7 @@
         "email": "juan@example.com",
         "password": "hashed_password_1",
         "register-date": "2023-09-08",
-        "rol": "usuario",
+        "rol": "user",
         "avatar": "non-avatar.png",
         "info_contact": {
             "address": "123 Calle Principal",
@@ -24,7 +24,7 @@
         "email": "maria@example.com",
         "password": "hashed_password_2",
         "register-date": "2023-09-08",
-        "rol": "usuario",
+        "rol": "user",
         "avatar": "non-avatar.png",
         "info_contact": {
             "address": "456 Calle Secundaria",
@@ -42,7 +42,7 @@
         "email": "admin@example.com",
         "password": "hashed_password_3",
         "register-date": "2023-09-08",
-        "rol": "administrador",
+        "rol": "admin",
         "avatar": "non-avatar.png",
         "info_contact": {
             "address": "789 Calle de Administración",
@@ -55,33 +55,13 @@
     },
     {
         "id": 4,
-        "name": "cristian",
-        "lastName": "zamora",
-        "email": "cristian@gmail.com",
-        "password": "$2a$10$KdzVNuoxH1Hp/Q8vQv9tTuXCXGL9Uq9eVa3hrXd4xINtQ2tYZiKTS",
-        "registerDate": "hoy",
-        "date": "2002-11-02",
-        "rol": "administrador",
-        "avatar": "profile-img-1696229853786.png",
-        "acceptTerms": true,
-        "info_contact": {
-            "address": "",
-            "phone": ""
-        },
-        "preferences": {
-            "language": "español",
-            "notifications": true
-        }
-    },
-    {
-        "id": 5,
         "name": "Lucas",
         "lastName": "Ramos",
         "email": "lhramosjr@outlook.com",
         "password": "$2a$10$dVlc2lk4BzpYJLB9ft47W.3TiaquzBSn/F4W6Gsxu.mG4E2dKQoqS",
         "registerDate": "hoy",
         "date": "2005-06-19",
-        "rol": "administrador",
+        "rol": "admin",
         "avatar": "profile-img-1696257375845.png",
         "acceptTerms": true,
         "info_contact": {
@@ -94,14 +74,33 @@
         }
     },
     {
-        "id": 6,
+        "id": 5,
         "name": "cristian",
         "lastName": "--123",
         "email": "cr@gmail.com",
         "password": "$2a$10$aCmRztrIsjpgKFDfSJZicuSgYWlAyM5BVFdFdjTFI53zEhEBivhqi",
         "registerDate": "hoy",
         "date": "2002-11-02",
-        "rol": "administrador",
+        "rol": "admin",
+        "avatar": "default.png",
+        "acceptTerms": true,
+        "info_contact": {
+            "address": "",
+            "phone": ""
+        },
+        "preferences": {
+            "language": "español",
+            "notifications": true
+        }
+    },
+    {
+        "id": 6,
+        "name": "user",
+        "lastName": "123",
+        "email": "user@gmail.com",
+        "password": "$2a$10$kxZvZlD8bYeU6eYzC13olOfPl9e4hCrRnDLyEXC5fuVMnPTPkFESq",
+        "registerDate": "hoy",
+        "date": "0123-03-21",
         "avatar": "default.png",
         "acceptTerms": true,
         "info_contact": {

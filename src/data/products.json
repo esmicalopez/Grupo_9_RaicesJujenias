@@ -101,5 +101,23 @@
         "stock": 10,
         "category": "Arte",
         "image": "zamponia.png"
+    },
+    {
+        "id": 7,
+        "name": "Autorizacion prueba",
+        "price": "3123123",
+        "description": "prueba autenticacion",
+        "offer": 0,
+        "category": "art",
+        "image": "product-img-1696561792673.png",
+        "author": "cristian",
+        "sizes": [
+            "L"
+        ],
+        "colors": [
+            "blanco",
+            " celeste"
+        ],
+        "stock": "3131"
     }
 ]

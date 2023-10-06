@@ -4,7 +4,7 @@ const path = require("path")
 let productsList = require("../data/products.json")
 
 // Calculo del descuento
-let offerCalc = require("../functions/offerCalcule")
+const offerCalc = require("../functions/offerCalcule")
 
 
 //  Controladores
@@ -34,6 +34,14 @@ const controllers = {
   },
 
   crearProductoView: (req, res) => {
+    if (!req.session.user) { // Unauthorized
+      return res.sendStatus(401)
+    } 
+
+    if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
+      return res.sendStatus(403)
+    } 
+
     res.render('createProduct')
   },
 
@@ -54,14 +62,6 @@ const controllers = {
       stock: req.body.stock
     }
 
-    /*if (req.file) {
-      newProduct.image = req.file.filename
-    } else{
-      const error = new Error("Porfavor seleccione un archivo")
-      error.httpStatusCode = 400
-      return next(error)
-    }*/
-
     productsList.push(lastProduct, newProduct)
 
     fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
@@ -70,6 +70,15 @@ const controllers = {
   },
 
   editarProductoView: (req, res) => {
+    if (!req.session.user) { // Unauthorized
+      return res.sendStatus(401)
+    } 
+
+    if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
+      return res.sendStatus(403)
+    } 
+
+
     let product = productsList.find((p) => p.id === +req.params.id)
     res.render('editProduct', {product})
   },
@@ -98,6 +107,14 @@ const controllers = {
   },
 
   eliminarProducto: (req, res) => {
+    if (!req.session.user) { // Unauthorized
+      return res.sendStatus(401)
+    } 
+
+    if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
+      return res.sendStatus(403)
+    } 
+
     productsList = productsList.filter((p) => p.id !== +req.params.id)
 
     fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))

@@ -662,20 +662,21 @@ body {
 
 
 
-.main-resumen_compra section>button {
+.main-resumen_compra section> .button {
     border: none;
     padding: 14px 0;
     background: var(--terracota);
     color: #FFF;
     width: 100%;
-    font-size: var(--fs-6);
+    font-size: var(--fs-5);
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    text-align: center;
     transition: background .3s ease;
 }
 
-.main-resumen_compra section>button:hover {
+.main-resumen_compra section > .button:hover {
     background: var(--terracota_2);
 }
 

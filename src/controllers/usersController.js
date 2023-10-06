@@ -72,12 +72,13 @@ const controllers = {
 
     login: (req, res) => {
         const user = users.find((u) => u.email === req.body.email)
+        // console.log(req.body)
 
         if(user){
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.userLogged = true  
                 req.session.user = user
-                req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
+                req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : "";
                 req.flash('success', `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!`);
                 return res.redirect("/")
             }
