@@ -41,7 +41,7 @@ const controllers = {
             password: passwordHashed,
             registerDate: "hoy",
             date: req.body.date,
-            rol: req.body.userRole,
+            rol: req.body.rol,
             avatar: file.filename ?? "default.png",
             acceptTerms: true,
             info_contact: {
@@ -53,8 +53,6 @@ const controllers = {
                 notifications: true
             }
         }
-        // console.log("DATOS FORM: ")
-        console.log(req.body);
 
         users.push(newUser);
 
@@ -79,7 +77,7 @@ const controllers = {
                 req.session.userLogged = true  
                 req.session.user = user
                 req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : "";
-                req.flash('success', `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!`);
+                req.flash('success', `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!  -  Rol: ${user.rol.charAt(0).toUpperCase() + user.rol.slice(1)}`);
                 return res.redirect("/")
             }
             return res.render("users/login", {errors: { msg: "Los datos enviados son incorrectos o incompatibles"}, old: req.body })
