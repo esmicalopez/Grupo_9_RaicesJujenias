@@ -54,7 +54,7 @@
           </li>
           <% if (userLogged) { %>
             <li>
-              <a href="/<%= user.id %>/<%= user.name %>" class="nav-action-btn">
+              <a href="/user-profile/<%= user.id %>" class="nav-action-btn">
                 <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
                 <span class="nav-action-text">Log In / Sing Up</span>
                 <span> <%= user ? user.name : null %> </span>
