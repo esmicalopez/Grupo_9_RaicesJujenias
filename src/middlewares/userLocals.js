@@ -1,9 +1,9 @@
-function userLocals(req, res, next) {
+function userLocals (req, res, next) {
     if (req.session.userLogged) {
-        //console.log(req.session.user);
+        // console.log(req.session.user);
         res.locals.user = req.session.user
         res.locals.userLogged = true
-    } else{
+    } else {
         res.locals.userLogged = false
     }
     next()

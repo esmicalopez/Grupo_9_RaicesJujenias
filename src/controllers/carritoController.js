@@ -1,52 +1,46 @@
-const path = require("path")
 const productsCart = require("../data/productsCart.json")
 const productsList = require("../data/products.json")
 
 const offerCalc = require("../functions/offerCalcule")
 
-function totalPrice(productsPrices) {
-  let precioTotal = 0;
-  for(p of productsPrices) {
-    if (p.offer !== 0) {
-      precioTotal += offerCalc(p.price, p.offer)
-    } else{
-      precioTotal += p.price
+function totalPrice (productsPrices) {
+    let precioTotal = 0
+    for (const p of productsPrices) {
+        if (p.offer !== 0) {
+            precioTotal += offerCalc(p.price, p.offer)
+        } else {
+            precioTotal += p.price
+        }
     }
-    
-  }
-  return precioTotal
+    return precioTotal
 }
 
-
 const controllers = {
-  carrito: (req, res) => {
+    carrito: (req, res) => {
+        if (!req.session.user) {
+            return res.redirect("login")
+        }
 
-    if (!req.session.user) {
-      return res.redirect("login")
-    } 
+        res.render("carrito", {
+            productsCart,
+            productsList,
+            totalPrice,
+            offerCalc
+        })
+    },
 
-    res.render('carrito', {
-      productsCart,
-      productsList,
-      totalPrice,
-      offerCalc
-    });
-  },
+    buyProducts: (req, res) => {
+        if (!req.session.user) { // Unauthorized
+            return res.sendStatus(401)
+        }
 
-  buyProducts: (req, res) => {
-    if (!req.session.user) { // Unauthorized
-      return res.sendStatus(401)
-    } 
+        if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
+            return res.sendStatus(403)
+        }
+        // const endpoint = req.originalUrl
 
-    if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
-      return res.sendStatus(403)
-    } 
-
-    const endpoint = req.originalUrl;
-
-    res.send("comprar productos")
-  }
-
+        res.send("comprar productos")
+    }
 
 }
 
