@@ -4,8 +4,19 @@ const { validationResult } = require("express-validator")
 const bcrypt = require("bcryptjs")
 
 const users = require("../data/users.json")
-
+const db = require("../database/models/") // aca tmb
 const controllers = {
+
+    list: (req, res) => { // borrar - prueba de conexion a la BD
+        db.User.findAll()
+            .then(users => {
+                res.json({
+                    message: "lista de usuarios",
+                    users
+                })
+            })
+            .catch(e => console.log(e))
+    },
 
     registerView: (req, res) => {
         if (req.session.userLogged) {
