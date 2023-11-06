@@ -17,11 +17,11 @@ module.exports = (sequelize, dataTypes) => {
         product_id: {
             type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
-        },
+        }
 
     }, {
-        timestamps: false, 
-        tableName: "images",
+        timestamps: false,
+        tableName: "images"
     })
 
     Image.associate = models => {
