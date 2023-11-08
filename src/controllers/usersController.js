@@ -1,21 +1,15 @@
-const fs = require("fs")
-const path = require("path")
 const { validationResult } = require("express-validator")
 const bcrypt = require("bcryptjs")
 
-const users = require("../data/users.json")
 const db = require("../database/models/") // aca tmb
 const controllers = {
 
-    list: (req, res) => { // borrar - prueba de conexion a la BD
-        db.User.findAll()
-            .then(users => {
-                res.json({
-                    message: "lista de usuarios",
-                    users
-                })
-            })
-            .catch(e => console.log(e))
+    list: async (req, res) => { // borrar - prueba de conexion a la BD
+        const users = await db.User.findAll()
+        return res.json({
+            message: "lista de usuarios",
+            users
+        })
     },
 
     registerView: (req, res) => {
@@ -25,9 +19,8 @@ const controllers = {
         return res.render("users/registro")
     },
 
-    register: (req, res) => {
+    register: async (req, res) => {
         const file = req.file ?? {}
-        const userId = users[users.length - 1].id
 
         //  validacion contraseñas
         const erroresExpressValidator = validationResult(req)
@@ -41,32 +34,17 @@ const controllers = {
         }
         const passwordHashed = bcrypt.hashSync(req.body.password, 10)
 
-        const newUser = {
-            id: userId + 1,
+        db.User.create({
             name: req.body.name,
             lastName: req.body.lastName,
             email: req.body.email,
             password: passwordHashed,
-            registerDate: "hoy",
-            date: req.body.date,
-            rol: req.body.rol,
             avatar: file.filename ?? "default.png",
-            acceptTerms: true,
-            info_contact: {
-                address: "",
-                phone: ""
-            },
-            preferences: {
-                language: "español",
-                notifications: true
-            }
-        }
+            rol_id: Number(req.body.rol),
+            preference_id: 2
+        })
 
-        users.push(newUser)
-
-        fs.writeFileSync(path.join(__dirname, "../data/users.json"), JSON.stringify(users, null, 4))
-
-        res.redirect("/")
+        return res.redirect("/")
     },
 
     loginView: (req, res) => {
@@ -76,16 +54,19 @@ const controllers = {
         return res.render("users/login")
     },
 
-    login: (req, res) => {
-        const user = users.find((u) => u.email === req.body.email)
-        // console.log(req.body)
-
+    login: async (req, res) => {
+        const user = await db.User.findOne({
+            where: {
+                email: req.body.email
+            },
+            include: ["rol"]
+        })
         if (user) {
             if (bcrypt.compareSync(req.body.password, user.password)) {
+                req.session.user = user.id
                 req.session.userLogged = true
-                req.session.user = user
-                req.body.rememberUser === "true" ? res.cookie("cookieLogger", req.session.user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
-                req.flash("success", `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!  -  Rol: ${user.rol.charAt(0).toUpperCase() + user.rol.slice(1)}`)
+                req.body.rememberUser === "true" ? res.cookie("cookieLogger", user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
+                req.flash("success", `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!  -  Rol: ${user.rol.name.charAt(0).toUpperCase() + user.rol.name.slice(1)}`)
                 return res.redirect("/")
             }
             return res.render("users/login", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
@@ -101,17 +82,15 @@ const controllers = {
         res.redirect("/")
     },
 
-    userProfile: (req, res) => {
+    userProfile: async (req, res) => {
         if (!req.session.user) { // Unauthorized
             return res.sendStatus(401)
         }
 
-        const { id, username } = req.params
+        const user = await db.User.findByPk(req.params.id, {
+            include: ["rol"]
+        })
 
-        const user = users.find(u => u.id === +id && u.name === username)
-
-        console.log("hola")
-        console.log(res.locals)
         res.render("users/userProfile", { user })
     }
 }

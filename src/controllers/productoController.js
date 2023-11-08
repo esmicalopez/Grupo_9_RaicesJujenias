@@ -1,85 +1,151 @@
-const fs = require("fs")
-const path = require("path")
-
-let productsList = require("../data/products.json")
-
+const db = require("../database/models")
+const Op = db.Sequelize.Op
 // Calculo del descuento
 const offerCalc = require("../functions/offerCalcule")
 
 //  Controladores
 const controllers = {
-    productos: (req, res) => {
+    productos: async (req, res) => {
+        const productsList = await db.ProductDetail.findAll({
+            include: [{ association: "product", include: ["category"] }, "images"],
+            group: "product_id"
+        })
         res.render("productos", {
             productsList,
             offerCalc
         })
     },
 
-    detallesProducto: (req, res) => {
+    detallesProducto: async (req, res) => {
         const id = req.params.id
-        const product = productsList.find(product => product.id == id)
-        const newProductsList = productsList.filter((p) => p.id !== product.id)
+        const prodSpecId = req.params.productSpec
 
+        const product = await db.Product.findByPk(id)
         if (product) {
-            res.render("detallesProducto", {
+            const detail = await db.ProductDetail.findAll({
+                where: { product_id: id },
+                include: ["color", "size"]
+            })
+            const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
+                include: ["images", "color", "size"]
+            })
+            const newProductsList = await db.ProductDetail.findAll({
+                where: {
+                    product_id: {
+                        [Op.ne]: id
+                    }
+                },
+                include: ["product", "images"],
+                group: "product_id"
+            })
+            return res.render("detallesProducto", {
                 product,
+                detail,
+                chosenProductSpec,
                 newProductsList,
                 offerCalc
             })
         } else {
-            res.send("Producto no encontrado")
+            return res.send("Producto no encontrado")
         }
     },
 
-    crearProductoView: (req, res) => {
-        if (!req.session.user) { // Unauthorized
-            return res.sendStatus(401)
+    crearProductoView: async (req, res) => {
+        if (!req.session.userLogged) { // Unauthorized
+            return res.redirect("/")
         }
 
-        if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
-            return res.sendStatus(403)
+        if (req.session.userLogged) { // Forbidden
+            const user = await db.User.findByPk(req.session.user)
+            if (user.rol_id !== 1) {
+                return res.redirect("/")
+            }
         }
 
-        res.render("createProduct")
+        const colors = await db.Color.findAll()
+        const sizes = await db.Size.findAll()
+        const categories = await db.Category.findAll()
+
+        return res.render("createProduct", { colors, sizes, categories })
     },
 
-    crearProducto: (req, res, next) => {
-        const lastProduct = productsList.pop()
-
-        const newProduct = {
-            id: lastProduct.id + 1,
-            name: req.body.name,
+    crearProducto: async (req, res, next) => {
+        const product = await db.ProductDetail.create({
             price: req.body.price,
-            description: req.body.description,
-            offer: 0,
-            category: req.body.category,
-            image: req.file ? req.file.filename : null,
-            author: req.body.author,
-            sizes: [req.body.size],
-            colors: req.body.colors.split(",") || "",
-            stock: req.body.stock
+            stock: req.body.stock,
+            product: {
+                name: req.body.name,
+                description: req.body.description,
+                category_id: req.body.category
+            },
+            size_id: req.body.size,
+            color_id: req.body.color
+        }, {
+            include: [{ association: "product", include: ["category"] }]
+        })
+
+        for (const image of req.files) {
+            db.Image.create({
+                name: image.filename,
+                product_detail_id: product.id
+            })
         }
 
-        productsList.push(lastProduct, newProduct)
-
-        fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
-
-        res.redirect("/productos")
+        return res.redirect("/productos")
     },
 
-    editarProductoView: (req, res) => {
-        if (!req.session.user) { // Unauthorized
-            return res.sendStatus(401)
+    editarProductoView: async (req, res) => {
+        const id = req.params.id
+        const prodSpecId = req.params.productSpec
+
+        if (!req.session.userLogged) { // Unauthorized
+            return res.redirect("/")
         }
 
-        if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
-            return res.sendStatus(403)
+        if (req.session.userLogged) { // Forbidden
+            const user = await db.User.findByPk(req.session.user)
+            if (user.rol_id !== 1) {
+                return res.redirect("/")
+            }
         }
 
-        const product = productsList.find((p) => p.id === +req.params.id)
-        res.render("editProduct", { product })
-    },
+        const colors = await db.Color.findAll()
+        const sizes = await db.Size.findAll()
+        const categories = await db.Category.findAll()
+        const product = await db.Product.findByPk(id)
 
+        if (product) {
+            const detail = await db.ProductDetail.findAll({
+                where: { product_id: id },
+                include: ["images", "color", "size"]
+            })
+            const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
+                include: ["images", "color", "size"]
+            })
+            const newProductsList = await db.ProductDetail.findAll({
+                where: {
+                    id: {
+                        [Op.ne]: prodSpecId
+                    },
+                    product_id: id
+                },
+                include: ["images", "color", "size"]
+            })
+
+            return res.render("editProduct", {
+                colors,
+                sizes,
+                categories,
+                product,
+                detail,
+                chosenProductSpec,
+                newProductsList
+            })
+        } else {
+            return res.send("Producto no encontrado")
+        }
+    }
+    /*
     editarProducto: (req, res) => {
         const productsUpdated = []
         productsList.forEach(function (p) {
@@ -117,7 +183,7 @@ const controllers = {
         fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
 
         res.redirect("/productos")
-    }
+    } */
 
 }
 

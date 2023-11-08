@@ -21,8 +21,10 @@
     <%- include("./partials/header.ejs") %>
     
 <main>
-    <form action="/productos/<%= product.id %>/edit?_method=PUT" class="form-container" method="POST" enctype="multipart/form-data">
+    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/edit?_method=PUT" class="form-container" method="POST" enctype="multipart/form-data">
         <h1>Editar Producto</h1>
+        <h3 style="width: 100%;"> <%= product.name  %> || Color <%= chosenProductSpec.color.name %> - Tamaño/Talle <%= chosenProductSpec.size.name %></h3>
+
         <div class="product-name input-item">
             <label class="product-name__label" for="name">Nombre del Producto</label>
             <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre" name="name" value="<%= product.name %>">
@@ -30,62 +32,35 @@
 
         <div class="product-price input-item">
             <label for="price">Precio</label>
-            <input id="price" type="number" placeholder="Precio"  name="price" required value="<%= product.price %>">
+            <input id="price" type="number" placeholder="Precio"  name="price" required value="<%= chosenProductSpec.price %>">
         </div>
 
         <div class="input-item">
             <label for="offer">Oferta</label>
-            <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" max="99" required value="<%= product.offer || 0 %>">
-        </div>
-
-        <div class="input-item">
-            <label for="author">Autor</label>
-            <input id="author" type="text" placeholder="Autor"  name="author" required value="<%= product.author %>">
+            <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" max="99" required value="<%= chosenProductSpec.offer || 0 %>">
         </div>
 
         <div class="input-item">
             <label for="stock">Cantidad</label>
-            <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required value="<%= product.stock %>"> 
-        </div>
-
-        <div class="input-item">
-            <label for="colors">Colores</label>
-            <input id="colors" type="text" placeholder="Separados por comas. Ej: rojo, verde, azul, ..."  name="colors" value="<%= product.colors || 'Sin color' %>" >
+            <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required value="<%= chosenProductSpec.stock %>"> 
         </div>
 
         <div class="product-category input-item">
             <span>Categoria</span>
-            <select  name="category" id="category" required value="<%= product.category %>">
+            <select  name="category" id="category" required value="<%= product.category_id %>">
                 <option disabled value="">
                     Escoge una opción
                 </option>
-                <option value="textile">Textiles</option>
-                <option value="decoration">Decoracion</option>
-                <option value="jews">Joyeria</option>
-                <option value="art">Arte</option>
-                <option value="food">Gastronomicos</option>
+                <% for( category of categories ) { %>
+                    <option value="<%= category.id %>"> <%= category.name %> </option>
+                <% } %>
 
-            </select>
-        </div>
-
-        <div class="product-status input-item">
-            <span>Talle</span>
-            
-            <select name="size" id="size" required value="<%= product.sizes %>">
-                <option disabled value="">
-                    Escoge la/s opcion/es
-                </option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="single">Único</option>
             </select>
         </div>
 
         <div class="product-photo input-item">
             <label for="profile-picture">Foto del Producto</label>
-            <input id="profile-picture" type="file" accept=",jpg,png" value="<%= product.image || 'Sin imagen' %>" name="product-image">
+            <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] || 'Sin imagen' %>" name="product-image">
         </div>
 
         <div class="product-description input-item">
@@ -97,6 +72,42 @@
             <button type="submit" class="form-button-modify">Modificar Producto</button>
         </div>
     </form>
+    
+    <h2 style="text-align: center;">Productos Relacionados</h2>
+        <div class="card-list-products">
+            <% newProductsList.forEach((p) => { %>
+
+                <div class="card-list-products" style="flex-direction: column;">
+                    <% if (p.images[0]) { %>
+                        <div class="card">
+                            <div class="card-img">
+                                <a href="/productos/<%= p.product_id %>/<%= p.id %>/edit"><img src="/images/products/<%= p.images[0].name %>"  alt="producto-<%= p.id %>" /></a>
+                            </div>
+                        </div>
+                        <div style="margin: 10px; font-weight: bold; ">
+                            <%= p.color.name %> 
+                        </div> 
+                        <div style="margin: 10px; font-weight: bold; ">
+                            Tamaño/Talle: <%= p.size.name %> 
+                        </div>
+                    <% } else { %>
+                        <div class="card">
+                            <div class="card-img">
+                                <a href="/productos/<%= p.product_id %>/<%= p.id %>/edit"><img src="/images/products/<%= detail[0].images[0].name %>"  alt="producto-<%= p.id %>" /></a>
+                            </div>
+                        </div>
+                        <div style="margin: 10px; font-weight: bold; ">
+                            Color: <%= p.color.name %> 
+                        </div>
+                        <div style="margin: 10px; font-weight: bold; ">
+                            Tamaño/Talle: <%= p.size.name %> 
+                        </div>
+                    <% } %>
+                </div>
+            
+            <% }) %>
+        </div>
+
 </main>
 
 

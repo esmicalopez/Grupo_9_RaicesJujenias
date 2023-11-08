@@ -10,11 +10,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(300),
             allowNull: false
         },
-        color_id: {
-            type: dataTypes.INTEGER.UNSIGNED,
-            allowNull: false
-        },
-        product_id: {
+        product_detail_id: {
             type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false
         }
@@ -25,14 +21,9 @@ module.exports = (sequelize, dataTypes) => {
     })
 
     Image.associate = models => {
-        Image.belongsTo(models.Product, {
-            as: "producto",
-            foreignKey: "product_id"
-        })
-
-        Image.belongsTo(models.Color, {
-            as: "colorProducto",
-            foreignKey: "color_id"
+        Image.belongsTo(models.ProductDetail, {
+            as: "product_detail",
+            foreignKey: "product_detail_id"
         })
     }
 

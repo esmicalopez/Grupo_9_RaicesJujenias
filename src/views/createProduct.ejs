@@ -34,31 +34,19 @@
         </div>
 
         <div class="input-item">
-            <label for="author">Autor</label>
-            <input id="author" type="text" placeholder="Autor"  name="author" required>
-        </div>
-
-        <div class="input-item">
             <label for="stock">Cantidad</label>
             <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required>
-        </div>
-
-        <div class="input-item">
-            <label for="colors">Colores</label>
-            <input id="colors" type="text" placeholder="Separados por comas. Ej: rojo, verde, azul, ..."  name="colors">
         </div>
 
         <div class="product-category input-item">
             <span>Categoria</span>
             <select  name="category" id="category" required>
                 <option disabled selected value="">
-                    Escoge una opción
+                    Escoge la categoria
                 </option>
-                <option value="textile">Textiles</option>
-                <option value="decoration">Decoracion</option>
-                <option value="jews">Joyeria</option>
-                <option value="art">Arte</option>
-                <option value="food">Gastronomicos</option>
+                <% for( category of categories ) { %>
+                    <option value="<%= category.id %>"> <%= category.name %> </option>
+                <% } %>
 
             </select>
         </div>
@@ -70,17 +58,28 @@
                 <option disabled selected value="">
                     Escoge el talle
                 </option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="single">Único</option>
+                <% for( size of sizes ) { %>
+                    <option value="<%= size.id %>"> <%= size.name %> </option>
+                <% } %>
+            </select>
+        </div>
+
+        <div class="product-status input-item">
+            <span>Colores</span>
+            
+            <select name="color" id="color" required>
+                <option disabled selected value="">
+                    Escoge el color
+                </option>
+                <% for( color of colors ) { %>
+                    <option value="<%= color.id %>"> <%= color.name %> </option>
+                <% } %>
             </select>
         </div>
 
         <div class="product-photo input-item">
             <label for="profile-picture">Foto del Producto</label>
-            <input id="profile-picture" type="file" accept=",jpg,png" required name="product-image">
+            <input id="profile-picture" type="file" accept=",jpg,png" required name="product-image" multiple>
         </div>
 
         <div class="product-description input-item">

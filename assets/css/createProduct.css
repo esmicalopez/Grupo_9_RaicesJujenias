@@ -591,6 +591,32 @@ body {
 }
 
 
+/* Productos relacionados */
+.card-list-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+.card-img {
+background: transparent;
+width: 250px;
+height: 250px;
+margin-bottom: 15px auto;
+}
+
+.card-list-products .card-img img{
+width: 90%;
+height: 90%;
+margin: auto;
+}
+
+.card-list-products .card-img a{
+width: 100%;
+height: 100%;
+}
 
 
 
@@ -1134,8 +1160,7 @@ a.footer-link:is(:hover, :focus) {
         grid-template-columns: repeat(4, 1fr);
     }
 
-
-
+    
     /**
      * SPECIAL
      */

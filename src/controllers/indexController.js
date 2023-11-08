@@ -1,8 +1,12 @@
-const productsList = require("../data/products.json")
 const offerCalc = require("../functions/offerCalcule")
+const db = require("../database/models")
 
 const controllers = {
-    index: (req, res) => {
+    index: async (req, res) => {
+        const productsList = await db.ProductDetail.findAll({
+            include: [{ association: "product", include: ["category"] }, "images"],
+            group: "product_id"
+        })
         res.render("index", {
             productsList,
             offerCalc

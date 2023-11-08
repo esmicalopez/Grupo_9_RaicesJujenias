@@ -19,7 +19,7 @@ const validator = [
         .custom(passwordsMatch).withMessage("Las contraseñas tienen que ser iguales")
 ]
 
-router.get("/list", controllers.list) // borrar
+router.get("/users/list", controllers.list) // borrar
 router.get("/login", controllers.loginView)
 router.get("/registro", controllers.registerView)
 router.get("/user-profile/:id", controllers.userProfile)

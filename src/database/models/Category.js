@@ -14,15 +14,15 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             unique: true
-        },
+        }
     }, {
-        timestamps: false, 
-        tableName: "categories",
+        timestamps: false,
+        tableName: "categories"
     })
 
     Category.associate = models => {
         Category.hasMany(models.Product, {
-            as: "productos",
+            as: "products",
             foreignKey: "category_id"
         })
     }

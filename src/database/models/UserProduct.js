@@ -5,14 +5,11 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
-        },
-        quantity: {
-            type: dataTypes.INTEGER.UNSIGNED
-        } 
+        }
     }, {
         tableName: "user_product",
         timestamps: false
-    });
+    })
 
-    return UserProduct;
+    return UserProduct
 }

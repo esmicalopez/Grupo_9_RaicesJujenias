@@ -41,16 +41,12 @@ CREATE TABLE categories (
 CREATE TABLE products (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(150),
-    price INT UNSIGNED NOT NULL,
-	created_at TIMESTAMP DEFAULT NOW(),
     description VARCHAR(350),
-    offer DECIMAL(3, 1) UNSIGNED DEFAULT NULL,    
-    stock INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY(category_id) REFERENCES categories(id),
 	PRIMARY KEY(id)
 );
-
 
 CREATE TABLE colors (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -64,32 +60,26 @@ CREATE TABLE sizes (
 	PRIMARY KEY(id)
 );
 
-CREATE TABLE product_color (
+CREATE TABLE product_detail (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    price INT UNSIGNED NOT NULL,
+    offer DECIMAL(3, 1) UNSIGNED DEFAULT NULL,    
+    stock INT UNSIGNED NOT NULL,
     product_id INT UNSIGNED NOT NULL,
     color_id INT UNSIGNED NOT NULL,
+    size_id INT UNSIGNED NOT NULL,
+	created_at TIMESTAMP DEFAULT NOW(),
 	FOREIGN KEY(product_id) REFERENCES products(id),
 	FOREIGN KEY(color_id) REFERENCES colors(id),
+    FOREIGN KEY(size_id) REFERENCES sizes(id),
 	PRIMARY KEY(id)
 );
-
-CREATE TABLE product_size (
-	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    product_id INT UNSIGNED NOT NULL,
-    size_id INT UNSIGNED NOT NULL,
-	FOREIGN KEY(product_id) REFERENCES products(id),
-	FOREIGN KEY(size_id) REFERENCES sizes(id),
-	PRIMARY KEY(id)
-);
-
 
 CREATE TABLE images (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(300),
-    product_id INT UNSIGNED NOT NULL,
-    color_id INT UNSIGNED NOT NULL,
-	FOREIGN KEY(product_id) REFERENCES products(id),
-	FOREIGN KEY(color_id) REFERENCES colors(id),
+    product_detail_id INT UNSIGNED NOT NULL,
+	FOREIGN KEY(product_detail_id) REFERENCES product_detail(id),
 	PRIMARY KEY(id)
 );
 

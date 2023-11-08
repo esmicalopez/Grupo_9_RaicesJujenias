@@ -10,20 +10,8 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING(150),
             allowNull: false
         },
-        price: {
-            type: dataTypes.INTEGER.UNSIGNED,
-            allowNull: false
-        },
         description: {
             type: dataTypes.STRING(350)
-        },
-        offer: {
-            type: dataTypes.DECIMAL(3, 1).UNSIGNED,
-            defaultValue: null
-        },
-        stock: {
-            type: dataTypes.INTEGER.UNSIGNED,
-            allowNull: false
         },
         category_id: {
             type: dataTypes.INTEGER.UNSIGNED,
@@ -31,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
         }
     }, {
         paranoid: true,
-        timestamps: true,
+        timestamps: false,
         tableName: "products",
         createdAt: "created_at",
         updatedAt: "updated_at",
@@ -40,33 +28,17 @@ module.exports = (sequelize, dataTypes) => {
 
     Product.associate = models => {
         Product.belongsTo(models.Category, {
-            as: "categoria",
+            as: "category",
             foreignKey: "category_id"
         })
 
-        Product.hasMany(models.Image, {
-            as: "imagenes",
+        Product.hasMany(models.ProductDetail, {
+            as: "product_detail",
             foreignKey: "product_id"
         })
 
-        Product.belongsToMany(models.Color, {
-            as: "colores",
-            through: "product_color",
-            foreignKey: "product_id",
-            otherKey: "color_id",
-            timestamps: false
-        })
-
-        Product.belongsToMany(models.Size, {
-            as: "tamaños",
-            through: "product_color",
-            foreignKey: "product_id",
-            otherKey: "size_id",
-            timestamps: false
-        })
-
         Product.belongsToMany(models.User, {
-            as: "usuarios",
+            as: "users",
             through: models.UserProduct,
             foreignKey: "product_id",
             otherKey: "user_id",

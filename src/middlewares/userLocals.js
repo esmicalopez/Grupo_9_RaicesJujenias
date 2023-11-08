@@ -1,11 +1,15 @@
-function userLocals (req, res, next) {
+const db = require("../database/models")
+
+async function userLocals (req, res, next) {
+    res.locals.userLogged = false
     if (req.session.userLogged) {
-        // console.log(req.session.user);
-        res.locals.user = req.session.user
+        const user = await db.User.findByPk(req.session.user, {
+            include: ["rol"]
+        })
         res.locals.userLogged = true
-    } else {
-        res.locals.userLogged = false
+        res.locals.user = user
     }
+
     next()
 }
 

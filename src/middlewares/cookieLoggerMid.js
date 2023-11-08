@@ -1,9 +1,6 @@
-const usersList = require("../data/users.json")
-
-function cookieLoggerMid (req, res, next) {
+async function cookieLoggerMid (req, res, next) {
     if (req.cookies.cookieLogger) {
-        const user = usersList.find((u) => u.id === +req.cookies.cookieLogger)
-        req.session.user = user
+        req.session.user = req.cookies.cookieLogger
         req.session.userLogged = true
     }
     next()

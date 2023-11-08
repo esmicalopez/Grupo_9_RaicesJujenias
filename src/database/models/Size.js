@@ -9,19 +9,16 @@ module.exports = (sequelize, dataTypes) => {
         name: {
             type: dataTypes.STRING(150),
             allowNull: false
-        },
+        }
     }, {
-        timestamps: false, 
-        tableName: "sizes",
+        timestamps: false,
+        tableName: "sizes"
     })
 
     Size.associate = models => {
-        Size.belongsToMany(models.Product, {
-            as: "productos",
-            through: "product_size",
-            foreignKey: "size_id",
-            otherKey: "product_id",
-            timestamps: false
+        Size.hasMany(models.ProductDetail, {
+            as: "product_detail",
+            foreignKey: "size_id"
         })
     }
 

@@ -39,7 +39,7 @@ module.exports = (sequelize, dataTypes) => {
 
     }, {
         paranoid: true,
-        timestamps: true,
+        timestamps: false,
         tableName: "users",
         createdAt: "registered_at",
         updatedAt: "updated_at",
@@ -58,7 +58,7 @@ module.exports = (sequelize, dataTypes) => {
         })
 
         User.belongsToMany(models.Product, {
-            as: "productos",
+            as: "products",
             through: models.UserProduct,
             foreignKey: "user_id",
             otherKey: "product_id",
@@ -68,3 +68,9 @@ module.exports = (sequelize, dataTypes) => {
 
     return User
 }
+
+// Asociación con carrito
+/* User.hasMany(models.Cart, {
+            as: "carts",
+            foreignKey: "user_id"
+        }) */

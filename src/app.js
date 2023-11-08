@@ -12,7 +12,6 @@ const usersRoutes = require("./routes/users")
 
 const cookieLoggerMid = require("./middlewares/cookieLoggerMid")
 const userLocals = require("./middlewares/userLocals")
-const db = require("./database/models/")
 
 // Se define el puerto a usar
 const PORT = process.env.PORT || 3000

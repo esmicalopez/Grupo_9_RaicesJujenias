@@ -8,10 +8,7 @@
     <meta name="theme-color" content ="#f7a486e1">
     <title>Raíces Jujeñas</title>
     <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/detallesProducto.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/detallesProducto.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -30,7 +27,12 @@
 
     <main>
         <div class="container-img">
-            <img src="/images/products/<%= product.image || 'incognita.png' %>" alt="imagen-producto" style="margin: auto; display: block; align-self: center">
+            
+            <% if (chosenProductSpec.images[0]) { %>
+                <img src="/images/products/<%=chosenProductSpec.images[0].name || 'incognita.png' %>" alt="imagen-producto" style="margin: auto; display: block; align-self: center">
+            <% } else { %>
+                <img src="/images/products/incognita.png" alt="imagen-producto" style="margin: auto; display: block; align-self: center">
+            <% } %>
         </div>
 
         <div class="container-info-product">
@@ -38,58 +40,65 @@
                 <%= product.name %>
             </div>
             <div class="container-price">
-                <% if(product.offer !== 0){ %>
+                <% if(chosenProductSpec.offer !== null && chosenProductSpec.offer !== 0){ %>
                     <div class="card-price-product" style="width: 70%;"  value="180.85">
                         <div class="card-price-product">
                             <del class="old-price" style="justify-self: flex-start;">
-                                $<%= product.price %>
+                                $<%= chosenProductSpec.price %>
                             </del>
                             <span>
-                                $<%= offerCalc(product.price, product.offer) %>
+                                $<%= offerCalc(chosenProductSpec.price, chosenProductSpec.offer) %>
                             </span>
                         </div>
                         <div style="font-size: 16px; color: #666;" >
-                             ¡%<%= product.offer %> DE DESCUENTO!
+                             ¡%<%= chosenProductSpec.offer %> DE DESCUENTO!
                         </div>
                     </div>
                 <% } else { %>
                     <div class="card-price-product">
-                        $<%= product.price %>
+                        $<%= chosenProductSpec.price %>
                     </div>
                 <% } %>
-                <!--<span>$<%= product.price %></span>-->
+                <!--<span>$<%= chosenProductSpec.price %></span>-->
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
+                
                 <form action="" method="get">
-                    <% if(product.colors[0]){ %>
+                    <% if(chosenProductSpec.color.name){ %>
+                    
                         <div class="form-group">
                             <label for="colour">Color</label>
                             <select name="colour" id="colour">
                                 <option disabled selected value="">
                                     Escoge una opción
                                 </option>
-                                    <% product.colors.forEach( color => { %>
-                                        <option value="<%= color %>"><%= color %></option>
-                                    <% })%>
+                                    <% for( info of detail ) { %>
+                                        <option value="<%= info.color.name %>">
+                                            <%= info.color.name %>
+                                        </option>
+                                    <% } %>
                             </select>
                         </div>
                     <% } %>
-                    <div class="form-group">
-                        <label for="size">Tamaño / Talle</label>
-                        <select name="size" id="size">
-                            <option disabled selected value="">
-                                Escoge una opción
-                            </option>
-                            <% product.sizes.forEach( tamaño => { %>
-                                <option value="<%= tamaño %>"><%= tamaño %></option>
-                            <% })%>
-                        </select>
-                    </div>
+                    <% if(chosenProductSpec.size.name){ %>
+                        <div class="form-group">
+                            <label for="size">Tamaño / Talle</label>
+                            <select name="size" id="size">
+                                <option disabled selected value="">
+                                    Escoge una opción
+                                </option>
+                                    <% for( info of detail ) { %>
+                                        <option value="<%= info.size.name %>">
+                                            <%= info.size.name %>
+                                        </option>
+                                    <% } %>
+                                </div>
+                    <% } %>
                     <button class="btn-clean" type="reset">Limpiar</button>
                 </form>
             </div>
-
+            
             <div class="container-add-cart">
                 <div class="container-quantity">
                     <input type="number" placeholder="1" value="1" min="1" class="input-quantity" />
@@ -102,13 +111,16 @@
                     <i class="fa-solid fa-plus"></i>
                     Añadir al carrito
                 </button>
-                <a href="/productos/<%= product.id %>/edit" 
-                    style="align-self: center; color: #cb6843; font-weight: 800;">
-                    Editar Producto
-                </a>
-                <form action="/productos/<%= product.id %>/eliminar?_method=DELETE" method="POST"  style="display: flex;">
-                    <button style="align-self: center; color: #be3503; font-weight: 800;" type="submit">Eliminar Producto</button>
-                </form>
+                <% if (userLogged && user.rol.id === 1) { %>
+                    <a href="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/edit" 
+                        style="align-self: center; color: #cb6843; font-weight: 800;">
+                        Editar Producto
+                    </a>
+                    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/eliminar?_method=DELETE" method="POST"  style="display: flex;">
+                        <button style="align-self: center; color: #be3503; font-weight: 800;" type="submit">Eliminar Producto</button>
+                    </form>
+                 
+                <% } %>
             </div>
 
 
@@ -151,7 +163,7 @@
             <% newProductsList.forEach((p) => { %>
             <div class="card">
                 <div class="card-img">
-                    <a href="/productos/<%= p.id %>"><img src="/images/products/<%= p.image || 'incognita.png' %>"  alt="producto-4" /></a>
+                    <a href="/productos/<%= p.product_id %>/<%= p.id %>"><img src="/images/products/<%= p.images[0].name || 'incognita.png' %>"  alt="producto-<%= p.id %>" /></a>
                 </div>
             </div>
             <% }) %>

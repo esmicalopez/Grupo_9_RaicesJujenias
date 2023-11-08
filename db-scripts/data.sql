@@ -6,9 +6,11 @@ INSERT INTO preferences (name) VALUES
 ('ingles'),
 ('español');
 
+
 INSERT INTO roles (name) VALUES
 ('admin'),
 ('user');
+
 
 INSERT INTO users (name, last_name, email, password, preference_id, rol_id) VALUES
 ('Cristian', 'Zamora', 'cristian@gmail.com', 'cristian123', 2, 1),
@@ -26,12 +28,6 @@ INSERT INTO categories (name, ranking) VALUES
 ('textiles', 4),
 ('artesania', 1);
 
--- Productos
-INSERT INTO products (name, price, description, stock, category_id) VALUES
-('Poncho de Lana', 120, 'Poncho tradicional de lana tejido a mano', 10, 4),
-('Mate de Calabaza', 35, 'Mate de calabaza con bombilla de alpaca', 50, 1),
-('Cuchillo Artesanal', 80, 'Cuchillo criollo artesanal de hoja de acero', 15, 1),
-('Boleadoras Gauchas', 50, 'Boleadoras tradicionales para doma', 12, 3);
 
 -- Colores
 INSERT INTO colors (name) VALUES
@@ -56,6 +52,7 @@ INSERT INTO colors (name) VALUES
 
 -- Tamaños
 INSERT INTO sizes (name) VALUES
+('Unico'),
 ('Grande'),
 ('Mediano'),
 ('Chico'),
@@ -66,38 +63,31 @@ INSERT INTO sizes (name) VALUES
 ('XL'),
 ('XXL');
 
--- Product_size
-INSERT INTO product_size (product_id, size_id) VALUES
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 8),
-(2, 2),
-(2, 3),
-(3, 1),
-(3, 2),
-(3, 3),
-(4, 1),
-(4, 2),
-(4, 3);
+
+-- Productos
+INSERT INTO products (name, description, category_id) VALUES
+('Poncho de Lana', 'Poncho tradicional de lana tejido a mano', 4),
+('Dulces de cayote', 'Deliciosos dulces de cayote, típicos de Jujuy.', 1),
+('Zamponia', 'Instrumento hecho a mano por músicos locales.', 3),
+('Vino torrontés', '900ml Vino blanco de uvas torrontés, producido en Jujuy.', 2);
 
 
--- Product_color
-INSERT INTO product_color (product_id, color_id) VALUES
-(1, 8),
-(1, 11),
-(1, 9),
-(1, 10),
-(1, 17),
-(2, 2),
-(2, 3),
-(2, 14),
-(2, 6),
-(3, 17),
-(3, 8),
-(4, 17),
-(4, 9),
-(4, 8);
+-- Product_detail
+INSERT INTO product_detail (product_id, color_id, size_id, stock, price) VALUES
+(1, 8, 4, 10, 1500),
+(1, 11, 5, 15, 1500),
+(1, 9, 6, 15, 1500),
+(1, 10, 8, 10, 1500),
+(1, 17, 2, 12, 1500),
+(2, 2, 3, 10, 1200),
+(2, 3, 1, 12, 1200),
+(2, 14, 2, 12, 1200),
+(2, 6, 3, 8, 1200),
+(3, 17, 1, 10, 800),
+(3, 8, 2, 10, 800),
+(4, 17, 3, 8, 1800),
+(4, 9, 5, 15, 1800),
+(4, 8, 1, 10, 1800);
 
 
 -- User_product SOLO PARA LOS USUARIOS 'ADMIN'
@@ -109,9 +99,9 @@ INSERT INTO user_product (product_id, user_id) VALUES
 
 
 -- IMG de los productos
-INSERT INTO images (name, product_id, color_id) VALUES 
-('mate-V-Frente', 2, 2),
-('mate-V-Superior', 2, 2),
-('mate-V-Frente', 2, 14),
-('mate-V-Superior', 2, 14);
+INSERT INTO images (name, product_detail_id) VALUES 
+('poncho.png', 1),
+('dulce-cayote.png', 2),
+('zamponia.png', 3),
+('vino.png', 4);
 

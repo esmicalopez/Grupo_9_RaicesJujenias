@@ -178,14 +178,19 @@
 
             <% productsList.forEach( product => { %>
               <li class="product-item">
-                <a href="productos/<%= product.id %>">
+                <a href="productos/<%= product.product.id %>/<%= product.id %>">
                   <div class="product-card" tabindex="0">
   
                       <figure class="card-banner">
-                          <img src="/images/products/<%= product.image || 'incognita.png' %>" width="312" height="350" loading="lazy" alt="Producto"
+                        <% if (product.images[0]) { %>
+                          <img src="/images/products/<%=product.images[0].name || 'incognita.png' %>" width="312" height="350" loading="lazy" alt="Producto"
                               class="image-contain">
+                        <% } else { %>
+                          <img src="/images/products/incognita.png" width="312" height="350" loading="lazy" alt="Producto"
+                          class="image-contain">
+                        <% } %>
   
-                          <% if(product.offer !== 0){ %>
+                          <% if(product.offer !== null && product.offer !== 0){ %>
                                 <div class="card-badge">Oferta <%= product.offer %>%</div>
                           <% } %>
   
@@ -229,13 +234,13 @@
                       <div class="card-content">
                           <div class="card-cat">
                               <span class="card-cat-link">Categoria</span> /
-                              <span class="card-cat-link"> <%= product.category %></span>
+                              <span class="card-cat-link"> <%= product.product.category.name %></span>
                           </div>
   
                           <h3 class="h3 card-title">
-                              <span><%= product.name %></span>
+                              <span><%= product.product.name %></span>
                           </h3>
-                          <% if(product.offer !== 0){ %>
+                          <% if(product.offer !== null && product.offer !== 0){ %>
                             <div class="card-price-product"  value="180.85">
                                 <del class="old-price">
                                     $<%= product.price %>
