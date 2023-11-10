@@ -22,7 +22,7 @@ const validator = [
 router.get("/users/list", controllers.list) // borrar
 router.get("/login", controllers.loginView)
 router.get("/registro", controllers.registerView)
-router.get("/user-profile/:id", controllers.userProfile)
+router.get("/profile", controllers.userProfile)
 
 router.post("/login", controllers.login)
 router.post("/logout", controllers.logout)

@@ -13,8 +13,8 @@
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <a href="#" class="logo">
-          <img src="images/logo.svg" width="190" height="50" alt="Logo">
+        <a href="/" class="logo">
+          <img src="/images/logo.svg" width="190" height="50" alt="Logo">
         </a>
 
         <ul class="navbar-list">
@@ -54,9 +54,8 @@
           </li>
           <% if (userLogged) { %>
             <li>
-              <a href="/user-profile/<%= user.id %>" class="nav-action-btn">
+              <a href="/profile" class="nav-action-btn">
                 <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                <span class="nav-action-text">Log In / Sing Up</span>
                 <span> <%= user ? user.name : null %> </span>
               </a>
             </li>

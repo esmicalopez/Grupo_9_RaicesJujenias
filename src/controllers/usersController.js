@@ -84,10 +84,10 @@ const controllers = {
 
     userProfile: async (req, res) => {
         if (!req.session.user) { // Unauthorized
-            return res.sendStatus(401)
+            return res.redirect("/")
         }
 
-        const user = await db.User.findByPk(req.params.id, {
+        const user = await db.User.findByPk(req.session.user, {
             include: ["rol"]
         })
 
