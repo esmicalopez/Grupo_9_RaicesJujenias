@@ -864,6 +864,10 @@
   }
   .account-nav{
     background-color: var(--terracota);
+    margin: 5px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    max-width: 260px;
     padding-left: 12px;
     color: white;
   }
@@ -1242,7 +1246,8 @@
       align-items: center;
       
     }
-    .profile-options{
+    .profile-options,
+    .account-nav{
       width: 260px;
     }
     

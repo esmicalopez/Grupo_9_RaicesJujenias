@@ -22,7 +22,7 @@
         <h1 style="text-align: center; margin: 10px 0;">Perfil de Usuario</h1>
         <div class="profile-container">
             <ul class="profile-navbar">
-                <li class="profile-options account-nav">
+                <li class="account-nav">
                     <i class="fa-solid fa-user"></i>  
                     Cuenta
                 </li>
@@ -32,21 +32,26 @@
                         Contraseña
                     </li>   
                 </a>
-                <a href="/profile/delete">
-                    <li class="profile-options">
-                        <i class="fa-solid fa-user-slash"></i>  
-                        Eliminar Cuenta
-                    </li>
-                </a>
             </ul>
 
-            <form action="/profile?_method=PUT" class="profile-info" method="post">
-                <div class="profile-avatar">
-                    <h4>Foto de Perfil</h4>
-                    <img src="/images/users/<%= user.avatar %>" alt="">
-                    <label for="avatar">Cambiar Imagen</label>
-                    <input type="file" name="avatar" id="avatar" hidden>
-                </div>
+            <form action="/profile?_method=PUT" class="profile-info" method="post" enctype="multipart/form-data">
+                <% if (user.avatar) { %>
+                    <div class="profile-avatar">
+                        <h4>Foto de Perfil</h4>
+                        <img src="/images/users/<%= user.avatar || "defaultAvatar.png"%> " alt="">
+                        <br>
+                        <label for="avatar">Cambiar Imagen</label>
+                        <input type="file" name="profile-image" id="avatar" accept=",jpg,png" hidden>
+                    </div>
+                <% } else { %>
+                    <div class="profile-avatar">
+                        <h4>Foto de Perfil</h4>
+                        <img src="/images/users/defaultAvatar.png" alt="">
+                        <br>
+                        <label for="avatar">Cambiar Imagen</label>
+                        <input type="file" name="profile-image" id="avatar" accept=",jpg,png" hidden>
+                    </div>
+                <% } %>
                 <div class="account-info">
                     <label for="name">Nombre</label>
                     <input type="text" name="name" id="name" value="<%= user.name %>">
@@ -57,7 +62,7 @@
                 </div>
                 <div class="account-info">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="<%= user.email %>">
+                    <input type="email" name="email" id="email" value="<%= user.email %>">
                 </div>
 
                 <button type="submit">Modificar Datos</button>

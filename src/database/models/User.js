@@ -26,7 +26,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         avatar: {
             type: dataTypes.STRING(400),
-            defaultValue: "default-avatar.png"
+            defaultValue: "defaultAvatar.png"
         },
         preference_id: {
             type: dataTypes.INTEGER.UNSIGNED,
