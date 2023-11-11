@@ -10,9 +10,15 @@ const controllers = {
             include: [{ association: "product_detail", include: ["images", "size", "color"] }, "category"],
             group: "product_id"
         })
-        res.json(productsList)
+        const categories = await db.Category.findAll({
+            include: ["products"],
+            order: [
+                ["id"]
+            ]
+        })
         res.render("productos", {
             productsList,
+            categories,
             offerCalc
         })
     },

@@ -39,11 +39,10 @@
 
   <main>
 
-    <body>
 
       <!-- Banner Principal -->
 
-      <section class="section banner" style="background-image: url('images/banner.png')">
+      <section class="section banner" style="background-image: url('images/home/banner.png')">
         <div class="container">
           <h2 class="h1 banner-title">Jujuy<strong>Raices Jujeñas</strong></h2>
           <p class="banner-text">Tienda de Productos Artesanales</p>
@@ -58,91 +57,9 @@
       </section>
 
       <!-- CATEGORIAS -->
+      <%- include("./partials/home/categories.ejs", ) %>
 
-      <section class="section collection">
 
-        <div class="container">
-
-          <h2 class="h2 section-title">CATEGORIAS</h2>
-
-          <ul class="collection-list has-scrollbar">
-
-            <li>
-              <div class="collection-card" style="background-image: url('/images/textiles.jpg')">
-                <h3 class="h4 card-title">TEXTILES</h3>
-
-                <a href="#" class="btn btn-secondary">
-                  <span>Explorar</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="collection-card" style="background-image: url('images/textiles.jpg')">
-                <h3 class="h4 card-title">GASTRONOMIA</h3>
-
-                <a href="#" class="btn btn-secondary">
-                  <span>Explorar</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="collection-card" style="background-image: url('images/textiles.jpg')">
-                <h3 class="h4 card-title">DECO HOGAR</h3>
-
-                <a href="#" class="btn btn-secondary">
-                  <span>Explorar</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="collection-card" style="background-image: url('images/textiles.jpg')">
-                <h3 class="h4 card-title">ARTE VISUAL</h3>
-
-                <a href="#" class="btn btn-secondary">
-                  <span>Explorar</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="collection-card" style="background-image: url('images/textiles.jpg')">
-                <h3 class="h4 card-title">JOYERIA</h3>
-
-                <a href="#" class="btn btn-secondary">
-                  <span>Explorar</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-            <li>
-              <div class="collection-card" style="background-image: url('images/textiles.jpg')">
-                <h3 class="h4 card-title">ARTESANIAS</h3>
-
-                <a href="#" class="btn btn-secondary">
-                  <span>Explorar</span>
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
 
       <!--PRODUCTOS MAS VENDIDOS-->
 
@@ -150,120 +67,11 @@
         <div class="container">
 
           <h2 class="h2 section-title">LOS MAS VENDIDOS</h2>
-          <ul class="filter-list">
-            <li>
-              <button class="filter-btn  active">Todos</button>
-            </li>
-            <li>
-              <button class="filter-btn">Textiles</button>
-            </li>
-            <li>
-              <button class="filter-btn">Decoración</button>
-            </li>
-            <li>
-              <button class="filter-btn">Joyería</button>
-            </li>
+          
+          <%- include("./partials/products/categoryList.ejs", { categories }) %>
 
-            <li>
-              <button class="filter-btn">Arte</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Gastronómicos</button>
-            </li>
-
-          </ul>
-
-          <ul class="product-list">
-
-            <% productsList.forEach( product => { %>
-              <li class="product-item">
-                <a href="productos/<%= product.product.id %>/<%= product.id %>">
-                  <div class="product-card" tabindex="0">
-  
-                      <figure class="card-banner">
-                        <% if (product.images[0]) { %>
-                          <img src="/images/products/<%=product.images[0].name || 'incognita.png' %>" width="312" height="350" loading="lazy" alt="Producto"
-                              class="image-contain">
-                        <% } else { %>
-                          <img src="/images/products/incognita.png" width="312" height="350" loading="lazy" alt="Producto"
-                          class="image-contain">
-                        <% } %>
-  
-                          <% if(product.offer !== null && product.offer !== 0){ %>
-                                <div class="card-badge">Oferta <%= product.offer %>%</div>
-                          <% } %>
-  
-                          <ul class="card-action-list">
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-1">
-                                      <ion-icon name="cart-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                              </li>
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-2">
-                                      <ion-icon name="heart-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                              </li>
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-3">
-                                      <ion-icon name="eye-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                              </li>
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-4">
-                                      <ion-icon name="repeat-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                              </li>
-  
-                          </ul>
-                      </figure>
-  
-                      <div class="card-content">
-                          <div class="card-cat">
-                              <span class="card-cat-link">Categoria</span> /
-                              <span class="card-cat-link"> <%= product.product.category.name %></span>
-                          </div>
-  
-                          <h3 class="h3 card-title">
-                              <span><%= product.product.name %></span>
-                          </h3>
-                          <% if(product.offer !== null && product.offer !== 0){ %>
-                            <div class="card-price-product"  value="180.85">
-                                <del class="old-price">
-                                    $<%= product.price %>
-                                </del>
-                                <span>
-                                    ¡$<%= offerCalc(product.price, product.offer) %>! 
-                                </span>
-                            </div>
-                        <% } else { %>
-                            <div class="card-price-product">
-                                $<%= product.price %>
-                            </div>
-                        <% } %>
-                      </div>
-  
-                  </div>
-                </a>
-                
-              </li>
-            <% }) %>
-
-          </ul>
-
+          <%- include("./partials/products/productList.ejs", { productsList, offerCalc }) %>
+          
         </div>
       </section>
 
@@ -275,7 +83,7 @@
           <ul class="cta-list">
 
             <li>
-              <div class="cta-card" style="background-image: url('images/cta-1.jpg')">
+              <div class="cta-card" style="background-image: url('images/home/cta-1.jpg')">
                 <p class="card-subtitle">Tendencias</p>
                 <h3 class="h2 card-title">LOS MÁS SOLICITADOS</h3>
                 <a href="#" class="btn btn-link">
@@ -286,7 +94,7 @@
             </li>
 
             <li>
-              <div class="cta-card" style="background-image: url('images/cta-2.jpg')">
+              <div class="cta-card" style="background-image: url('images/home/cta-2.jpg')">
                 <p class="card-subtitle">Descuentos</p>
                 <h3 class="h2 card-title">OFERTAS PARA VOS</h3>
                 <a href="#" class="btn btn-link">
@@ -300,316 +108,18 @@
       </section>
 
       <!-- PUBLICIDAD LUGARES JUJUY -->
+      <%- include("./partials/home/jujuyPlaces.ejs", { places: ["puna", "quebrada", "valles", "yungas"] }) %>
+      
 
-      <section class="section special">
-
-        <div class="container">
-          <!-- IMAGEN JUJUY MAPA-->
-          <div class="special-banner" style="background-image: url('images/special-banner.jpg')">
-            <h2 class="h3 banner-title">Conocé Jujuy</h2>
-            <a href="#" class="btn btn-link">
-              <span>Ir</span>
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </div>
-
-          <div class="special-product">
-
-            <!-- Titulo Lugares a Visitar-->
-            <h2 class="h2 section-title">
-              <span class="text">Lugares a Visitar</span>
-              <span class="line"></span>
-            </h2>
-
-            <ul class="has-scrollbar">
-              <!-- ENTRADA 1-->
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-
-                  <figure class="card-banner">
-                    <img src="images/paisaje-puna.jpg" width="312" height="350" loading="lazy"
-                      alt="Producto" class="image-contain">
-                    <div class="card-badge">PUNA</div>
-
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-3">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-3">Leer</div>
-                      </li>
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-2">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">Agregar a Favoritos</div>
-                      </li>
-                    </ul>
-                  </figure>
-
-                  <div class="card-content">
-                    <div class="card-cat">
-                      <a href="#" class="card-cat-link">Visitá Jujuy</a>
-                    </div>
-                    <h3 class="h3 card-title">
-                      <a href="#">Titulo del Blog</a>
-                    </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
-                  </div>
-
-                </div>
-              </li>
-
-              <!-- ENTRADA 2-->
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-
-                  <figure class="card-banner">
-                    <img src="images/paisaje-quebrada.jpg" width="312" height="350" loading="lazy"
-                      alt="Producto" class="image-contain">
-                    <div class="card-badge">QUEBRADA</div>
-
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-3">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-3">Leer</div>
-                      </li>
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-2">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">Agregar a Favoritos</div>
-                      </li>
-                    </ul>
-                  </figure>
-
-
-
-                  <div class="card-content">
-                    <div class="card-cat">
-                      <a href="#" class="card-cat-link">Visitá Jujuy</a>
-                    </div>
-                    <h3 class="h3 card-title">
-                      <a href="#">Titulo del Blog</a>
-                    </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
-                  </div>
-
-                </div>
-              </li>
-
-              <!-- ENTRADA 3-->
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-
-                  <figure class="card-banner">
-                    <img src="images/paisaje-valle.jpg" width="312" height="350" loading="lazy"
-                      alt="Producto" class="image-contain">
-                    <div class="card-badge">VALLES</div>
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-3">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-3">Leer</div>
-                      </li>
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-2">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">Agregar a Favoritos</div>
-                      </li>
-                    </ul>
-                  </figure>
-
-                  <div class="card-content">
-                    <div class="card-cat">
-                      <a href="#" class="card-cat-link">Visitá Jujuy</a>
-                    </div>
-                    <h3 class="h3 card-title">
-                      <a href="#">Titulo del Blog</a>
-                    </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
-                  </div>
-
-                </div>
-              </li>
-
-              <!-- ENTRADA 4-->
-              <li class="product-item">
-                <div class="product-card" tabindex="0">
-                  <figure class="card-banner">
-                    <img src="images/paisaje-yungas.jpg" width="312" height="350" loading="lazy"
-                      alt="Producto" class="image-contain">
-                    <div class="card-badge">YUNGAS</div>
-
-                    <ul class="card-action-list">
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-3">
-                          <ion-icon name="eye-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-3">Leer</div>
-                      </li>
-                      <li class="card-action-item">
-                        <button class="card-action-btn" aria-labelledby="card-label-2">
-                          <ion-icon name="heart-outline"></ion-icon>
-                        </button>
-                        <div class="card-action-tooltip" id="card-label-2">Agregar a Favoritos</div>
-                      </li>
-                    </ul>
-                  </figure>
-
-
-
-                  <div class="card-content">
-                    <div class="card-cat">
-                      <a href="#" class="card-cat-link">Visitá Jujuy</a>
-                    </div>
-                    <h3 class="h3 card-title">
-                      <a href="#">Titulo del Blog</a>
-                    </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
-                  </div>
-
-                </div>
-              </li>
-
-            </ul>
-
-          </div>
-        </div>
-      </section>
 
       <!-- SERVICIOS-->
-      <section class="section service">
-        <div class="container">
-          <ul class="service-list">
-            <li class="service-item">
-              <div class="service-card">
-                <div class="card-icon">
-                  <img src="images/service-1.png" width="53" height="28" loading="lazy"
-                    alt="Icono de Servicio 1">
-                </div>
-                <div>
-                  <h3 class="h4 card-title">Envíos Gratis</h3>
-                  <p class="card-text"> A partir de <span>$5000</span></p>
-                </div>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-card">
-                <div class="card-icon">
-                  <img src="images/service-2.png" width="43" height="35" loading="lazy"
-                    alt="Icono de Servicio 2">
-                </div>
-                <div>
-                  <h3 class="h4 card-title">Pagos</h3>
-                  <p class="card-text">Pago 100% seguro</p>
-                </div>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-card">
-                <div class="card-icon">
-                  <img src="images/service-3.png" width="40" height="40" loading="lazy"
-                    alt="Icono de Servicio 3">
-                </div>
-                <div>
-                  <h3 class="h4 card-title">Devoluciones</h3>
-                  <p class="card-text">Devolucion gratis</p>
-                </div>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-card">
-                <div class="card-icon">
-                  <img src="images/service-4.png" width="40" height="40" loading="lazy"
-                    alt="Icono de Servicio 4">
-                </div>
-                <div>
-                  <h3 class="h4 card-title">Soporte</h3>
-                  <p class="card-text">Soporte asegurado 24/7</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <%- include("./partials/home/services.ejs") %>
 
-      <!-- JUJUY TIRA IMAGENES - Aqui podria redirigir a paginas o post de instagrams con fotos jujeñas -->
-      <section class="section jujuy-post">
-        <ul class="jujuy-post-list has-scrollbar">
-          <li class="jujuy-post-item">
-            <img src="images/insta-1.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 1"
-              class="jujuy-post-banner image-contain">
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
 
-          <li class="jujuy-post-item">
-            <img src="images/insta-2.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 2"
-              class="jujuy-post-banner image-contain">
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
+      <!-- JUJUY TIRA IMAGENES -->
+      <%- include("./partials/home/jujuyPost.ejs") %>
 
-          <li class="jujuy-post-item">
-            <img src="images/insta-3.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 3"
-              class="jujuy-post-banner image-contain">
-
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="jujuy-post-item">
-            <img src="images/insta-4.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 4"
-              class="jujuy-post-banner image-contain">
-
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="jujuy-post-item">
-            <img src="images/insta-5.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 5"
-              class="jujuy-post-banner image-contain">
-
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="jujuy-post-item">
-            <img src="images/insta-6.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 6"
-              class="jujuy-post-banner image-contain">
-
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-          <li class="jujuy-post-item">
-            <img src="images/insta-7.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 7"
-              class="jujuy-post-banner image-contain">
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-          <li class="jujuy-post-item">
-            <img src="images/insta-8.jpg" width="100" height="100" loading="lazy" alt="Imagen Jujuy 8"
-              class="jujuy-post-banner image-contain">
-            <a href="#" class="jujuy-post-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-    </body>
+     
   </main>
 
   <!-- FOOTER -->
