@@ -238,6 +238,7 @@ body {
   font-family: var(--ff-roboto);
   font-size: var(--fs-7);
   border-radius: 25px;
+  text-transform: uppercase;
 }
 
 .card-action-list {

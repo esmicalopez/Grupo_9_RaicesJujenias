@@ -1,0 +1,70 @@
+
+<section class="section special">
+
+    <div class="container">
+      <!-- IMAGEN JUJUY MAPA-->
+        <div class="special-banner" style="background-image: url('images/home/special-banner.jpg')">
+            <h2 class="h3 banner-title">Conocé Jujuy</h2>
+            <a href="#" class="btn btn-link">
+                <span>Ir</span>
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
+        </div>
+
+        <div class="special-product">
+
+            <!-- Titulo Lugares a Visitar-->
+            <h2 class="h2 section-title">
+            <span class="text">Lugares a Visitar</span>
+            <span class="line"></span>
+            </h2>
+
+            <ul class="has-scrollbar">
+
+            <% for (place of places) { %>
+                <!-- ENTRADA -->
+                <li class="product-item">
+                    <div class="product-card" tabindex="0">
+
+                    <figure class="card-banner">
+                        <img src="images/home/places/paisaje-<%= place %>.jpg" width="312" height="350" loading="lazy"
+                        alt="Producto" class="image-contain">
+                        <div class="card-badge"><%= place %></div>
+
+                        <ul class="card-action-list">
+                        <li class="card-action-item">
+                            <button class="card-action-btn" aria-labelledby="card-label-3">
+                            <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card-label-3">Leer</div>
+                        </li>
+                        <li class="card-action-item">
+                            <button class="card-action-btn" aria-labelledby="card-label-2">
+                            <ion-icon name="heart-outline"></ion-icon>
+                            </button>
+                            <div class="card-action-tooltip" id="card-label-2">Agregar a Favoritos</div>
+                        </li>
+                        </ul>
+                    </figure>
+
+                    <div class="card-content">
+                        <div class="card-cat">
+                        <a href="#" class="card-cat-link">Visitá Jujuy</a>
+                        </div>
+                        <h3 class="h3 card-title">
+                        <a href="#">Titulo del Blog</a>
+                        </h3>
+                        <data class="card-price-data" value="180.85">Descripcion del Blog</data>
+                    </div>
+
+                    </div>
+                </li>
+
+            <% } %>    
+    
+        
+            </ul>
+
+        </div>
+    </div>
+</section>
