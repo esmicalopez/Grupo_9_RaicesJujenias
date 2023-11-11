@@ -39,9 +39,9 @@ module.exports = (sequelize, dataTypes) => {
 
     }, {
         paranoid: true,
-        timestamps: false,
+        timestamps: true,
         tableName: "users",
-        createdAt: "registered_at",
+        createdAt: "register_date",
         updatedAt: "updated_at",
         deletedAt: "deleted_at"
     })

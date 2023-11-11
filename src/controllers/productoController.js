@@ -6,10 +6,11 @@ const offerCalc = require("../functions/offerCalcule")
 //  Controladores
 const controllers = {
     productos: async (req, res) => {
-        const productsList = await db.ProductDetail.findAll({
-            include: [{ association: "product", include: ["category"] }, "images"],
+        const productsList = await db.Product.findAll({
+            include: [{ association: "product_detail", include: ["images", "size", "color"] }, "category"],
             group: "product_id"
         })
+        res.json(productsList)
         res.render("productos", {
             productsList,
             offerCalc
