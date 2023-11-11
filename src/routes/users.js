@@ -23,6 +23,7 @@ router.get("/users/list", controllers.list) // borrar
 router.get("/login", controllers.loginView)
 router.get("/registro", controllers.registerView)
 router.get("/profile", controllers.userProfile)
+router.get("/profile/password", controllers.userPassword)
 
 router.post("/login", controllers.login)
 router.post("/logout", controllers.logout)

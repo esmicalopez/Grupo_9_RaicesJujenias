@@ -685,160 +685,243 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.login-main .login-form{
-    text-align: left;
-    border-radius: 10px;
-    padding: 15px;
-    background-color: white;
-    margin: 130px 0;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-.login-form a{
-    color: #2386c9;
-    text-decoration: none;
-    font-weight:500;
-}
-.login-form .data-form{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-.login-form .article-title{
-    font-size: 20px;
-    color: #22223B;
-}
-.login-form .bienvenida-msg{
-    display: block;
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-    font-size: 28px;
-}
+  }
+  .login-main .login-form{
+      text-align: left;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: white;
+      margin: 130px 0;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+  .login-form a{
+      color: #2386c9;
+      text-decoration: none;
+      font-weight:500;
+  }
+  .login-form .data-form{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+  }
+  .login-form .article-title{
+      font-size: 20px;
+      color: #22223B;
+  }
+  .login-form .bienvenida-msg{
+      display: block;
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+      font-size: 28px;
+  }
+  
+  .login-form .left-menu{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      padding: 15px 20px;
+      border-right: 1px #22223B solid;
+      width: 600px;
+      font-size: 22px;
+      color: #22223B;
+  }
+  .left-menu div input{
+      width: 100%;
+      margin: 10px 0;
+      padding: 3px 0;
+  }
+  .left-menu .text-form input{
+      border-radius: 5px;
+      padding: 10px;
+      border: 1px #22223B solid;
+      font-size: 18px;
+  }
+  .left-menu .remember-user-line{
+      display: flex;
+      align-items: center;
+  }
+  .left-menu .remember-user-line #remember-user{
+      width: auto;
+      margin: 3px 0px 0px 5px;
+  }
+  .left-menu .login-options{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .left-menu .login-join-button{
+      
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+  }
+  .login-form .left-menu .login-button{
+      background: var(--terracota);
+      color: var(--white);
+      border: #D5BDAF 0px solid;
+      border-radius: 8px;
+      padding: 8px;
+      width: 40%;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .3s background ease;    
+  }
+  .login-form .left-menu .login-button:hover{
+      background: var(--terracota_2);
+  }
+  .login-form .left-menu .rec-password{
+      align-self: center;
+      width: 50%;
+      margin-left: 15px;
+      display: flex;
+      justify-content: center;
+  }
+  .login-form .left-menu .rec-password a{
+      text-align: center;
+  }
+  .login-form .left-menu .redirect-register{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+  }
+  .new-account{
+      margin-left: 10px;
+  }
+  .login-form .right-menu{
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 20px;
+      justify-content: space-between;
+      width: 30%;
+  }
+  .right-menu div h3{
+      text-decoration: none;
+      margin-bottom: 10px;
+  }
+  .login-form .right-menu .another-login-menu{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+  }
+  .login-form .right-menu .another-login-menu *{
+      text-align: center;
+  }
+  .login-form .right-menu .another-login button{
+      margin: 10px;
+      padding: 5px 0px;
+      background-color: white;
+      align-self: center;
+      border-radius: 8px;
+      width: 100%;
+  
+  }
+  .login-form .right-menu .another-login .google{
+      max-width: 120px;
+      width: 100%;
+      margin-top: 5px;
+  }
+  .login-form .right-menu .another-login .facebook{
+      max-width: 160px;
+      width: 100%;
+      min-width: 90px;
+  }
+  .right-menu .legal-resources a{
+      color: #585858;
 
-.login-form .left-menu{
+  }
+  
+  /* PERFIL DE USUARIO */
+
+  .profile-container{
+    width: 80%;
+    margin: auto;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    padding: 15px 20px;
-    border-right: 1px #22223B solid;
-    width: 600px;
-    font-size: 22px;
-    color: #22223B;
-}
-.left-menu div input{
+    justify-content: space-between;
+  }
+  .profile-navbar{
     width: 100%;
-    margin: 10px 0;
-    padding: 3px 0;
-}
-.left-menu .text-form input{
-    border-radius: 5px;
-    padding: 10px;
-    border: 1px #22223B solid;
-    font-size: 18px;
-}
-.left-menu .remember-user-line{
     display: flex;
-    align-items: center;
-}
-.left-menu .remember-user-line #remember-user{
-    width: auto;
-    margin: 3px 0px 0px 5px;
-}
-.left-menu .login-options{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-.left-menu .login-join-button{
-    
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-.login-form .left-menu .login-button{
-    background: var(--terracota);
-    color: var(--white);
-    border: #D5BDAF 0px solid;
+    flex-direction: column;
+  }
+  .profile-options{
+    margin: 5px;
+    padding: 10px 10px;
     border-radius: 8px;
-    padding: 8px;
-    width: 40%;
+    color: #000;
+    transition: background-color 300ms;
+    max-width: 260px;
+  }
+  .profile-options:hover{
+    background-color: #F1F3F4;
+  }
+  .account-nav{
+    background-color: var(--terracota);
+    padding-left: 12px;
+    color: white;
+  }
+  
+  .profile-info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 532px;
+    margin: auto;
+  }
+  .profile-info h4{
+    font-size: 20px;
+    text-align: center;
+  }
+  .profile-avatar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+  }
+  .profile-avatar img{
+    width: 240px;
+    height: 240px;
+  }
+  .profile-avatar label{
+    color: var(--terracota);
     font-weight: bold;
     cursor: pointer;
-    transition: .3s background ease;    
-}
-.login-form .left-menu .login-button:hover{
-    background: var(--terracota_2);
-}
-.login-form .left-menu .rec-password{
-    align-self: center;
-    width: 50%;
-    margin-left: 15px;
-    display: flex;
-    justify-content: center;
-}
-.login-form .left-menu .rec-password a{
-    text-align: center;
-}
-.login-form .left-menu .redirect-register{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-.new-account{
-    margin-left: 10px;
-}
-.login-form .right-menu{
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 20px;
-    justify-content: space-between;
-    width: 30%;
-}
-.right-menu div h3{
-    text-decoration: none;
-    margin-bottom: 10px;
-}
-.login-form .right-menu .another-login-menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-.login-form .right-menu .another-login-menu *{
-    text-align: center;
-}
-.login-form .right-menu .another-login button{
-    margin: 10px;
-    padding: 5px 0px;
-    background-color: white;
-    align-self: center;
+    text-decoration: underline;
+  }
+  .account-info input{
+    border: 2px var(--onyx) solid;
     border-radius: 8px;
-    width: 100%;
+    padding: 5px 10px;
+    margin: 5px 0 10px;
+    transition: border 100ms;
+  }
+  .account-info input:focus{
+      outline: none !important;
+      border: 2px solid var(--terracota);
+      box-shadow: 0 0 3px #666;
+  }
+  .profile-info button{
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 230px;
+    background-color: var(--terracota);
+    color: white;
+    transition: all 300ms;
+  }
+  .profile-info button:hover{
+    background-color: #c7562d;
+  }
 
-}
-.login-form .right-menu .another-login .google{
-    max-width: 120px;
-    width: 100%;
-    margin-top: 5px;
-}
-.login-form .right-menu .another-login .facebook{
-    max-width: 160px;
-    width: 100%;
-    min-width: 90px;
-}
-.right-menu .legal-resources a{
-    color: #585858;
-
-}
-  
-  
-  
   /**FOOTER*/
   
   .footer {
@@ -1149,6 +1232,20 @@
     .login-buttons button:hover {
     background: #4254e4;
     }
+
+    /* PERFIL DE USUARIO */
+
+    .profile-navbar{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+    .profile-options{
+      width: 260px;
+    }
+    
   
   
     /**FOOTER*/
@@ -1388,6 +1485,20 @@
   
     .jujuy-post-list .jujuy-post-item {
         min-width: 16.666%;
+    }
+
+
+    /* PERFIL DE USUARIO */
+
+    .profile-container{
+      width: 90%;
+      flex-direction: row;
+      max-width: 1000px;
+    }
+    .profile-navbar{
+      width: 30%;
+      display: flex;
+      flex-direction: column;
     }
   
   }

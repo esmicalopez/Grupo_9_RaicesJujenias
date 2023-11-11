@@ -92,6 +92,16 @@ const controllers = {
         })
 
         res.render("users/userProfile", { user })
+    },
+
+    userPassword: async (req, res) => {
+        if (!req.session.user) { // Unauthorized
+            return res.redirect("/")
+        }
+
+        const user = await db.User.findByPk(req.session.user)
+
+        res.render("users/userPassword", { user })
     }
 }
 
