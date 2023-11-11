@@ -19,25 +19,63 @@
     <%- include("../partials/header.ejs") %>
 
     <main>
-        <h1>Perfil de Usuario</h1>
+        <h1 style="text-align: center; margin: 10px 0;">Perfil de Usuario</h1>
         <div class="profile-container">
             <ul class="profile-navbar">
-                <li class="navbar-item">Cuenta</li>
-                <li class="navbar-item">Contraseña</li>
-                <li class="navbar-item">Eliminar cuenta</li>
+                <li class="account-nav">
+                    <i class="fa-solid fa-user"></i>  
+                    Cuenta
+                </li>
+                <a href="/profile/password">
+                    <li class="profile-options">
+                        <i class="fa-solid fa-key"></i>  
+                        Contraseña
+                    </li>   
+                </a>
             </ul>
-            <div class="profile-info">
-                <div class="profile-avatar">
-                <img src="/images/users/<%= user.avatar %>" alt="">
 
-                <h3>Nombre: <%= user.name %></h3>
-                <h3>Apellido: <%= user.lastName %></h3>
-                <h3>Email: <%= user.email %></h3>
-                <h3>Rol: <%= user.rol.name %></h3>
-
+            <form action="/profile?_method=PUT" class="profile-info" method="post" enctype="multipart/form-data">
+                <% if (user.avatar) { %>
+                    <div class="profile-avatar">
+                        <h4>Foto de Perfil</h4>
+                        <img src="/images/users/<%= user.avatar || "defaultAvatar.png"%> " alt="">
+                        <br>
+                        <label for="avatar">Cambiar Imagen</label>
+                        <input type="file" name="profile-image" id="avatar" accept=",jpg,png" hidden>
+                    </div>
+                <% } else { %>
+                    <div class="profile-avatar">
+                        <h4>Foto de Perfil</h4>
+                        <img src="/images/users/defaultAvatar.png" alt="">
+                        <br>
+                        <label for="avatar">Cambiar Imagen</label>
+                        <input type="file" name="profile-image" id="avatar" accept=",jpg,png" hidden>
+                    </div>
+                <% } %>
+                <div class="account-info">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" id="name" value="<%= user.name %>">
                 </div>
-            </div>
-            
+                <div class="account-info">
+                    <label for="lastName">Apellido</label>
+                    <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>">
+                </div>
+                <div class="account-info">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="<%= user.email %>">
+                </div>
+
+                <button type="submit">Modificar Datos</button>
+                
+                <% if (user.rol.id === 1) { %>
+                    <div class="account-info">
+                        <br>
+                        <h4 for="name" style="text-align: center;">
+                            Posee privilegios de administrador</h4>
+                            <br>
+                    </div>
+                <% } %>
+            </form>
         </div>
     </main>
 

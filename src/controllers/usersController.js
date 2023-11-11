@@ -1,5 +1,9 @@
 const { validationResult } = require("express-validator")
 const bcrypt = require("bcryptjs")
+const fs = require("fs")
+const { promisify } = require("util")
+
+const unlinkAsync = promisify(fs.unlink)
 
 const db = require("../database/models/") // aca tmb
 const controllers = {
@@ -39,7 +43,7 @@ const controllers = {
             lastName: req.body.lastName,
             email: req.body.email,
             password: passwordHashed,
-            avatar: file.filename ?? "default.png",
+            avatar: file.filename ?? "defaultAvatar.png",
             rol_id: Number(req.body.rol),
             preference_id: 2
         })
@@ -92,6 +96,71 @@ const controllers = {
         })
 
         res.render("users/userProfile", { user })
+    },
+
+    userEdit: async (req, res) => {
+        const file = req.file
+        const user = await db.User.findByPk(req.session.user)
+
+        if ((file !== undefined && user.avatar) && fs.existsSync(__dirname + "../../../assets/images/users/" + user.avatar)) {
+            if (user.avatar !== "defaultAvatar.png") {
+                await unlinkAsync(__dirname + "../../../assets/images/users/" + user.avatar)
+            }
+            await db.User.update({
+                avatar: file.filename
+            }, {
+                where: { id: user.id }
+            })
+        }
+
+        await db.User.update({
+            name: req.body.name,
+            lastName: req.body.lastName,
+            email: req.body.email
+        }, {
+            where: { id: user.id }
+        })
+
+        return res.redirect("/")
+    },
+
+    userPassword: async (req, res) => {
+        if (!req.session.user) { // Unauthorized
+            return res.redirect("/")
+        }
+
+        const user = await db.User.findByPk(req.session.user)
+
+        res.render("users/userPassword", { user })
+    },
+
+    userEditPassword: async (req, res) => {
+        const user = await db.User.findByPk(req.session.user)
+
+        const oldPassword = await bcrypt.compare(req.body.oldPassword, user.password)
+        if (!oldPassword) {
+            return res.render("users/userPassword", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
+        }
+        //  validacion contraseñas
+        const erroresExpressValidator = validationResult(req)
+        console.log("Errores: ")
+        console.log(erroresExpressValidator.mapped())
+
+        if (!erroresExpressValidator.isEmpty()) {
+            return res.render("users/userPassword", {
+                errores: erroresExpressValidator.mapped()
+            })
+        }
+
+        const passwordHashed = await bcrypt.hash(req.body.password, 10)
+
+        await db.User.update({
+            password: passwordHashed
+        }, {
+            where: { id: user.id }
+        })
+
+        return res.redirect("/")
     }
 }
 
