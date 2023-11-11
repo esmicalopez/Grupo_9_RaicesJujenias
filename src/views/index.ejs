@@ -39,7 +39,6 @@
 
   <main>
 
-    <body>
 
       <!-- Banner Principal -->
 
@@ -150,120 +149,12 @@
         <div class="container">
 
           <h2 class="h2 section-title">LOS MAS VENDIDOS</h2>
-          <ul class="filter-list">
-            <li>
-              <button class="filter-btn  active">Todos</button>
-            </li>
-            <li>
-              <button class="filter-btn">Textiles</button>
-            </li>
-            <li>
-              <button class="filter-btn">Decoración</button>
-            </li>
-            <li>
-              <button class="filter-btn">Joyería</button>
-            </li>
+          
+          <%- include("./partials/products/categoryList.ejs", { categories }) %>
 
-            <li>
-              <button class="filter-btn">Arte</button>
-            </li>
-
-            <li>
-              <button class="filter-btn">Gastronómicos</button>
-            </li>
-
-          </ul>
-
-          <ul class="product-list">
-
-            <% productsList.forEach( product => { %>
-              <li class="product-item">
-                <a href="productos/<%= product.product.id %>/<%= product.id %>">
-                  <div class="product-card" tabindex="0">
+          <%- include("./partials/products/productList.ejs", { productsList, offerCalc }) %>
+          
   
-                      <figure class="card-banner">
-                        <% if (product.images[0]) { %>
-                          <img src="/images/products/<%=product.images[0].name || 'incognita.png' %>" width="312" height="350" loading="lazy" alt="Producto"
-                              class="image-contain">
-                        <% } else { %>
-                          <img src="/images/products/incognita.png" width="312" height="350" loading="lazy" alt="Producto"
-                          class="image-contain">
-                        <% } %>
-  
-                          <% if(product.offer !== null && product.offer !== 0){ %>
-                                <div class="card-badge">Oferta <%= product.offer %>%</div>
-                          <% } %>
-  
-                          <ul class="card-action-list">
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-1">
-                                      <ion-icon name="cart-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-1">Agregar al Carrito</div>
-                              </li>
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-2">
-                                      <ion-icon name="heart-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-2">Guardar</div>
-                              </li>
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-3">
-                                      <ion-icon name="eye-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-3">Detalles</div>
-                              </li>
-  
-                              <li class="card-action-item">
-                                  <button class="card-action-btn" aria-labelledby="card-label-4">
-                                      <ion-icon name="repeat-outline"></ion-icon>
-                                  </button>
-  
-                                  <div class="card-action-tooltip" id="card-label-4">Comparar</div>
-                              </li>
-  
-                          </ul>
-                      </figure>
-  
-                      <div class="card-content">
-                          <div class="card-cat">
-                              <span class="card-cat-link">Categoria</span> /
-                              <span class="card-cat-link"> <%= product.product.category.name %></span>
-                          </div>
-  
-                          <h3 class="h3 card-title">
-                              <span><%= product.product.name %></span>
-                          </h3>
-                          <% if(product.offer !== null && product.offer !== 0){ %>
-                            <div class="card-price-product"  value="180.85">
-                                <del class="old-price">
-                                    $<%= product.price %>
-                                </del>
-                                <span>
-                                    ¡$<%= offerCalc(product.price, product.offer) %>! 
-                                </span>
-                            </div>
-                        <% } else { %>
-                            <div class="card-price-product">
-                                $<%= product.price %>
-                            </div>
-                        <% } %>
-                      </div>
-  
-                  </div>
-                </a>
-                
-              </li>
-            <% }) %>
-
-          </ul>
-
         </div>
       </section>
 
@@ -354,7 +245,7 @@
                     <h3 class="h3 card-title">
                       <a href="#">Titulo del Blog</a>
                     </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
+                    <data class="card-price-data" value="180.85">Descripcion del Blog</data>
                   </div>
 
                 </div>
@@ -394,7 +285,7 @@
                     <h3 class="h3 card-title">
                       <a href="#">Titulo del Blog</a>
                     </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
+                    <data class="card-price-data" value="180.85">Descripcion del Blog</data>
                   </div>
 
                 </div>
@@ -431,7 +322,7 @@
                     <h3 class="h3 card-title">
                       <a href="#">Titulo del Blog</a>
                     </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
+                    <data class="card-price-data" value="180.85">Descripcion del Blog</data>
                   </div>
 
                 </div>
@@ -470,7 +361,7 @@
                     <h3 class="h3 card-title">
                       <a href="#">Titulo del Blog</a>
                     </h3>
-                    <data class="card-price" value="180.85">Descripcion del Blog</data>
+                    <data class="card-price-data" value="180.85">Descripcion del Blog</data>
                   </div>
 
                 </div>
@@ -538,7 +429,7 @@
         </div>
       </section>
 
-      <!-- JUJUY TIRA IMAGENES - Aqui podria redirigir a paginas o post de instagrams con fotos jujeñas -->
+      <!-- JUJUY TIRA IMAGENES -->
       <section class="section jujuy-post">
         <ul class="jujuy-post-list has-scrollbar">
           <li class="jujuy-post-item">
@@ -609,7 +500,6 @@
         </ul>
       </section>
 
-    </body>
   </main>
 
   <!-- FOOTER -->

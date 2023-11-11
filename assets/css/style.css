@@ -335,12 +335,13 @@ body {
   color: var(--terracota);
 }
 
-.card-price {
+.card-price-data {
   color: var(--terracota);
   font-family: var(--ff-roboto);
   font-weight: var(--fw-600);
+  
 }
- .card-price-product {
+ .card-price {
   color: var(--terracota);
   font-family: var(--ff-roboto);
   font-weight: var(--fw-600);
@@ -350,7 +351,7 @@ body {
   font-size: 20px;
 }
 
-.card-price-product .old-price {
+.card-price .old-price {
   margin: 0 10px;
   color: #666;
   font-size: 14px;
