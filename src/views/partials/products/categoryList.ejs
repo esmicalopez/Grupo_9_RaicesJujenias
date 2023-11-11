@@ -1,0 +1,14 @@
+
+<ul class="filter-list">
+    <li>
+        <button class="filter-btn active">Todos</button>
+    </li>
+
+    <% for (category of categories) { %>
+        <li>
+            <button class="filter-btn"> <%= category.name %> </button>
+        </li>
+    <% } %>    
+
+</ul>
+
