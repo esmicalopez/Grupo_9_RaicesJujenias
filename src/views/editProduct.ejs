@@ -78,6 +78,8 @@
                     <%= product.category.name %>
                 </option>
                 <% for( category of categories ) { %>
+                    <% if (category.name === product.category.name) { continue } %>
+
                     <option value="<%= category.id %>"> <%= category.name %> </option>
                 <% } %>
 

@@ -104,16 +104,16 @@ const controllers = {
     editarProductoView: async (req, res) => {
         const { id, productSpec: prodSpecId } = req.params
 
-        // if (!req.session.userLogged) { // Unauthorized
-        //     return res.redirect("/")
-        // }
+        if (!req.session.userLogged) { // Unauthorized
+            return res.redirect("/")
+        }
 
-        // if (req.session.userLogged) { // Forbidden
-        //     const user = await db.User.findByPk(req.session.user)
-        //     if (user.rol_id !== 1) {
-        //         return res.redirect("/")
-        //     }
-        // }
+        if (req.session.userLogged) { // Forbidden
+            const user = await db.User.findByPk(req.session.user)
+            if (user.rol_id !== 1) {
+                return res.redirect("/")
+            }
+        }
 
         const colors = await db.Color.findAll()
         const sizes = await db.Size.findAll()
@@ -141,8 +141,6 @@ const controllers = {
         })
 
         return res.render("editProduct", {
-        // return res.json({
-
             colors,
             sizes,
             categories,
@@ -153,32 +151,49 @@ const controllers = {
         })
     },
 
-    editarProducto: (req, res) => {
-        console.log(req.body)
-        console.log(req.file)
-        console.log(req.files)
+    editarProducto: async (req, res) => {
+        const { id, productSpec } = req.params
+        const { name, price, offer, stock, color, size, category, description } = req.body
 
-        return res.status(302)
-        // const productsUpdated = []
-        // productsList.forEach(function (p) {
-        //     if (p.id === +req.params.id) {
-        //         p.name = req.body.name
-        //         p.price = +req.body.price
-        //         p.description = req.body.description
-        //         p.offer = +req.body.offer
-        //         p.category = req.body.category
-        //         p.image = req.file ? req.file.filename : p.image
-        //         p.author = req.body.author
-        //         p.sizes = [req.body.size]
-        //         p.colors = req.body.colors.split(",") || ""
-        //         p.stock = req.body.stock
-        //     }
-        //     productsUpdated.push(p)
+        const offerValue = offer !== "0" ? offer : null
+
+        const updateProduct = await db.Product.update({
+            name,
+            description,
+            category_id: category
+        }, {
+            where: { id }
+        })
+
+        const updateProductDetail = await db.ProductDetail.update({
+            price,
+            offer: offerValue,
+            stock,
+            color_id: color,
+            size_id: size
+        }, {
+            where: { id: productSpec }
+        })
+
+        if (!req.files.length > 0) {
+            return res.redirect("/productos")
+        }
+
+        console.log(req.files)
+        for (const image of req.files) {
+            db.Image.update({
+                name: image.filename
+            }, {
+                where: { product_detail_id: productSpec, id } // hablar de esto
+            })
+        }
+
+        // return res.json({
+        //     updateProduct,
+        //     updateProductDetail
         // })
 
-        // fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsUpdated, null, 4))
-
-        // res.redirect(`/productos/${+req.params.id}`)
+        res.redirect("/productos")
     }
 
     /*
