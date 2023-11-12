@@ -101,7 +101,7 @@ INSERT INTO user_product (product_id, user_id) VALUES
 -- IMG de los productos
 INSERT INTO images (name, product_detail_id) VALUES 
 ('poncho.png', 1),
-('dulce-cayote.png', 2),
-('zamponia.png', 3),
-('vino.png', 4);
+('dulce-cayote.png', 6),
+('zamponia.png', 10),
+('vino.png', 12);
 
