@@ -24,37 +24,37 @@ const controllers = {
     },
 
     detallesProducto: async (req, res) => {
-        const id = req.params.id
-        const prodSpecId = req.params.productSpec
+        const { id, productSpec: prodSpecId } = req.params
 
         const product = await db.Product.findByPk(id)
-        if (product) {
-            const detail = await db.ProductDetail.findAll({
-                where: { product_id: id },
-                include: ["color", "size"]
-            })
-            const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
-                include: ["images", "color", "size"]
-            })
-            const newProductsList = await db.ProductDetail.findAll({
-                where: {
-                    product_id: {
-                        [Op.ne]: id
-                    }
-                },
-                include: ["product", "images"],
-                group: "product_id"
-            })
-            return res.render("detallesProducto", {
-                product,
-                detail,
-                chosenProductSpec,
-                newProductsList,
-                offerCalc
-            })
-        } else {
-            return res.send("Producto no encontrado")
-        }
+
+        if (!product) return res.send("Producto no encontrado")
+
+        const detail = await db.ProductDetail.findAll({
+            where: { product_id: id },
+            include: ["color", "size"]
+        })
+
+        const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
+            include: ["images", "color", "size"]
+        })
+
+        const newProductsList = await db.Product.findAll({
+            include: [{
+                association: "product_detail",
+                include: ["images"],
+                where: { product_id: { [Op.ne]: id } }
+            }, "category"],
+            group: "product_id"
+        })
+
+        return res.render("detallesProducto", {
+            product,
+            detail,
+            chosenProductSpec,
+            newProductsList,
+            offerCalc
+        })
     },
 
     crearProductoView: async (req, res) => {

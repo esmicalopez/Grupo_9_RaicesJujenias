@@ -3,18 +3,13 @@
     <% productsList.forEach( p => { %>
 
         <li class="product-item">
-            <a href="productos/<%= p.id %>/<%= p.product_detail[0].id %>">
+            <a href="/productos/<%= p.id %>/<%= p.product_detail[0].id %>">
 
                 <div class="product-card" tabindex="0">
 
                     <figure class="card-banner">
-                        <% if (p.product_detail[0].images[0]) { %>
-                            <img src="/images/products/<%=p.product_detail[0].images[0].name %>" width="312" height="350" loading="lazy" alt="<%= p.name %>"
-                                class="image-contain">
-                        <% } else { %>
-                            <img src="" width="312" height="350" loading="lazy" alt="<%= p.name %>"
-                            class="image-contain">
-                        <% } %>
+                        <img src="/images/products/<%=p.product_detail[0].images[0] ? p.product_detail[0].images[0].name : '' %>" width="312" height="350" loading="lazy" alt="<%= p.name %>"
+                        class="image-contain">
                         
                         <% if(p.product_detail[0].offer !== null && p.product_detail[0].offer !== 0){ %>
                             <div class="card-badge">Oferta <%= p.product_detail[0].offer %>%</div>
@@ -92,6 +87,7 @@
         </li>
         
     <% }) %>
+    
 
 </ul>
 
