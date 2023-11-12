@@ -510,12 +510,19 @@ body {
     margin: 10px 0 50px;
     box-shadow: 6px 6px 15px 3px rgba(179, 179, 177, 0.544);
     border-radius: 5px;
-
 }
 
 .form-container h1 {
     text-align: center;
     margin: 10px 0 4px;
+}
+
+.form-container h3 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 15px 0;
+    color: var(--terracota);
 }
 
 .form-container input, .product-status select, .product-category select {
@@ -534,16 +541,39 @@ body {
 .input-item label, .input-item span {
     font-size: var(--fs-5);
 }
-/*
-.product-photo input {
-    color: transparent;
-}
-*/
+
 
 .product-description__label {
     display: block;
     
 }
+
+.product-photo > div  {
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.product-photo input {
+    border: none;
+    padding-bottom: 18px;
+    width: auto;
+}
+
+.product-photo-img  {
+    border-top: 1px solid #ccc;
+}
+
+.product-photo-img img  {
+    padding: 20px 0;
+    margin: auto;
+    height: 290px;
+    width: 272px;
+    text-align: center;
+}
+
 
 .product-description__textarea {
     margin: 5px 0;
@@ -583,13 +613,12 @@ body {
 
 
 .form-button-modify {
-    background: var(--oxford-blue_60);
-    
+    background: var(--terracota);
     transition: .3s background ease;
 }
 
 .form-button-modify:hover {
-    background: var(--gray-x-11-gray);
+    background: var(--terracota_2);
 }
 
 
@@ -864,9 +893,13 @@ a.footer-link:is(:hover, :focus) {
 
     .form-container > h1 {
         width: 100%;
-        margin: 20px 0 10px;
+        margin: 20px 0 0px;
         font-size: var(--fs-2);
+    }
 
+    .form-container > h3 {
+        font-size: var(--fs-4); 
+        margin: 7px 0;
     }
 
     .input-item {
@@ -875,18 +908,17 @@ a.footer-link:is(:hover, :focus) {
         margin: 6px;
     }
 
+    .product-photo {
+        min-width: 95%;
+    }
+
     .form-buttons {
         margin: 15px 0 25px;
     }
 
-    .form-buttons, .product-description {
+    .form-buttons {
         min-width: 100%;
     }
-    
-    .product-description {
-        min-width: 99%;
-    }
-
     
 
 
