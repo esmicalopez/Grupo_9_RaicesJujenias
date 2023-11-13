@@ -188,31 +188,36 @@ const controllers = {
             })
         }
 
-        // return res.json({
-        //     updateProduct,
-        //     updateProductDetail
-        // })
-
         res.redirect("/productos")
-    }
-
-    /*
+    },
 
     eliminarProducto: (req, res) => {
+        const { id, productSpec } = req.params
+
         if (!req.session.user) { // Unauthorized
             return res.sendStatus(401)
         }
 
-        if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
+        console.log(req.session)
+        if (!req.session.user && req.session.user.rol !== "admin") { // Forbidden
             return res.sendStatus(403)
         }
 
-        productsList = productsList.filter((p) => p.id !== +req.params.id)
+        const deleteProduct = db.Product.destroy({
+            where: {
+                id
+            }
+        })
 
-        fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
+        // Hablar de esto
+        // const deleteProductDetail = db.ProductDetail.destroy({
+        //     where: {
+        //         product_id: productSpec
+        //     }
+        // })
 
-        res.redirect("/productos")
-    } */
+        return res.redirect("/productos")
+    }
 
 }
 

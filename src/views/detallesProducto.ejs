@@ -58,7 +58,7 @@
             </div>
             <div class="container-details-product">
                 
-                <form action="" method="get">
+                <!-- <form action="/facebook.com" method="get"> -->
                     <% if(chosenProductSpec.color.name){ %>
                     
                         <div class="form-group">
@@ -90,9 +90,10 @@
                                 </div>
                     <% } %>
                     <button class="btn-clean" type="reset">Limpiar</button>
-                </form>
+                <!-- </form> -->
             </div>
-            
+        </div>
+        
             <div class="container-add-cart">
                 <div class="container-quantity">
                     <input type="number" placeholder="1" value="1" min="1" class="input-quantity" />
@@ -110,7 +111,7 @@
                         style="align-self: center; color: #cb6843; font-weight: 800;">
                         Editar Producto
                     </a>
-                    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/eliminar?_method=DELETE" method="POST"  style="display: flex;">
+                    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/delete?_method=DELETE" method="POST"  style="display: flex;">
                         <button style="align-self: center; color: #be3503; font-weight: 800;" type="submit">Eliminar Producto</button>
                     </form>
                  
@@ -149,7 +150,7 @@
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </main>
 
     
