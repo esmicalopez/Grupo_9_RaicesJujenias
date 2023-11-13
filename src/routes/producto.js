@@ -13,9 +13,9 @@ router.get("/", controllers.productos)
 router.post("/crear", uploadProduct.any("product-image"), controllers.crearProducto)
 
 // PUT
-/* router.put("/:id/edit", uploadProduct.single("product-image"), controllers.editarProducto)
+router.put("/:id/:productSpec/edit", uploadProduct.any("product-image"), controllers.editarProducto)
 
 // DELETE
-router.delete("/:id/eliminar", controllers.eliminarProducto) */
+router.delete("/:id/:productSpec/delete", controllers.eliminarProducto)
 
 module.exports = router

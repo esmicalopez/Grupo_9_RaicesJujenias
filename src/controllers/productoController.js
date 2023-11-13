@@ -24,37 +24,37 @@ const controllers = {
     },
 
     detallesProducto: async (req, res) => {
-        const id = req.params.id
-        const prodSpecId = req.params.productSpec
+        const { id, productSpec: prodSpecId } = req.params
 
         const product = await db.Product.findByPk(id)
-        if (product) {
-            const detail = await db.ProductDetail.findAll({
-                where: { product_id: id },
-                include: ["color", "size"]
-            })
-            const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
-                include: ["images", "color", "size"]
-            })
-            const newProductsList = await db.ProductDetail.findAll({
-                where: {
-                    product_id: {
-                        [Op.ne]: id
-                    }
-                },
-                include: ["product", "images"],
-                group: "product_id"
-            })
-            return res.render("detallesProducto", {
-                product,
-                detail,
-                chosenProductSpec,
-                newProductsList,
-                offerCalc
-            })
-        } else {
-            return res.send("Producto no encontrado")
-        }
+
+        if (!product) return res.send("Producto no encontrado")
+
+        const detail = await db.ProductDetail.findAll({
+            where: { product_id: id },
+            include: ["color", "size"]
+        })
+
+        const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
+            include: ["images", "color", "size"]
+        })
+
+        const newProductsList = await db.Product.findAll({
+            include: [{
+                association: "product_detail",
+                include: ["images"],
+                where: { product_id: { [Op.ne]: id } }
+            }, "category"],
+            group: "product_id"
+        })
+
+        return res.render("detallesProducto", {
+            product,
+            detail,
+            chosenProductSpec,
+            newProductsList,
+            offerCalc
+        })
     },
 
     crearProductoView: async (req, res) => {
@@ -102,8 +102,7 @@ const controllers = {
     },
 
     editarProductoView: async (req, res) => {
-        const id = req.params.id
-        const prodSpecId = req.params.productSpec
+        const { id, productSpec: prodSpecId } = req.params
 
         if (!req.session.userLogged) { // Unauthorized
             return res.redirect("/")
@@ -119,78 +118,106 @@ const controllers = {
         const colors = await db.Color.findAll()
         const sizes = await db.Size.findAll()
         const categories = await db.Category.findAll()
-        const product = await db.Product.findByPk(id)
+        const product = await db.Product.findByPk(id, { include: ["category"] })
 
-        if (product) {
-            const detail = await db.ProductDetail.findAll({
-                where: { product_id: id },
-                include: ["images", "color", "size"]
-            })
-            const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
-                include: ["images", "color", "size"]
-            })
-            const newProductsList = await db.ProductDetail.findAll({
-                where: {
-                    id: {
-                        [Op.ne]: prodSpecId
-                    },
-                    product_id: id
-                },
-                include: ["images", "color", "size"]
-            })
+        if (!product) return res.send("Producto no encontrado")
 
-            return res.render("editProduct", {
-                colors,
-                sizes,
-                categories,
-                product,
-                detail,
-                chosenProductSpec,
-                newProductsList
-            })
-        } else {
-            return res.send("Producto no encontrado")
-        }
-    }
-    /*
-    editarProducto: (req, res) => {
-        const productsUpdated = []
-        productsList.forEach(function (p) {
-            if (p.id === +req.params.id) {
-                p.name = req.body.name
-                p.price = +req.body.price
-                p.description = req.body.description
-                p.offer = +req.body.offer
-                p.category = req.body.category
-                p.image = req.file ? req.file.filename : p.image
-                p.author = req.body.author
-                p.sizes = [req.body.size]
-                p.colors = req.body.colors.split(",") || ""
-                p.stock = req.body.stock
-            }
-            productsUpdated.push(p)
+        const detail = await db.ProductDetail.findAll({
+            where: { product_id: id },
+            include: ["images", "color", "size"]
+        })
+        const chosenProductSpec = await db.ProductDetail.findByPk(prodSpecId, {
+            include: ["images", "color", "size"]
         })
 
-        fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsUpdated, null, 4))
+        const newProductsList = await db.ProductDetail.findAll({
+            where: {
+                id: {
+                    [Op.ne]: prodSpecId
+                },
+                product_id: id
+            },
+            include: ["images", "color", "size"]
+        })
 
-        res.redirect(`/productos/${+req.params.id}`)
+        return res.render("editProduct", {
+            colors,
+            sizes,
+            categories,
+            product,
+            detail,
+            chosenProductSpec,
+            newProductsList
+        })
+    },
+
+    editarProducto: async (req, res) => {
+        const { id, productSpec } = req.params
+        const { name, price, offer, stock, color, size, category, description } = req.body
+
+        const offerValue = offer !== "0" ? offer : null
+
+        const updateProduct = await db.Product.update({
+            name,
+            description,
+            category_id: category
+        }, {
+            where: { id }
+        })
+
+        const updateProductDetail = await db.ProductDetail.update({
+            price,
+            offer: offerValue,
+            stock,
+            color_id: color,
+            size_id: size
+        }, {
+            where: { id: productSpec }
+        })
+
+        if (!req.files.length > 0) {
+            return res.redirect("/productos")
+        }
+
+        console.log(req.files)
+        for (const image of req.files) {
+            db.Image.update({
+                name: image.filename
+            }, {
+                where: { product_detail_id: productSpec, id } // hablar de esto
+            })
+        }
+
+        res.redirect("/productos")
     },
 
     eliminarProducto: (req, res) => {
+        const { id, productSpec } = req.params
+
         if (!req.session.user) { // Unauthorized
             return res.sendStatus(401)
         }
 
-        if (req.session.user && req.session.user.rol !== "admin") { // Forbidden
+        console.log(req.session)
+        if (!req.session.user && req.session.user.rol !== "admin") { // Forbidden
             return res.sendStatus(403)
         }
 
-        productsList = productsList.filter((p) => p.id !== +req.params.id)
+        const deleteProduct = db.Product.destroy({
+            where: {
+                id
+            }
+        })
 
-        fs.writeFileSync(path.join(__dirname, "../data/products.json"), JSON.stringify(productsList, null, 4))
+        // Hablar de esto
+        // const deleteProductDetail = db.ProductDetail.destroy({
+        //     where: {
+        //         product_id: productSpec
+        //     }
+        // })
 
-        res.redirect("/productos")
-    } */
+        return res.redirect("/productos")
+    }
 
 }
 

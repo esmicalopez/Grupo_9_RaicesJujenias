@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f7a486e1">
-    <title>Crear Producto | Raíces Jujeñas </title>
+    <title>Editar Producto | Raíces Jujeñas </title>
     <link rel="shortcut icon" href="images/favicon.svg" type="image/svg+xml">
 
-    <link rel="stylesheet" href="/css/createProduct.css">
+    <link rel="stylesheet" href="/css/editProduct.css">
     <script src="https://kit.fontawesome.com/a00d13e606.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +22,8 @@
     
 <main>
     <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/edit?_method=PUT" class="form-container" method="POST" enctype="multipart/form-data">
-        <h1>Editar Producto</h1>
-        <h3 style="width: 100%;"> <%= product.name  %> || Color <%= chosenProductSpec.color.name %> - Tamaño/Talle <%= chosenProductSpec.size.name %></h3>
+        <h1>Editar Producto:</h1>
+        <h3><%= product.name  %> / Color <%= chosenProductSpec.color.name %> - Tamaño/Talle <%= chosenProductSpec.size.name %></h3>
 
         <div class="product-name input-item">
             <label class="product-name__label" for="name">Nombre del Producto</label>
@@ -45,13 +45,41 @@
             <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required value="<%= chosenProductSpec.stock %>"> 
         </div>
 
+        <div class="product-status input-item">
+            <label for="color">Colores</label>
+            <select name="color" id="color" required>
+                <option selected value="<%= chosenProductSpec.color_id %>">
+                    <%= chosenProductSpec.color.name %>
+                </option>
+                <% for( color of colors ) { %>
+                    <% if (color.name === chosenProductSpec.color.name) { continue } %>
+                    <option value="<%= color.id %>"> <%= color.name %> </option>
+                <% } %>
+            </select>
+        </div>
+
+        <div class="product-status input-item">
+            <label for="size">Talle</label>
+            <select name="size" id="size" required>
+                <option selected value="<%= chosenProductSpec.size_id %>">
+                    <%= chosenProductSpec.size.name %>
+                </option>
+                <% for( size of sizes ) { %>
+                    <% if (size.name === chosenProductSpec.size.name) { continue } %>
+                    <option value="<%= size.id %>"> <%= size.name %> </option>
+                <% } %>
+            </select>
+        </div>
+
         <div class="product-category input-item">
-            <span>Categoria</span>
-            <select  name="category" id="category" required value="<%= product.category_id %>">
-                <option disabled value="">
-                    Escoge una opción
+            <label for="category">Categoria</label>
+            <select  name="category" id="category" required>
+                <option selected value="<%= product.category_id %>">
+                    <%= product.category.name %>
                 </option>
                 <% for( category of categories ) { %>
+                    <% if (category.name === product.category.name) { continue } %>
+
                     <option value="<%= category.id %>"> <%= category.name %> </option>
                 <% } %>
 
@@ -59,8 +87,14 @@
         </div>
 
         <div class="product-photo input-item">
+            
             <label for="profile-picture">Foto del Producto</label>
-            <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] || 'Sin imagen' %>" name="product-image">
+            <div class="">
+                <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image">
+                <div class="product-photo-img">
+                    <img src="/images/products/<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
+                </div>
+            </div>
         </div>
 
         <div class="product-description input-item">
@@ -93,7 +127,7 @@
                     <% } else { %>
                         <div class="card">
                             <div class="card-img">
-                                <a href="/productos/<%= p.product_id %>/<%= p.id %>/edit"><img src="/images/products/<%= detail[0].images[0].name %>"  alt="producto-<%= p.id %>" /></a>
+                                <a href="/productos/<%= p.product_id %>/<%= p.id %>/edit"><img src="/images/products/<%= detail[0].images[0] ? detail[0].images[0] : '' %>"  alt="producto-<%= p.id %>" /></a>
                             </div>
                         </div>
                         <div style="margin: 10px; font-weight: bold; ">

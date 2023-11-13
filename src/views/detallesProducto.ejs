@@ -27,12 +27,7 @@
 
     <main>
         <div class="container-img">
-            
-            <% if (chosenProductSpec.images[0]) { %>
-                <img src="/images/products/<%=chosenProductSpec.images[0].name || 'incognita.png' %>" alt="imagen-producto" style="margin: auto; display: block; align-self: center">
-            <% } else { %>
-                <img src="/images/products/incognita.png" alt="imagen-producto" style="margin: auto; display: block; align-self: center">
-            <% } %>
+            <img src="/images/products/<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : '' %>" style="margin: auto; display: block; align-self: center" loading="lazy" alt="<%= product.name %>">
         </div>
 
         <div class="container-info-product">
@@ -59,12 +54,11 @@
                         $<%= chosenProductSpec.price %>
                     </div>
                 <% } %>
-                <!--<span>$<%= chosenProductSpec.price %></span>-->
                 <i class="fa-solid fa-angle-right"></i>
             </div>
             <div class="container-details-product">
                 
-                <form action="" method="get">
+                <!-- <form action="/facebook.com" method="get"> -->
                     <% if(chosenProductSpec.color.name){ %>
                     
                         <div class="form-group">
@@ -96,9 +90,10 @@
                                 </div>
                     <% } %>
                     <button class="btn-clean" type="reset">Limpiar</button>
-                </form>
+                <!-- </form> -->
             </div>
-            
+        </div>
+        
             <div class="container-add-cart">
                 <div class="container-quantity">
                     <input type="number" placeholder="1" value="1" min="1" class="input-quantity" />
@@ -116,7 +111,7 @@
                         style="align-self: center; color: #cb6843; font-weight: 800;">
                         Editar Producto
                     </a>
-                    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/eliminar?_method=DELETE" method="POST"  style="display: flex;">
+                    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/delete?_method=DELETE" method="POST"  style="display: flex;">
                         <button style="align-self: center; color: #be3503; font-weight: 800;" type="submit">Eliminar Producto</button>
                     </form>
                  
@@ -155,19 +150,15 @@
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </main>
-    <section class="container-related-products">
+
+    
+    <section class="container">
         <h2>Productos Relacionados</h2>
-        <div class="card-list-products">
-            <% newProductsList.forEach((p) => { %>
-            <div class="card">
-                <div class="card-img">
-                    <a href="/productos/<%= p.product_id %>/<%= p.id %>"><img src="/images/products/<%= p.images[0].name || 'incognita.png' %>"  alt="producto-<%= p.id %>" /></a>
-                </div>
-            </div>
-            <% }) %>
-        </div>
+
+        <%- include("./partials/products/productList.ejs", { productsList: newProductsList, offerCalc }) %>
+        
     </section>
 
     <!-- FOOTER -->
@@ -179,13 +170,14 @@
         <ion-icon name="arrow-up-outline"></ion-icon>
     </a>
 
-    <script src="js/script.js"></script>
 
     <!-- ICONOS-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
     <script src="js/producto.js"></script>
+    <script src="/js/script.js" defer></script>
+
 </body>
 
 </html>
