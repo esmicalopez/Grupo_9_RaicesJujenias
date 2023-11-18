@@ -6,6 +6,7 @@ const { promisify } = require("util")
 const unlinkAsync = promisify(fs.unlink)
 
 const db = require("../database/models/") // aca tmb
+const userModel = require("../models/users")
 const controllers = {
 
     list: async (req, res) => { // borrar - prueba de conexion a la BD
@@ -24,8 +25,6 @@ const controllers = {
     },
 
     register: async (req, res) => {
-        const file = req.file ?? {}
-
         //  validacion contraseñas
         const erroresExpressValidator = validationResult(req)
         console.log("Errores: ")
@@ -36,17 +35,8 @@ const controllers = {
                 errores: erroresExpressValidator.mapped()
             })
         }
-        const passwordHashed = bcrypt.hashSync(req.body.password, 10)
 
-        db.User.create({
-            name: req.body.name,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: passwordHashed,
-            avatar: file.filename ?? "defaultAvatar.png",
-            rol_id: Number(req.body.rol),
-            preference_id: 2
-        })
+        await userModel.register({ data: req.body, file: req.file })
 
         return res.redirect("/")
     },
@@ -59,25 +49,20 @@ const controllers = {
     },
 
     login: async (req, res) => {
-        const user = await db.User.findOne({
-            where: {
-                email: req.body.email
-            },
-            include: ["rol"]
-        })
-        if (user) {
-            if (bcrypt.compareSync(req.body.password, user.password)) {
-                req.session.user = user.id
-                req.session.userLogged = true
-                req.body.rememberUser === "true" ? res.cookie("cookieLogger", user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
-                req.flash("success", `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!  -  Rol: ${user.rol.name.charAt(0).toUpperCase() + user.rol.name.slice(1)}`)
-                return res.redirect("/")
-            }
-            return res.render("users/login", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
-        } else {
+        const { email, password, rememberUser } = req.body
+
+        const { user, passwordCheck } = await userModel.login({ email, password })
+
+        if (!user || !passwordCheck) {
             req.flash("error", "Credenciales incorrectas")
             return res.render("users/login", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
         }
+
+        req.session.user = user.id
+        req.session.userLogged = true
+        rememberUser === "true" ? res.cookie("cookieLogger", user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
+        req.flash("success", `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!  -  Rol: ${user.rol.name.charAt(0).toUpperCase() + user.rol.name.slice(1)}`)
+        return res.redirect("/")
     },
 
     logout: (req, res) => {
@@ -91,9 +76,7 @@ const controllers = {
             return res.redirect("/")
         }
 
-        const user = await db.User.findByPk(req.session.user, {
-            include: ["rol"]
-        })
+        const user = await userModel.userProfile({ sessionUser: req.session.user })
 
         res.render("users/userProfile", { user })
     },
@@ -129,7 +112,7 @@ const controllers = {
             return res.redirect("/")
         }
 
-        const user = await db.User.findByPk(req.session.user)
+        const user = userModel.userPassword({ sessionUser: req.session.user })
 
         res.render("users/userPassword", { user })
     },
