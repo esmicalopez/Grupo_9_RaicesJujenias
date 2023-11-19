@@ -1,16 +1,10 @@
 const { validationResult } = require("express-validator")
-const bcrypt = require("bcryptjs")
-const fs = require("fs")
-const { promisify } = require("util")
-
-const unlinkAsync = promisify(fs.unlink)
-
-const db = require("../database/models/") // aca tmb
 const userModel = require("../models/users")
+
 const controllers = {
 
-    list: async (req, res) => { // borrar - prueba de conexion a la BD
-        const users = await db.User.findAll()
+    list: async (req, res) => {
+        const users = await userModel.list()
         return res.json({
             message: "lista de usuarios",
             users
@@ -82,27 +76,7 @@ const controllers = {
     },
 
     userEdit: async (req, res) => {
-        const file = req.file
-        const user = await db.User.findByPk(req.session.user)
-
-        if ((file !== undefined && user.avatar) && fs.existsSync(__dirname + "../../../assets/images/users/" + user.avatar)) {
-            if (user.avatar !== "defaultAvatar.png") {
-                await unlinkAsync(__dirname + "../../../assets/images/users/" + user.avatar)
-            }
-            await db.User.update({
-                avatar: file.filename
-            }, {
-                where: { id: user.id }
-            })
-        }
-
-        await db.User.update({
-            name: req.body.name,
-            lastName: req.body.lastName,
-            email: req.body.email
-        }, {
-            where: { id: user.id }
-        })
+        await userModel.userEdit({ file: req.file, sessionUser: req.session.user, data: req.body })
 
         return res.redirect("/")
     },
@@ -118,30 +92,27 @@ const controllers = {
     },
 
     userEditPassword: async (req, res) => {
-        const user = await db.User.findByPk(req.session.user)
+        const { password, oldPassword } = req.body
+        console.log(req.body)
+        console.log(req.session.user)
 
-        const oldPassword = await bcrypt.compare(req.body.oldPassword, user.password)
-        if (!oldPassword) {
-            return res.render("users/userPassword", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
-        }
         //  validacion contraseñas
         const erroresExpressValidator = validationResult(req)
         console.log("Errores: ")
         console.log(erroresExpressValidator.mapped())
 
         if (!erroresExpressValidator.isEmpty()) {
+            console.log("falso")
             return res.render("users/userPassword", {
                 errores: erroresExpressValidator.mapped()
             })
         }
 
-        const passwordHashed = await bcrypt.hash(req.body.password, 10)
+        const { oldPasswordCheck } = await userModel.userEditPassword({ sessionUser: req.session.user, password, oldPassword })
 
-        await db.User.update({
-            password: passwordHashed
-        }, {
-            where: { id: user.id }
-        })
+        if (!oldPasswordCheck) {
+            return res.render("users/userPassword", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
+        }
 
         return res.redirect("/")
     }
