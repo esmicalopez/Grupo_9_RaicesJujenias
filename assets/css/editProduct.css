@@ -551,9 +551,14 @@ body {
 .product-photo > div  {
     margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 4px ;
+
     padding: 5px 15px;
     text-align: center;
+}
+
+.input-photo-box > input {
+   /* estilar input file */
 }
 
 .product-photo input {
@@ -564,6 +569,7 @@ body {
 
 .product-photo-img  {
     border-top: 1px solid #ccc;
+
 }
 
 .product-photo-img img  {
@@ -574,38 +580,97 @@ body {
     text-align: center;
 }
 
+
+.show-images-container {
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.show-images-container.none {
+    display: none;
+}
+
+.show-images-container > h4 {
+    font-size: 2rem;
+    margin-top: 28px;
+    text-transform: uppercase;
+}
+
+.show-images-container > span {
+    font-size: 1em !important;
+    color: #777;
+    margin: 16px 0 22px;
+    text-align: left;
+}
+
 .show-images-edit {
     display: grid;
     place-content: center;
-    gap: 20px;
+    gap: 42px 20px;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    padding: 12px;
-    border: 2px solid #000;
+
+    margin-top: 15px;
+    padding: 20px 16px;
+    position: relative;
+}
+
+.show-list-images-absolute {
+    font-size: 1.7rem;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: grid;
+    place-content: center;
+    gap: 42px 20px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    padding: 20px 16px;
+
+    z-index: -1;
+
+}
+
+.show-list-images-absolute > div { 
+    height: 286px;
+    top: -27px;
+    position: relative;
 }
 
 .show-images-edit figure {
-    background: #bbb;
+    background: #fff;
     width: 100%;
     height: 286px;
+    border-radius: 10px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: grab;
     position: relative;
 }
+
+.show-images-edit figure.item {
+    cursor: grab;
+}
+
+.show-images-edit figure.selected {
+    transform: scale(1.03) rotate(-1deg);
+}
+
+.show-images-edit figure.selected > img {
+    border: 3px dashed #8654b9;
+}
+
+
+
 
 .show-images-edit figure > img {
     width: 100%;
     height: 286px;
+    border-radius: 10px;
+    border: 2px dashed #c0785e;
+    object-fit: contain;
 }
-
-.show-images-edit figure > span {
-    position: absolute;
-    background: #ccc;
-    padding: 7px;
-    border: 2px solid #000;
-}
-
 
 
 .product-description__textarea {

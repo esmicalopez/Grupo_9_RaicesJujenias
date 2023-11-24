@@ -90,21 +90,11 @@ const controllers = {
     },
 
     editarProducto: async (req, res) => {
-        console.log(req.body)
-        console.log(req.files)
+        const { updateProduct, updateProductDetail } = await productModel.editarProducto({ params: req.params, data: req.body, files: req.files })
 
-        console.log("hola")
-
-        return res.json({
-            body: req.body,
-            files: req.files,
-            cristian: "hola"
-        })
-        // const { updateProduct, updateProductDetail } = await productModel.editarProducto({ params: req.params, data: req.body, files: req.files })
-
-        // if (updateProduct && updateProductDetail) {
-        //     res.redirect("/productos")
-        // }
+        if (updateProduct && updateProductDetail) {
+            res.redirect("/productos")
+        }
     },
 
     eliminarProducto: async (req, res) => {

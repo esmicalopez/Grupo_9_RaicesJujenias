@@ -2,8 +2,11 @@
 
 const fileInput = document.querySelector("#profile-picture")
 const imgList = document.querySelector(".show-images-edit")
+const showImagesContainer = document.querySelector(".show-images-container")
 
-fileInput.addEventListener("change", function (evt) {
+fileInput.addEventListener("change", () => {
+    showImagesContainer.classList.remove("none")
+
     const images = document.querySelectorAll(".img-edit")
     const figures = document.querySelectorAll(".show-list-images")
 
@@ -20,14 +23,7 @@ function dragImages () {
     Sortable.create(imgList, {
         animation: 150,
         draggable: ".item",
-        // chosenClass: "transform",
-
-        setData: function (dataTransfer, dragEl) {
-            console.log(dataTransfer)
-            console.log(dragEl.children[1])
-
-            dataTransfer.setData("Text", dragEl.children[1].textContent) // `dataTransfer` object of HTML5 DragEvent
-        }
+        chosenClass: "selected"
     })
 }
 
@@ -37,14 +33,14 @@ const form = document.querySelector(".form-container")
 
 form.addEventListener("submit", e => {
     e.preventDefault()
-
+    console.log(fileInput.files)
     const input = document.querySelector("#profile-picture")
+    console.log(input.files)
+
     const inputArray = Array.from(input.files)
     const newArrayFiles = []
 
     const figures = Array.from(document.querySelectorAll(".show-list-images"))
-
-    // const dataAtribbuteArray = figures.map((e) => e.getAttribute("data-id") != undefined ?  e.getAttribute("data-id") : )
 
     console.log(inputArray.length)
     for (let i = 0; i < inputArray.length; i++) {
@@ -66,25 +62,25 @@ form.addEventListener("submit", e => {
     // console.log(newArrayFiles)
     // console.log(input.files)
 
-    const actionURL = e.target.action // Obtén la URL del atributo action
+    const actionURL = e.target.action
 
     const formData = new FormData(e.target)
-    // console.log(formData)
     formData.delete("product-image")
 
     newArrayFiles.forEach((file, index) => {
         formData.append("product-image", file)
     })
 
-    // fetch(actionURL, {
-    //     method: "PUT",
-    //     body: formData
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data)
-    //     })
-    //     .catch(error => {
-    //         console.error("Error:", error)
-    //     })
+    fetch(actionURL, {
+        method: "PUT",
+        body: formData
+    })
+        .then(response => response.json())
+        .catch(error => {
+            console.error("Error:", error)
+        })
+
+    setTimeout(() => {
+        window.location.href = "/productos"
+    }, 300)
 })
