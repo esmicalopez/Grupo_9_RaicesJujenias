@@ -584,7 +584,7 @@ body {
 
 .product-photo input {
     border: none;
-    padding-bottom: 18px;
+    /* padding-bottom: 18px; */
     width: auto;
 }
 
@@ -592,7 +592,7 @@ body {
     display: flex;
 
     overflow-x: auto;
-    padding: 15px 5px;
+    padding: 12px 5px 17px;
     gap: 17px;
 }
 
