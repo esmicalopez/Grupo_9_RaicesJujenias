@@ -16,6 +16,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
+
+    <script src="/js/editProduct.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+
 </head>
 <body>
     <%- include("./partials/header.ejs") %>
@@ -88,13 +93,40 @@
 
         <div class="product-photo input-item">
             
-            <label for="profile-picture">Foto del Producto</label>
+            <label for="profile-picture">Fotos del Producto</label>
             <div class="">
-                <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image">
-                <div class="product-photo-img">
-                    <img src="/images/products/<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
+                <div class="input-photo-box">
+                    <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image" data-info="" multiple>
+                    <div class="product-photos-list has-scrollbar">
+                        <% for(let i = 0; i < 5; i++) { %>
+                            <img src="/images/products/<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
+                        <% } %>
+                    </div>
                 </div>
+    
+                <section class="show-images-container none">
+                    <h4>Images Nuevas a Subir</h4>
+                    <span>¡Haz clic en una imagen y movela para ordenarla!</span>
+                    <div class="show-images-edit">
+
+                        <% for(let i = 0; i < 5; i++) { %>
+                            <figure class="show-list-images">
+                                <img class="img-edit" src="" alt="" data-id="<%= i + 1%>">
+                            </figure>
+                        <% } %>
+        
+                        <div class="show-list-images-absolute">
+                                <div class="">Imagen Principal   %></div>
+        
+                            <% for(let i = 2; i < 6; i++) { %>
+                                <div class="">Imagen <%= i %></div>
+                            <% } %>
+                        </div>
+                    </div>
+
+                </section>
             </div>
+
         </div>
 
         <div class="product-description input-item">
@@ -152,7 +184,7 @@
         <ion-icon name="arrow-up-outline"></ion-icon>
     </a>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 
     <!-- ICONOS-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

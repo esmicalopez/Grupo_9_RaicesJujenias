@@ -534,11 +534,110 @@ body {
 .input-item label, .input-item span {
     font-size: var(--fs-5);
 }
-/*
-.product-photo input {
-    color: transparent;
+
+.product-photo > .input-photo-box {
+    margin-top: 5px;
+    border: 1px solid #bbb;
+    border-radius: 4px ;
+
+    padding: 5px 15px;
+    text-align: center;
 }
-*/
+
+.product-photo input {
+    border: none;
+    width: auto;
+    margin: 7px 0;
+}
+
+.show-images-container {
+    /* margin-top: 28px; */
+}
+
+.show-images-container.none {
+    display: none;
+}
+
+.show-images-container > h4 {
+    border-top: 1px solid #bbb;
+    font-size: 2rem;
+    padding-top: 25px;
+    text-transform: uppercase;
+}
+
+.show-images-container > span {
+    font-size: 1em !important;
+    color: #777;
+    margin: 16px 0 24px;
+    text-align: left;
+}
+
+.show-images-edit {
+    display: grid;
+    place-content: center;
+    gap: 42px 20px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+
+    margin-top: 15px;
+    padding: 20px 16px;
+    position: relative;
+}
+
+.show-list-images-absolute {
+    font-size: 1.7rem;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: grid;
+    place-content: center;
+    gap: 42px 20px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    padding: 20px 16px;
+
+    z-index: -1;
+
+}
+
+.show-list-images-absolute > div { 
+    height: 286px;
+    top: -25px;
+    position: relative;
+}
+
+.show-images-edit figure {
+    background: #fff;
+    width: 100%;
+    height: 286px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.show-images-edit figure.item {
+    cursor: grab;
+}
+
+.show-images-edit figure.selected {
+    transform: scale(1.03) rotate(-1deg);
+}
+
+.show-images-edit figure.selected > img {
+    border: 3px dashed #8654b9;
+}
+
+.show-images-edit figure > img {
+    width: 100%;
+    height: 286px;
+    border-radius: 10px;
+    border: 2px dashed #c0785e;
+    object-fit: contain;
+}
+
 
 .product-description__label {
     display: block;
