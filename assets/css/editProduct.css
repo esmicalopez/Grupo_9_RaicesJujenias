@@ -176,7 +176,28 @@ body {
     --background: hsla(0, 0%, 0%, 0.1);
 }
 
+.has-scrollbar {
+    scroll-snap-type: inline mandatory;
+  }
+  
+.has-scrollbar::-webkit-scrollbar {
+    height: 15px;
+}
 
+.has-scrollbar::-webkit-scrollbar-track {
+    border-radius: 6px;
+    outline: 2px solid var(--terracota_2);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--terracota_2);
+    border: 2px solid var(--white);
+    border-radius: 6px;
+}
+
+.has-scrollbar::-webkit-scrollbar-button {
+  padding: 15px;
+}
 
 .card-banner {
     background: var(--cultured);
@@ -528,7 +549,7 @@ body {
 .form-container input, .product-status select, .product-category select {
     width: 100%;
     padding: .9rem;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
     border-radius: 4px;
     margin-top: 5px;
     font-size: var(--fs-6);
@@ -550,10 +571,10 @@ body {
 
 .product-photo > div  {
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
     border-radius: 4px ;
 
-    padding: 5px 15px;
+    padding: 5px 15px 20px;
     text-align: center;
 }
 
@@ -567,23 +588,27 @@ body {
     width: auto;
 }
 
-.product-photo-img  {
-    border-top: 1px solid #ccc;
+.product-photos-list {
+    display: flex;
 
+    overflow-x: auto;
+    padding: 15px 5px;
+    gap: 17px;
 }
 
-.product-photo-img img  {
-    padding: 20px 0;
-    margin: auto;
-    height: 290px;
-    width: 272px;
-    text-align: center;
+.product-photos-list img  {
+    height: 275px;
+    min-width: 257px;
+
+    object-fit: contain;
+    border: 1px solid #a7674a;
+    border-radius: 7px;
 }
 
 
 .show-images-container {
-    border-top: 1px solid #ccc;
-    margin-top: 10px;
+    border-top: 1px solid #bbb;
+    margin-top: 28px;
 }
 
 .show-images-container.none {
@@ -599,7 +624,7 @@ body {
 .show-images-container > span {
     font-size: 1em !important;
     color: #777;
-    margin: 16px 0 22px;
+    margin: 16px 0 24px;
     text-align: left;
 }
 
@@ -633,7 +658,7 @@ body {
 
 .show-list-images-absolute > div { 
     height: 286px;
-    top: -27px;
+    top: -25px;
     position: relative;
 }
 
@@ -660,9 +685,6 @@ body {
 .show-images-edit figure.selected > img {
     border: 3px dashed #8654b9;
 }
-
-
-
 
 .show-images-edit figure > img {
     width: 100%;
