@@ -79,7 +79,7 @@ const productModel = {
 
         for (const image of files) {
             db.Image.create({
-                name: image.filename,
+                name: image.originalname, // => cambiar a "name: image.filename". Lo Cambie para que se vea el nombre original.
                 product_detail_id: product.id
             })
         }

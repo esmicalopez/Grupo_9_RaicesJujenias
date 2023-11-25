@@ -98,8 +98,8 @@
                 <div class="input-photo-box">
                     <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image" data-info="" multiple>
                     <div class="product-photos-list has-scrollbar">
-                        <% for(let i = 0; i < 5; i++) { %>
-                            <img src="/images/products/<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
+                        <% for(let img of chosenProductSpec.images) { %>
+                            <img src="/images/products/<%= img ? img.name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
                         <% } %>
                     </div>
                 </div>
