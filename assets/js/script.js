@@ -30,7 +30,3 @@ window.addEventListener("scroll", function () {
         goTopBtn.classList.remove("active")
     }
 })
-
-$(".chosen-select").chosen({
-    no_results_text: "Oops, nothing found!"
-})

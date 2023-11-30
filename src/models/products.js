@@ -161,6 +161,7 @@ const productModel = {
                 name: image.filename
             }, {
                 where: { product_detail_id: productSpec } // le saque el => id  ||  hablar de esto
+                // borron y cuenta nueva O usar "upsert" con ayuda de una query
             })
         }
 

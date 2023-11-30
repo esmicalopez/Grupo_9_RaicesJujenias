@@ -1,6 +1,6 @@
 function sortImagesMiddleware (req, res, next) {
     if (req.query.newList === undefined) {
-        req.newFiles = false
+        req.newFiles = req.files.length === 0 ? false : req.files
         next()
     }
 
