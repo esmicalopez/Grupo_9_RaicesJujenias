@@ -1,4 +1,4 @@
-const { validationResult } = require("express-validator")
+const { validationResult, matchedData } = require("express-validator")
 const userModel = require("../models/users")
 
 const controllers = {
@@ -19,10 +19,15 @@ const controllers = {
     },
 
     register: async (req, res) => {
+        console.log(req.file)
         //  validacion contraseñas
         const erroresExpressValidator = validationResult(req)
         console.log("Errores: ")
         console.log(erroresExpressValidator.mapped())
+
+        const data = matchedData(req)
+        console.log("data: ")
+        console.log(data)
 
         if (!erroresExpressValidator.isEmpty()) {
             return res.render("users/registro", {

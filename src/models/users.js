@@ -12,6 +12,16 @@ const userModel = {
         return users
     },
 
+    userExists: async ({ email }) => {
+        const user = await db.User.findOne({
+            where: {
+                email
+            }
+        })
+
+        return user
+    },
+
     register: async ({ data, file }) => {
         const fileValue = file ?? {}
         const { name, lastName, email, password, rol } = data
