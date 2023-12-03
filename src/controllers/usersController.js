@@ -50,6 +50,15 @@ const controllers = {
     login: async (req, res) => {
         const { email, password, rememberUser } = req.body
 
+        const erroresExpressValidator = validationResult(req)
+
+        if (!erroresExpressValidator.isEmpty()) {
+            return res.render("users/login", {
+                errors: erroresExpressValidator.mapped(),
+                old: req.body
+            })
+        }
+
         const { user, passwordCheck } = await userModel.login({ email, password })
 
         if (!user || !passwordCheck) {

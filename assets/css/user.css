@@ -749,10 +749,11 @@
   .left-menu .remember-user-line{
       display: flex;
       align-items: center;
+      gap: 5px;
+      margin: 3px 0 13px; 
   }
   .left-menu .remember-user-line #remember-user{
       width: auto;
-      margin: 3px 0px 0px 5px;
   }
   .left-menu .login-options{
       display: flex;
@@ -761,10 +762,9 @@
       justify-content: space-between;
   }
   .left-menu .login-join-button{
-      
       display: flex;
       justify-content: space-between;
-      margin: 20px 0;
+      margin-bottom: 20px;
   }
   .login-form .left-menu .login-button{
       background: var(--terracota);

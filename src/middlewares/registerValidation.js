@@ -1,38 +1,7 @@
 const { check } = require("express-validator")
-const userModel = require("../models/users")
+const { userExists, imageValidator, passwordsMatch } = require("../validators/customValidators")
 
-const passwordsMatch = (value, { req }) => {
-    if (value !== req.body.confirmPassword) {
-        throw new Error("Las contraseñas no coinciden")
-    }
-    return true
-}
-
-const imageValidator = (value, { req }) => {
-    if (req.file) {
-        const allowedExtensions = ["jpg", "jpeg", "png", "gif"]
-
-        const fileExtension = req.file.originalname.split(".").pop().toLowerCase()
-
-        if (!allowedExtensions.includes(fileExtension)) {
-            throw new Error("Imagenes permitidas: JPG, JPEG, PNG, GIF")
-        }
-    }
-
-    return true
-}
-
-const userExists = async value => {
-    const user = await userModel.userExists({ email: value })
-
-    if (user) {
-        throw new Error("Este correo ya esta registrado.")
-    }
-
-    true
-}
-
-const validator = [
+const registerValidator = [
     check("name")
         .trim()
         .notEmpty().withMessage("El nombre no puede estar vacio.")
@@ -66,4 +35,4 @@ const validator = [
         .escape()
 ]
 
-module.exports = { validator }
+module.exports = { registerValidator }
