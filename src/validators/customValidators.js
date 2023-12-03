@@ -21,7 +21,9 @@ const imageValidator = (value, { req }) => {
     return true
 }
 
-const userExists = async value => {
+const userExists = async (value, { req }) => {
+    if (req.session.userData && req.session.userData.email === value) return true
+
     const user = await userModel.userExists({ email: value })
 
     if (user) {

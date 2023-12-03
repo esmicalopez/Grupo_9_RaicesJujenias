@@ -19,16 +19,10 @@ const controllers = {
     },
 
     register: async (req, res) => {
-        console.log(req.file)
-        //  validacion contraseñas
+        //  -- Express-validator
         const erroresExpressValidator = validationResult(req)
-        console.log("Errores: ")
-        console.log(erroresExpressValidator.mapped())
-
         const data = matchedData(req)
-        console.log("data: ")
         console.log(data)
-
         if (!erroresExpressValidator.isEmpty()) {
             return res.render("users/registro", {
                 errores: erroresExpressValidator.mapped()
@@ -50,8 +44,8 @@ const controllers = {
     login: async (req, res) => {
         const { email, password, rememberUser } = req.body
 
+        //  -- Express-validator
         const erroresExpressValidator = validationResult(req)
-
         if (!erroresExpressValidator.isEmpty()) {
             return res.render("users/login", {
                 errors: erroresExpressValidator.mapped(),
@@ -67,8 +61,10 @@ const controllers = {
         }
 
         req.session.user = user.id
+        req.session.userData = { rol: user.rol_id, email: user.email }
         req.session.userLogged = true
         rememberUser === "true" ? res.cookie("cookieLogger", user.id, { maxAge: 60000 * 60 * 24 * 7 }) : ""
+        res.cookie("userData", JSON.stringify({ rol: user.rol_id, email: user.email }), { maxAge: 60000 * 60 * 24 * 7 })
         req.flash("success", `${user.name.charAt(0).toUpperCase() + user.name.slice(1)} ingresaste sesión con exito!  -  Rol: ${user.rol.name.charAt(0).toUpperCase() + user.rol.name.slice(1)}`)
         return res.redirect("/")
     },
@@ -85,11 +81,19 @@ const controllers = {
         }
 
         const user = await userModel.userProfile({ sessionUser: req.session.user })
-
-        res.render("users/userProfile", { user })
+        res.render("users/userProfile", { user, rol: req.session.userData.rol })
     },
 
     userEdit: async (req, res) => {
+        //  -- Express-validator
+        const erroresExpressValidator = validationResult(req)
+        if (!erroresExpressValidator.isEmpty()) {
+            return res.render("users/userProfile", {
+                errors: erroresExpressValidator.mapped(),
+                user: req.body,
+                rol: req.session.userData.rol
+            })
+        }
         await userModel.userEdit({ file: req.file, sessionUser: req.session.user, data: req.body })
 
         return res.redirect("/")
@@ -107,8 +111,12 @@ const controllers = {
 
     userEditPassword: async (req, res) => {
         const { password, oldPassword } = req.body
-        console.log(req.body)
-        console.log(req.session.user)
+
+        const passwordCheck = await userModel.passwordCheck({ userId: req.session.user, oldPassword })
+
+        if (!passwordCheck) {
+            return res.render("users/userPassword", { errors: { msg: "Contraseña Incorrecta" }, old: req.body })
+        }
 
         //  validacion contraseñas
         const erroresExpressValidator = validationResult(req)
@@ -116,17 +124,12 @@ const controllers = {
         console.log(erroresExpressValidator.mapped())
 
         if (!erroresExpressValidator.isEmpty()) {
-            console.log("falso")
             return res.render("users/userPassword", {
                 errores: erroresExpressValidator.mapped()
             })
         }
 
-        const { oldPasswordCheck } = await userModel.userEditPassword({ sessionUser: req.session.user, password, oldPassword })
-
-        if (!oldPasswordCheck) {
-            return res.render("users/userPassword", { errors: { msg: "Los datos enviados son incorrectos o incompatibles" }, old: req.body })
-        }
+        await userModel.userEditPassword({ userId: req.session.user, password })
 
         return res.redirect("/")
     }
