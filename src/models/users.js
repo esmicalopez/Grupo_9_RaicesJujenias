@@ -12,6 +12,16 @@ const userModel = {
         return users
     },
 
+    userExists: async ({ email }) => {
+        const user = await db.User.findOne({
+            where: {
+                email
+            }
+        })
+
+        return user
+    },
+
     register: async ({ data, file }) => {
         const fileValue = file ?? {}
         const { name, lastName, email, password, rol } = data
@@ -86,23 +96,21 @@ const userModel = {
         return user
     },
 
-    userEditPassword: async ({ sessionUser, oldPassword, password }) => {
-        const user = await db.User.findByPk(sessionUser)
+    passwordCheck: async ({ userId, oldPassword }) => {
+        const user = await db.User.findByPk(userId)
 
-        const oldPasswordCheck = await bcrypt.compare(oldPassword, user.password)
+        return await bcrypt.compare(oldPassword, user.password)
+    },
 
-        if (!oldPasswordCheck) {
-            return { oldPasswordCheck }
-        }
-
+    userEditPassword: async ({ userId, password }) => {
         const passwordHashed = await bcrypt.hash(password, 10)
 
         const userEdit = await db.User.update({
             password: passwordHashed
         }, {
-            where: { id: user.id }
+            where: { id: userId }
         })
-        return { userEdit, oldPasswordCheck }
+        return userEdit
     }
 }
 

@@ -37,37 +37,62 @@
             <form action="/profile?_method=PUT" class="profile-info" method="post" enctype="multipart/form-data">
                 <% if (user.avatar) { %>
                     <div class="profile-avatar">
+                        <% if (locals.errors && errors["profile-image"]) { %>
+                            <div style="color: red; padding-bottom: 8px;">
+                               <%= errors["profile-image"].msg %>
+                            </div>
+                        <% } %>
                         <h4>Foto de Perfil</h4>
                         <img src="/images/users/<%= user.avatar || "defaultAvatar.png"%> " alt="">
                         <br>
                         <label for="avatar">Cambiar Imagen</label>
-                        <input type="file" name="profile-image" id="avatar" accept=",jpg,png" hidden>
+                        <input type="file" name="profile-image" id="avatar" accept=",jpg,jpeg,png,gif" hidden>
                     </div>
                 <% } else { %>
                     <div class="profile-avatar">
+                        <% if (locals.errors && errors["profile-image"]) { %>
+                            <div style="color: red; padding-bottom: 8px;">
+                               <%= errors["profile-image"].msg %>
+                            </div>
+                        <% } %>
                         <h4>Foto de Perfil</h4>
                         <img src="/images/users/defaultAvatar.png" alt="">
                         <br>
                         <label for="avatar">Cambiar Imagen</label>
-                        <input type="file" name="profile-image" id="avatar" accept=",jpg,png" hidden>
+                        <input type="file" name="profile-image" id="avatar" accept=",jpg,jpeg,png,gif" hidden>
                     </div>
                 <% } %>
                 <div class="account-info">
+                    <% if (locals.errors && errors.name) { %>
+                        <div style="color: red; padding-bottom: 8px;">
+                           <%= errors.name.msg %>
+                        </div>
+                    <% } %>
                     <label for="name">Nombre</label>
-                    <input type="text" name="name" id="name" value="<%= user.name %>">
+                    <input type="text" name="name" id="name" value="<%= user.name %>" required>
                 </div>
                 <div class="account-info">
+                    <% if (locals.errors && errors.lastName) { %>
+                        <div style="color: red; padding-bottom: 8px;">
+                           <%= errors.lastName.msg %>
+                        </div>
+                    <% } %>
                     <label for="lastName">Apellido</label>
-                    <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>">
+                    <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>" required>
                 </div>
                 <div class="account-info">
+                    <% if (locals.errors && errors.email) { %>
+                        <div style="color: red; padding-bottom: 8px;">
+                           <%= errors.email.msg %>
+                        </div>
+                    <% } %>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" value="<%= user.email %>">
+                    <input type="email" name="email" id="email" value="<%= user.email %>" required>
                 </div>
 
                 <button type="submit">Modificar Datos</button>
                 
-                <% if (user.rol.id === 1) { %>
+                <% if (rol == 1) { %>
                     <div class="account-info">
                         <br>
                         <h4 for="name" style="text-align: center;">
