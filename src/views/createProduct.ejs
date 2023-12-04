@@ -33,65 +33,92 @@
                 </div>
             <% } %>
         <% } %>
-        <div class="product-name input-item">
-            <label class="product-name__label" for="name">Nombre del Producto</label>
-            <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre" name="name" >
+
+        <div class="input-group">
+            <div class="product-name input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                <label class="product-name__label" for="name">Nombre del Producto</label>
+                <input class="product-name__input input" id="name" type="text" placeholder="Nombre del Producto"  autocomplete="nombre" name="name">
+            </div>
+
+            <div class="product-price input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                <label for="price">Precio</label>
+                <input id="price" type="number" placeholder="Precio"  class="input"  name="price">
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <div class="input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                <label for="stock">Cantidad</label>
+                <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock"  class="input">
+            </div>
+
+            <div class="product-category input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                <span>Categoria</span>
+                <select  name="category" id="category"  class="input">
+                    <option disabled selected value="">
+                        Escoge la categoria
+                    </option>
+                    <% for( category of categories ) { %>
+                        <option value="<%= category.id %>"> <%= category.name %> </option>
+                    <% } %>
+
+                </select>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <div class="product-status input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                <span>Talle</span>
+                <select name="size" id="size"  class="input">
+                    <option disabled selected value="">
+                        Escoge el talle
+                    </option>
+                    <% for( size of sizes ) { %>
+                        <option value="<%= size.id %>"> <%= size.name %> </option>
+                    <% } %>
+                </select>
+            </div>
+
+            <div class="product-status input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                
+                <span>Colores</span>
+                <select name="color" id="color"  class="input">
+                    <option disabled selected value="">
+                        Escoge el color
+                    </option>
+                    <% for( color of colors ) { %>
+                        <option value="<%= color.id %>"> <%= color.name %> </option>
+                    <% } %>
+                </select>
+            </div>
         </div>
 
-        <div class="product-price input-item">
-            <label for="price">Precio</label>
-            <input id="price" type="number" placeholder="Precio"  name="price" required>
-        </div>
-
-        <div class="input-item">
-            <label for="stock">Cantidad</label>
-            <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock" required>
-        </div>
-
-        <div class="product-category input-item">
-            <span>Categoria</span>
-            <select  name="category" id="category" required>
-                <option disabled selected value="">
-                    Escoge la categoria
-                </option>
-                <% for( category of categories ) { %>
-                    <option value="<%= category.id %>"> <%= category.name %> </option>
-                <% } %>
-
-            </select>
-        </div>
-
-        <div class="product-status input-item">
-            <span>Talle</span>
-            
-            <select name="size" id="size" required>
-                <option disabled selected value="">
-                    Escoge el talle
-                </option>
-                <% for( size of sizes ) { %>
-                    <option value="<%= size.id %>"> <%= size.name %> </option>
-                <% } %>
-            </select>
-        </div>
-
-        <div class="product-status input-item">
-            <span>Colores</span>
-            
-            <select name="color" id="color" required>
-                <option disabled selected value="">
-                    Escoge el color
-                </option>
-                <% for( color of colors ) { %>
-                    <option value="<%= color.id %>"> <%= color.name %> </option>
-                <% } %>
-            </select>
-        </div>
 
         <div class="product-photo input-item">
+            <div class="error error-name none">
+                <p>Campo vacio</p>
+            </div>
             <label for="product-image">Fotos del Producto</label>
-
             <div class="input-photo-box">
-                <input id="product-image" type="file" accept=",jpg,png" required name="product-image" multiple>
+                <input id="product-image" type="file" accept=",jpg,png"  name="product-image" multiple>
 
                 <section class="show-images-container none">
                     <h4>Images Nuevas a Subir</h4>
@@ -118,8 +145,11 @@
         </div>
 
         <div class="product-description input-item">
+            <div class="error error-name none">
+                <p>Campo vacio</p>
+            </div>
             <label class="product-description__label " for="descripcion">Descripcion</label>
-            <textarea class="product-description__textarea" name="description" id="descripcion" cols="30" rows="10" required></textarea>
+            <textarea class="product-description__textarea input" name="description" id="description" cols="30" rows="10"></textarea>
         </div>
 
         <div class="form-buttons">
