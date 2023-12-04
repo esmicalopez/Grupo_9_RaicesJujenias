@@ -1,6 +1,6 @@
 // IMAGEN DEL INPUT
 
-const fileInput = document.querySelector("#profile-picture")
+const fileInput = document.querySelector("#product-image")
 const imgList = document.querySelector(".show-images-edit")
 const showImagesContainer = document.querySelector(".show-images-container")
 
