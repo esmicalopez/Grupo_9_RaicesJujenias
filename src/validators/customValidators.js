@@ -1,4 +1,5 @@
 const userModel = require("../models/users")
+const db = require("../database/models")
 
 const passwordsMatch = (value, { req }) => {
     if (value !== req.body.confirmPassword) {
@@ -33,8 +34,41 @@ const userExists = async (value, { req }) => {
     true
 }
 
+const colorExists = async (value, { req }) => {
+    const color = await db.Color.findByPk(value)
+
+    if (!color) {
+        throw new Error("Ingrese un color válido")
+    }
+
+    return true
+}
+
+const sizeExists = async (value, { req }) => {
+    const size = await db.Size.findByPk(value)
+
+    if (!size) {
+        throw new Error("Ingrese un talle/tamaño válido")
+    }
+
+    return true
+}
+
+const categoryExists = async (value, { req }) => {
+    const category = await db.Category.findByPk(value)
+
+    if (!category) {
+        throw new Error("Ingrese una categoría válida")
+    }
+
+    return true
+}
+
 module.exports = {
     passwordsMatch,
     imageValidator,
-    userExists
+    userExists,
+    colorExists,
+    sizeExists,
+    categoryExists
 }

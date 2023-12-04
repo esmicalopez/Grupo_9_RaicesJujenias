@@ -99,7 +99,7 @@ CREATE TABLE sizes (
 CREATE TABLE product_detail (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     price INT UNSIGNED NOT NULL,
-    offer DECIMAL(3, 1) UNSIGNED DEFAULT NULL,    
+    offer INT UNSIGNED DEFAULT NULL CHECK (offer between 0 and 99),    
     stock INT UNSIGNED NOT NULL,
     product_id INT UNSIGNED NOT NULL,
     color_id INT UNSIGNED NOT NULL,

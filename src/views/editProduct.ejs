@@ -29,7 +29,13 @@
     <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/edit?_method=PUT" class="form-container" method="POST" enctype="multipart/form-data">
         <h1>Editar Producto:</h1>
         <h3><%= product.name  %> / Color <%= chosenProductSpec.color.name %> - Tamaño/Talle <%= chosenProductSpec.size.name %></h3>
-
+        <% if (locals.errores && errores.length > 0) { %>
+            <% for(error of errores) { %>
+                <div style="color: red; padding-bottom: 8px;">
+                   <%= error.msg %>
+                </div>
+            <% } %>
+        <% } %>
         <div class="product-name input-item">
             <label class="product-name__label" for="name">Nombre del Producto</label>
             <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre" name="name" value="<%= product.name %>">
@@ -42,7 +48,7 @@
 
         <div class="input-item">
             <label for="offer">Oferta</label>
-            <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" max="99" required value="<%= chosenProductSpec.offer || 0 %>">
+            <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" min="0" max="99" required value="<%= chosenProductSpec.offer || 0 %>">
         </div>
 
         <div class="input-item">
