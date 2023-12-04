@@ -2,6 +2,8 @@ const productModel = require("../models/products.js")
 // Calculo del descuento
 const offerCalc = require("../functions/offerCalcule")
 const db = require("../database/models") // se usa en la session del User, en "crearProductoView"
+// Express validator
+const { validationResult } = require("express-validator")
 
 //  Controladores
 const controllers = {
@@ -51,6 +53,16 @@ const controllers = {
     },
 
     crearProducto: async (req, res) => {
+        //  -- Express-validator
+        const erroresExpressValidator = validationResult(req)
+
+        if (!erroresExpressValidator.isEmpty()) {
+            const { colors, sizes, categories } = await productModel.crearProductoView()
+            return res.render("createProduct", {
+                errores: erroresExpressValidator.array({ onlyFirstError: true }), colors, sizes, categories
+            })
+        }
+
         const product = await productModel.crearProducto({ data: req.body, files: req.files })
 
         if (product) {
@@ -90,9 +102,32 @@ const controllers = {
     },
 
     editarProducto: async (req, res) => {
+        // -- Express Validator
+        const erroresExpressValidator = validationResult(req)
+
+        if (!erroresExpressValidator.isEmpty()) {
+            const { id, productSpec: prodSpecId } = req.params
+            const productData = await productModel.editarProductoView({ id, prodSpecId })
+
+            if (!productData) return res.send("Producto no encontrado")
+
+            const { colors, sizes, categories, product, detail, chosenProductSpec, newProductsList } = productData
+            return res.render("editProduct", {
+                errores: erroresExpressValidator.array({ onlyFirstError: true }),
+                colors,
+                sizes,
+                categories,
+                product,
+                detail,
+                chosenProductSpec,
+                newProductsList
+            })
+        }
+
         const { updateProduct, updateProductDetail } = await productModel.editarProducto({ params: req.params, data: req.body, files: req.files })
 
         if (updateProduct && updateProductDetail) {
+            console.log(updateProductDetail)
             res.redirect("/productos")
         }
     },

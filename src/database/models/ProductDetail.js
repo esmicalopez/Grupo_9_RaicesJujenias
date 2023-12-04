@@ -11,7 +11,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         offer: {
-            type: dataTypes.DECIMAL(3, 1).UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
             defaultValue: null
         },
         stock: {

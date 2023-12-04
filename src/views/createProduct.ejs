@@ -26,6 +26,13 @@
 <main>
     <form action="/productos/crear" class="form-container" method="POST" enctype="multipart/form-data">
         <h1>Crear Producto</h1>
+        <% if (locals.errores && errores.length > 0) { %>
+            <% for(error of errores) { %>
+                <div style="color: red; padding-bottom: 8px;">
+                   <%= error.msg %>
+                </div>
+            <% } %>
+        <% } %>
         <div class="product-name input-item">
             <label class="product-name__label" for="name">Nombre del Producto</label>
             <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto" required autocomplete="nombre" name="name" >
@@ -81,10 +88,10 @@
         </div>
 
         <div class="product-photo input-item">
-            <label for="profile-picture">Fotos del Producto</label>
+            <label for="product-image">Fotos del Producto</label>
 
             <div class="input-photo-box">
-                <input id="profile-picture" type="file" accept=",jpg,png" required name="product-image" multiple>
+                <input id="product-image" type="file" accept=",jpg,png" required name="product-image" multiple>
 
                 <section class="show-images-container none">
                     <h4>Images Nuevas a Subir</h4>
