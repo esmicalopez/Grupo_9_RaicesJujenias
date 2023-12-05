@@ -78,6 +78,10 @@
   input {
     width: 100%;
   }
+
+  input:focus {
+    outline: none !important;
+  }
   
   button {
     cursor: pointer;
@@ -519,6 +523,7 @@
     margin-top: 3px;
   }
 
+
   .error-left {
     text-align: center;
   }
@@ -935,6 +940,22 @@
     background-color: #c7562d;
   }
 
+
+  .form-container .isCorrect,
+  #formulario .isCorrect,
+  .profile-info .isCorrect,
+  #formPassword .isCorrect {
+    color: rgb(0, 136, 9);
+    border: rgb(0, 136, 9) solid 2px;
+  }
+
+  .form-container .isIncorrect,
+  #formulario .isIncorrect,
+  .profile-info .isIncorrect,
+  #formPassword .isIncorrect  {
+    color: rgb(220, 41, 41);
+    border: rgb(220, 41, 41) solid 2px;
+  }
   /**FOOTER*/
   
   .footer {

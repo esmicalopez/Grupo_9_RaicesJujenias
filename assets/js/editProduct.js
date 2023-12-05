@@ -2,7 +2,7 @@
 
 const showImagesContainer = document.querySelector(".show-images-container")
 const imgList = document.querySelector(".show-images-edit")
-const fileInput = document.querySelector("#profile-picture")
+const fileInput = document.querySelector("#product-image")
 
 fileInput.addEventListener("change", (e) => {
     const imageValidationResults = imageValidator(e.target)

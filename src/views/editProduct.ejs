@@ -130,10 +130,10 @@
             <div class="error-photo none">
                 <p>Campo vacio</p>
             </div>
-            <label for="profile-picture">Fotos del Producto. <span>* Campo Opcional</span></label>
+            <label for="product-image">Fotos del Producto. <span>* Campo Opcional</span></label> 
             <div class="product-photo-border">
                 <div class="input-photo-box">
-                    <input id="profile-picture" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image" data-info="" multiple>
+                    <input id="product-image" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image" data-info="" multiple>
                     <div class="product-photos-list has-scrollbar">
                         <% for(let img of chosenProductSpec.images) { %>
                             <img src="/images/products/<%= img ? img.name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
