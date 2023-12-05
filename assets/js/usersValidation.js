@@ -11,12 +11,6 @@ window.addEventListener("load", function () {
     const imgPreview = document.querySelector("#imgPreview")
 
     image.addEventListener("change", function (e) {
-        // const allowedExtensions = ["jpg", "jpeg", "png", "gif"]
-        // const fileExtension = image.files[0].name.split(".").pop().toLowerCase()
-        // if (!allowedExtensions.includes(fileExtension)) {
-        //     console.log("nOOO")
-        // }
-
         const [file] = image.files
         if (file) {
             imgPreview.style.display = "block"

@@ -13,6 +13,7 @@
     rel="stylesheet">
     <script src="https://kit.fontawesome.com/a00d13e606.js" crossorigin="anonymous"></script>
     <link rel="preload" href="images/banner.png" as="image">
+    <script src="/js/editUserValidation.js"></script>
 </head>
 <body>
 
@@ -46,7 +47,9 @@
                         <img src="/images/users/<%= user.avatar || "defaultAvatar.png"%> " alt="">
                         <br>
                         <label for="avatar">Cambiar Imagen</label>
-                        <input type="file" name="profile-image" id="avatar" accept=",jpg,jpeg,png,gif" hidden>
+                        <input type="file" name="profile-image" id="avatar" accept="image/png, image/jpeg, image/jpg" hidden>
+                        <img src="" alt="" id="imgPreview" width="200" height="200" style="display: none;">
+                        <h5 style="display: none;">Nuevo avatar</h5>
                     </div>
                 <% } else { %>
                     <div class="profile-avatar">
@@ -59,7 +62,9 @@
                         <img src="/images/users/defaultAvatar.png" alt="">
                         <br>
                         <label for="avatar">Cambiar Imagen</label>
-                        <input type="file" name="profile-image" id="avatar" accept=",jpg,jpeg,png,gif" hidden>
+                        <input type="file" name="profile-image" id="avatar" accept="image/png, image/jpeg, image/jpg" hidden>
+                        <img src="" alt="" id="imgPreview" width="200" height="200" style="display: none;">
+                        <h5>Nuevo avatar</h5>
                     </div>
                 <% } %>
                 <div class="account-info">
@@ -70,6 +75,7 @@
                     <% } %>
                     <label for="name">Nombre</label>
                     <input type="text" name="name" id="name" value="<%= user.name %>" required>
+                    <small style="padding: 5px; display: none;" class="nameValidations">  • Debe tener entre 2 y 18 caracteres</small>
                 </div>
                 <div class="account-info">
                     <% if (locals.errors && errors.lastName) { %>
@@ -79,6 +85,7 @@
                     <% } %>
                     <label for="lastName">Apellido</label>
                     <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>" required>
+                    <small style="padding: 5px; display: none;" class="lastNameValidations">  • Debe tener entre 2 y 18 caracteres</small>
                 </div>
                 <div class="account-info">
                     <% if (locals.errors && errors.email) { %>
@@ -88,6 +95,7 @@
                     <% } %>
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="<%= user.email %>" required>
+                    <small style="padding: 5px; display: none;" class="emailValidations">  • Ingrese un email válido</small>
                 </div>
 
                 <button type="submit">Modificar Datos</button>
