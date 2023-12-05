@@ -53,6 +53,14 @@
         </div>
         
         <div class="input-group">
+            <div class="input-item product-offer">
+                <div class="error none">
+                    <p>Campo vacio</p>
+                </div>
+                <label for="offer">Oferta. <span>* Campo Opcional</span></label>
+                <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20" class="" name="offer" min="0" max="99">
+            </div>
+
             <div class="input-item">
                 <div class="error error-name none">
                     <p>Campo vacio</p>
@@ -60,40 +68,9 @@
                 <label for="stock">Cantidad</label>
                 <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock"  class="input">
             </div>
-
-            <div class="product-category input-item">
-                <div class="error error-name none">
-                    <p>Campo vacio</p>
-                </div>
-                <span>Categoria</span>
-                <select  name="category" id="category"  class="input">
-                    <option disabled selected value="">
-                        Escoge la categoria
-                    </option>
-                    <% for( category of categories ) { %>
-                        <option value="<%= category.id %>"> <%= category.name %> </option>
-                    <% } %>
-
-                </select>
-            </div>
         </div>
         
         <div class="input-group">
-            <div class="product-status input-item">
-                <div class="error error-name none">
-                    <p>Campo vacio</p>
-                </div>
-                <span>Talle</span>
-                <select name="size" id="size"  class="input">
-                    <option disabled selected value="">
-                        Escoge el talle
-                    </option>
-                    <% for( size of sizes ) { %>
-                        <option value="<%= size.id %>"> <%= size.name %> </option>
-                    <% } %>
-                </select>
-            </div>
-
             <div class="product-status input-item">
                 <div class="error error-name none">
                     <p>Campo vacio</p>
@@ -109,8 +86,38 @@
                     <% } %>
                 </select>
             </div>
-        </div>
 
+            <div class="product-status input-item">
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
+                <span>Talle</span>
+                <select name="size" id="size"  class="input">
+                    <option disabled selected value="">
+                        Escoge el talle
+                    </option>
+                    <% for( size of sizes ) { %>
+                        <option value="<%= size.id %>"> <%= size.name %> </option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+        
+        <div class="product-category input-item">
+            <div class="error error-name none">
+                <p>Campo vacio</p>
+            </div>
+            <span>Categoria</span>
+            <select  name="category" id="category" class="input">
+                <option disabled selected value="">
+                    Escoge la categoria
+                </option>
+                <% for( category of categories ) { %>
+                    <option value="<%= category.id %>"> <%= category.name %> </option>
+                <% } %>
+
+            </select>
+        </div>
 
         <div class="product-photo input-item">
             <div class="error error-name none">

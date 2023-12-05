@@ -54,6 +54,7 @@ const controllers = {
 
     crearProducto: async (req, res) => {
         //  -- Express-validator
+        console.log(req.body)
         const erroresExpressValidator = validationResult(req)
 
         if (!erroresExpressValidator.isEmpty()) {

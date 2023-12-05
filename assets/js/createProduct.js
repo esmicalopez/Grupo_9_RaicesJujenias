@@ -4,27 +4,75 @@ const imgList = document.querySelector(".show-images-edit")
 const showImagesContainer = document.querySelector(".show-images-container")
 
 fileInput.addEventListener("change", (e) => {
+    if (e.target.files.length === 0) {
+        handleInputFileValidation({ input: e.target, msg: "Subir por lo menos 1 imagen." })
+        return
+    }
     toggleErrorImage({ input: e.target })
 })
 
 function toggleErrorImage ({ input }) {
     const imageValidationResults = imageValidator(input)
-
-    const divError = input.parentNode.parentNode.children[0]
     if (!imageValidationResults) {
-        input.value = ""
-        divError.classList.remove("none")
-        fileInput.parentNode.parentNode.children[2].classList.add("border-error")
-        showImagesContainer.classList.add("none")
-        console.log("--verdaddero")
+        handleInputFileValidation({ input, msg: "Imagenes permitidas: JPG, JPEG, PNG, GIF" })
 
-        divError.firstElementChild.innerText = "Imagenes permitidas: JPG, JPEG, PNG, GIF"
+        showImagesContainer.classList.add("none")
     } else {
-        console.log("--falso")
-        fileInput.parentNode.parentNode.children[2].classList.remove("border-error")
-        divError.classList.add("none")
-        displaySelectedImages()
+        removeValidationFileError({ input })
     }
+}
+
+function handleInputFileValidation ({ input, msg }) {
+    showImageBoxError({ input, msg })
+    input.value = ""
+
+    const fieldName = input.getAttribute("name")
+
+    const existingErrorIndex = errors.findIndex(error => error.inputName === fieldName)
+
+    if (existingErrorIndex !== -1) {
+        errors[existingErrorIndex].msg = msg
+    } else {
+        errors.push({ inputName: fieldName, msg })
+    }
+    showImagesContainer.classList.add("none") // quizas poner al de arriba "showImageBoxError"
+}
+
+function showImageBoxError ({ input, msg }) {
+    const divError = input.parentNode.parentNode.children[0]
+    divError.classList.remove("none")
+    divError.firstElementChild.innerText = msg
+    fileInput.parentNode.parentNode.children[2].classList.add("border-error")
+}
+
+function removeValidationFileError ({ input }) {
+    hideImageBoxError({ input })
+    const fieldName = input.getAttribute("name")
+    const indexToRemove = errors.findIndex(error => error.inputName === fieldName)
+
+    if (indexToRemove !== -1) {
+        errors.splice(indexToRemove, 1)
+    }
+}
+
+function hideImageBoxError ({ input }) {
+    const divError = input.parentNode.parentNode.children[0]
+    divError.classList.add("none")
+    input.parentNode.parentNode.children[2].classList.remove("border-error")
+    displaySelectedImages()
+}
+
+function imageValidator (input) {
+    let error = true
+    const allowedExtensions = ["jpg", "jpeg", "png", "gif"]
+    Array.from(input.files).forEach(file => {
+        const fileExtension = file.name.split(".").pop().toLowerCase()
+
+        if (!allowedExtensions.includes(fileExtension)) {
+            error = allowedExtensions.includes(fileExtension)
+        }
+    })
+    return error
 }
 
 function displaySelectedImages () {
@@ -56,6 +104,31 @@ function dragImages () {
     })
 }
 
+const errors = []
+
+function handleInputValidation ({ input, msg }) {
+    showBoxError({ input, msg })
+    const fieldName = input.getAttribute("name")
+
+    const existingErrorIndex = errors.findIndex(error => error.inputName === fieldName)
+
+    if (existingErrorIndex !== -1) {
+        errors[existingErrorIndex].msg = msg
+    } else {
+        errors.push({ inputName: fieldName, msg })
+    }
+}
+
+function removeValidationError ({ input }) {
+    hideBoxError({ input })
+    const fieldName = input.getAttribute("name")
+    const indexToRemove = errors.findIndex(error => error.inputName === fieldName)
+
+    if (indexToRemove !== -1) {
+        errors.splice(indexToRemove, 1)
+    }
+}
+
 function showBoxError ({ input, msg }) {
     input.classList.add("border-error")
 
@@ -71,10 +144,10 @@ function hideBoxError ({ input }) {
     divError.classList.add("none")
 }
 
-function isEmpty (input) {
+function notEmpty (input) {
     input.addEventListener("blur", (e) => {
         if (e.target.value.trim() === "") {
-            showBoxError({ input: e.target, msg: "El campo no puede estar Vacio." })
+            handleInputValidation({ input: e.target, msg: "El campo no puede estar Vacio." })
         }
     })
 }
@@ -82,22 +155,22 @@ function isEmpty (input) {
 function minimumCharacters ({ inputName, minLength }) {
     document.querySelector(`#${inputName}`).addEventListener("change", (e) => {
         if (e.target.value.length < minLength) {
-            showBoxError({ input: e.target, msg: `Debe tener como mínimo ${minLength} caracteres.` })
+            handleInputValidation({ input: e.target, msg: `Debe tener como mínimo ${minLength} caracteres.` })
         } else {
-            hideBoxError({ input: e.target })
+            removeValidationError({ input: e.target })
         }
     })
 }
 
-function validateInput ({ inputName, minLength }) {
+function validateInputText ({ inputName, minLength }) {
     document.querySelector(`#${inputName}`).addEventListener("input", (e) => {
-        if (e.target.value === " ") {
-            showBoxError({ input: e.target, msg: "El campo no puede estar vacio." })
-            e.target.value = e.target.value.replace(/^\s*/g, "")
+        e.target.value = e.target.value.replace(/^\s*/g, "")
+        if (e.target.value === "") {
+            handleInputValidation({ input: e.target, msg: "El campo no puede estar Vacio." })
         } else if (e.target.value.length < minLength) {
-            showBoxError({ input: e.target, msg: `Debe tener como mínimo ${minLength} caracteres.` })
+            handleInputValidation({ input: e.target, msg: `Debe tener como mínimo ${minLength} caracteres.` })
         } else {
-            hideBoxError({ input: e.target })
+            removeValidationError({ input: e.target })
         }
     })
 }
@@ -105,46 +178,50 @@ function validateInput ({ inputName, minLength }) {
 function validateInputNumber (input, value) {
     const msg = value === 0 ? "Valores mayores a 0." : `El precio debe ser mayor a $${value}.`
     input.addEventListener("input", (e) => {
-        if (e.target.value <= value) {
-            showBoxError({ input: e.target, msg })
+        if (e.target.value === "") {
+            handleInputValidation({ input: e.target, msg: "El campo no puede estar Vacio." })
+        } else if (e.target.value <= value) {
+            handleInputValidation({ input: e.target, msg })
         } else {
-            hideBoxError({ input: e.target })
+            removeValidationError({ input: e.target })
         }
     })
 }
 
-function imageValidator (input) {
-    let error = true
-    const allowedExtensions = ["jpg", "jpeg", "png", "gif"]
-    Array.from(input.files).forEach(file => {
-        const fileExtension = file.name.split(".").pop().toLowerCase()
-
-        if (!allowedExtensions.includes(fileExtension)) {
-            error = allowedExtensions.includes(fileExtension)
+function validateInputOffer (input) {
+    input.addEventListener("input", (e) => {
+        if (e.target.value < 0 || e.target.value === "-0") {
+            handleInputValidation({ input: e.target, msg: "No se permite valores negativos." })
+        } else {
+            removeValidationError({ input: e.target })
         }
     })
-    return error
 }
 
 function validateSelectedValue (input) {
     input.addEventListener("change", (e) => {
         if (e.target.value !== "") {
-            hideBoxError({ input: e.target })
+            removeValidationError({ input: e.target })
         }
     })
 }
 
-function errorsInputs () {
-    let error = false
-    const inputs = document.querySelectorAll(".input")
-    for (const input of inputs) {
-        if (input.value === "") {
-            error = true
-            showBoxError({ input, msg: "El campo no puede estar Vacio." })
+(
+    function setInitialErrorsForInputs () {
+        const inputs = document.querySelectorAll(".input")
+        for (const input of inputs) {
+            if (input.value === "") {
+                const fieldName = input.getAttribute("name")
+                errors.push({ inputName: fieldName, msg: "El campo no puede estar Vacio." })
+            }
+        }
+
+        if (fileInput.value === "") {
+            const fieldName = fileInput.getAttribute("name")
+            errors.push({ inputName: fieldName, msg: "Subir por lo menos 1 imagen." })
         }
     }
-    return error
-}
+)()
 
 //  -- FORMULARIO --
 
@@ -152,41 +229,46 @@ const form = document.querySelector(".form-container")
 const actionURL = form.action
 
 form.addEventListener("submit", (e) => {
-    let imageDivHasError = false
-    if (fileInput.value === "") {
-        imageDivHasError = true
-        fileInput.parentNode.parentNode.children[2].classList.add("border-error")
-        const imageDivError = fileInput.parentNode.parentNode.children[0]
-        imageDivError.classList.remove("none")
-        imageDivError.firstElementChild.innerText = "Subir por lo menos 1 imagen."
+    if (!errors.length > 0) {
+        console.log("No hay errores")
+        return
     }
 
-    const hasErrors = errorsInputs()
+    e.preventDefault()
+    for (const error of errors) {
+        if (error.inputName === fileInput.getAttribute("name")) {
+            showImageBoxError({ input: e.target.elements[error.inputName], msg: error.msg })
+            break
+        }
 
-    if (hasErrors || imageDivHasError) e.preventDefault()
+        const input = e.target.elements[error.inputName]
+        showBoxError({ input, msg: error.msg })
+    }
 })
 
 //
 
-isEmpty(document.querySelector("#name"))
-validateInput({ inputName: "name", minLength: 5 })
+notEmpty(document.querySelector("#name"))
+validateInputText({ inputName: "name", minLength: 5 })
 minimumCharacters({ inputName: "name", minLength: 5 })
 
-isEmpty(document.querySelector("#description"))
-validateInput({ inputName: "description", minLength: 20 })
+notEmpty(document.querySelector("#description"))
+validateInputText({ inputName: "description", minLength: 20 })
 minimumCharacters({ inputName: "description", minLength: 20 })
 
 validateInputNumber(document.querySelector("#price"), 20)
-isEmpty(document.querySelector("#price"))
+notEmpty(document.querySelector("#price"))
 
 validateInputNumber(document.querySelector("#stock"), 0)
-isEmpty(document.querySelector("#stock"))
+notEmpty(document.querySelector("#stock"))
 
-isEmpty(document.querySelector("#color"))
+validateInputOffer(document.querySelector("#offer"))
+
+notEmpty(document.querySelector("#color"))
 validateSelectedValue(document.querySelector("#color"))
 
-isEmpty(document.querySelector("#size"))
+notEmpty(document.querySelector("#size"))
 validateSelectedValue(document.querySelector("#size"))
 
-isEmpty(document.querySelector("#category"))
+notEmpty(document.querySelector("#category"))
 validateSelectedValue(document.querySelector("#category"))
