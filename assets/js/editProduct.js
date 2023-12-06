@@ -4,15 +4,35 @@ const showImagesContainer = document.querySelector(".show-images-container")
 const imgList = document.querySelector(".show-images-edit")
 const fileInput = document.querySelector("#product-image")
 
+const messages = {
+    uploadImage: "* Subir por lo menos 1 imagen.",
+    allowedImages: "* Imágenes permitidas: JPG, JPEG, PNG, GIF.",
+    fieldNotEmpty: "* El campo no puede estar Vacío.",
+    valuesGreaterThanZero: "Valores mayores a 0.",
+    noNegativeValues: "* No se permiten valores negativos.",
+    priceGreaterThan: (value) => `* El precio debe ser mayor a $${value}.`,
+    minLengthErrorMessage: (minLength) => `* Debe tener como mínimo ${minLength} caracteres.`,
+    fieldSelectNotEmpty: (value) => `* Seleccione ${value}.`
+}
+
+const errors = []
+
 fileInput.addEventListener("change", (e) => {
+    if (e.target.files.length === 0) {
+        showImagesContainer.classList.add("none")
+        return
+    }
+
     const imageValidationResults = imageValidator(e.target)
 
-    const divError = e.target.parentNode.parentNode.parentNode.children[0]
+    const divError = document.querySelector(".product-photo > .error-photo")
+    // const divError = e.target.parentNode.parentNode.parentNode.children[0]
+
     if (!imageValidationResults) {
         e.target.value = ""
         divError.classList.remove("none")
+        divError.firstElementChild.innerText = messages.allowedImages
         showImagesContainer.classList.add("none")
-        divError.firstElementChild.innerText = "Imagenes permitidas: JPG, JPEG, PNG, GIF"
     } else {
         divError.classList.add("none")
         displaySelectedImages()
@@ -52,7 +72,7 @@ function dragImages () {
     })
 }
 
-const errors = []
+// --- Manejo de Errores ---
 
 function handleInputValidation ({ input, msg }) {
     showBoxError({ input, msg })
@@ -63,8 +83,17 @@ function handleInputValidation ({ input, msg }) {
     if (existingErrorIndex !== -1) {
         errors[existingErrorIndex].msg = msg
     } else {
-        errors.push({ inputName: fieldName, msg })
+        errors.push({ inputName: fieldName, msg, position: input.getAttribute("data-position") })
+        errors.sort((a, b) => a.position - b.position)
     }
+}
+
+function showBoxError ({ input, msg }) {
+    input.classList.add("border-error")
+
+    const divError = document.querySelector(`.${input.parentNode.classList[0]} > .error `)
+    divError.classList.remove("none")
+    divError.firstElementChild.innerText = msg
 }
 
 function removeValidationError ({ input }) {
@@ -77,25 +106,20 @@ function removeValidationError ({ input }) {
     }
 }
 
-function showBoxError ({ input, msg }) {
-    input.classList.add("border-error")
-
-    const divError = input.parentNode.children[0]
-    divError.classList.remove("none")
-    divError.firstElementChild.innerText = msg
-}
-
 function hideBoxError ({ input }) {
     input.classList.remove("border-error")
 
-    const divError = input.parentNode.children[0]
+    const divError = document.querySelector(`.${input.parentNode.classList[0]} > .error `)
     divError.classList.add("none")
 }
+
+//        ------
+// --- VALIDACIONES ---
 
 function notEmpty (input) {
     input.addEventListener("blur", (e) => {
         if (e.target.value.trim() === "") {
-            handleInputValidation({ input: e.target, msg: "El campo no puede estar Vacio." })
+            handleInputValidation({ input: e.target, msg: messages.fieldNotEmpty })
         }
     })
 }
@@ -103,7 +127,7 @@ function notEmpty (input) {
 function minimumCharacters ({ inputName, minLength }) {
     document.querySelector(`#${inputName}`).addEventListener("change", (e) => {
         if (e.target.value.length < minLength) {
-            handleInputValidation({ input: e.target, msg: `Debe tener como mínimo ${minLength} caracteres.` })
+            handleInputValidation({ input: e.target, msg: messages.minLengthErrorMessage(minLength) })
         } else {
             removeValidationError({ input: e.target })
         }
@@ -114,9 +138,9 @@ function validateInputText ({ inputName, minLength }) {
     document.querySelector(`#${inputName}`).addEventListener("input", (e) => {
         e.target.value = e.target.value.replace(/^\s*/g, "")
         if (e.target.value === "") {
-            handleInputValidation({ input: e.target, msg: "El campo no puede estar Vacio." })
+            handleInputValidation({ input: e.target, msg: messages.fieldNotEmpty })
         } else if (e.target.value.length < minLength) {
-            handleInputValidation({ input: e.target, msg: `Debe tener como mínimo ${minLength} caracteres.` })
+            handleInputValidation({ input: e.target, msg: messages.minLengthErrorMessage(minLength) })
         } else {
             removeValidationError({ input: e.target })
         }
@@ -124,10 +148,10 @@ function validateInputText ({ inputName, minLength }) {
 }
 
 function validateInputNumber (input, value) {
-    const msg = value === 0 ? "Valores mayores a 0." : `El precio debe ser mayor a $${value}.`
+    const msg = value === 0 ? messages.valuesGreaterThanZero : messages.priceGreaterThan(value)
     input.addEventListener("input", (e) => {
         if (e.target.value === "") {
-            handleInputValidation({ input: e.target, msg: "El campo no puede estar Vacio." })
+            handleInputValidation({ input: e.target, msg: messages.fieldNotEmpty })
         } else if (e.target.value <= value) {
             handleInputValidation({ input: e.target, msg })
         } else {
@@ -139,8 +163,16 @@ function validateInputNumber (input, value) {
 function validateInputOffer (input) {
     input.addEventListener("input", (e) => {
         if (e.target.value < 0 || e.target.value === "-0") {
-            handleInputValidation({ input: e.target, msg: "No se permite valores negativos." })
+            handleInputValidation({ input: e.target, msg: messages.noNegativeValues })
         } else {
+            removeValidationError({ input: e.target })
+        }
+    })
+}
+
+function validateSelectedValue (input) {
+    input.addEventListener("change", (e) => {
+        if (e.target.value !== "") {
             removeValidationError({ input: e.target })
         }
     })
@@ -159,24 +191,24 @@ function imageValidator (input) {
     return error
 }
 
-function validateSelectedValue (input) {
-    input.addEventListener("change", (e) => {
-        if (e.target.value !== "") {
-            removeValidationError({ input: e.target })
-        }
-    })
-}
-
 //  -- FORMULARIO --
 
 const form = document.querySelector(".form-container")
 const actionURL = form.action
 
 form.addEventListener("submit", (e) => {
-    if (errors.length > 0) {
-        console.log("prevent")
-        e.preventDefault()
+    if (!errors.length > 0) {
+        console.log("No hay errores")
+        return
     }
+    e.preventDefault()
+
+    const input = e.target.elements[errors[0].inputName]
+
+    input.scrollIntoView({ behavior: "smooth", block: "center" })
+    input.focus()
+
+    showBoxError({ input, msg: errors[0].msg })
 })
 
 //

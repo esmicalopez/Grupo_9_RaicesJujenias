@@ -513,40 +513,39 @@ body {
 
 }
 
-.form-container h1 {
+.form-container > h1 {
     text-align: center;
-    margin: 10px 0 4px;
+    margin: 10px 0 15px;
 }
 
 .form-container input, .product-status select, .product-category select {
     width: 100%;
     padding: .9rem;
-    border: 1px solid #ccc;
+    border: 2px solid #e0e0e0;
     border-radius: 4px;
     margin-top: 5px;
     font-size: var(--fs-6);
-}
-
-.input-item {
-    margin: 20px 0;
+    transition: border .3s ease;
 }
 
 .error {
     width: 100%;
     color: #f00;
     font-weight: 600;
-    font-size: var(--fs-4);
-    text-align: center;
-    margin-bottom: 3px;
-    margin-top: 5px;
+    font-size: var(--fs-6);
+    margin: 8px 0 14px;
+    transition: opacity ease .3s, margin ease .3s;
   }
 
 .error.none {
-    display: none;
+    opacity: 0;
+    margin: -2px 0;
 }
 
 .border-error {
     border: 2px solid #f00 !important;
+    /* cambios */
+    transition: border .5s ease;
 }
 
 .border-error:focus {
@@ -677,7 +676,7 @@ body {
 }
 
 .product-description__textarea {
-    margin: 5px 0;
+    margin: 5px 0 0;
     width: 100%;
     resize: none;
     padding: 12px 8px;
@@ -689,7 +688,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 18px;
-    margin: 30px 0 10px;
+    margin: 23px 0;
 }
 
 .form-buttons button {
@@ -981,15 +980,23 @@ a.footer-link:is(:hover, :focus) {
 
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
     }
 
     .input-group {
         width: 100%;
         display: flex;
-        align-items: end;
+        align-items: start;
         flex-wrap: wrap;
         gap: 15px;
+    }
+
+    .error {
+        margin: 8px 0 15px;
+        font-size: var(--fs-5); 
+    }
+    
+    .error.none {
+        margin: -1px 0;
     }
 
     .form-container input, .product-status select, .product-category select {
@@ -1003,7 +1010,7 @@ a.footer-link:is(:hover, :focus) {
 
     .form-container > h1 {
         width: 100%;
-        margin: 20px 0 10px;
+        margin: 20px 0 ;
         font-size: var(--fs-2);
 
     }
@@ -1011,7 +1018,7 @@ a.footer-link:is(:hover, :focus) {
     .input-item {
         flex: 1;
         min-width: 45%;
-        margin: 6px;
+        margin: 0 6px;
     }
 
     .form-buttons {
