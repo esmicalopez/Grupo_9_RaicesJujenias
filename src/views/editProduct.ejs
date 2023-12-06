@@ -39,47 +39,44 @@
 
         <div class="input-group">
             <div class="product-name input-item">
+                <label class="product-name__label" for="name">Nombre del Producto</label>
+                <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto"  autocomplete="nombre" name="name" value="<%= product.name %>" data-position="1">
                 <div class="error none">
                     <p>Campo vacio</p>
                 </div>
-                <label class="product-name__label" for="name">Nombre del Producto</label>
-                <input class="product-name__input" id="name" type="text" placeholder="Nombre del Producto"  autocomplete="nombre" name="name" value="<%= product.name %>">
             </div>
 
             <div class="product-price input-item">
-                <div class="error none">
-                    <p>Campo vacio</p>
-                </div>
                 <label for="price">Precio</label>
-                <input id="price" type="number" placeholder="Precio"  name="price"  value="<%= chosenProductSpec.price %>">
+                <input id="price" type="number" placeholder="Precio"  name="price"  value="<%= chosenProductSpec.price %>" data-position="2">
+                <div class="error none">
+                    <p>Campo vacio</p>
+                </div>
             </div>
         </div>
 
         <div class="input-group">
-            <div class="input-item">
-                <div class="error none">
-                    <p>Campo vacio</p>
-                </div>
+            <div class="product-offer input-item">
                 <label for="offer">Oferta</label>
-                <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" min="0" max="99"  value="<%= chosenProductSpec.offer || 0 %>">
-            </div>
-
-            <div class="input-item">
+                <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20"  name="offer" value="<%= chosenProductSpec.offer || 0 %>" data-position="3">
                 <div class="error none">
                     <p>Campo vacio</p>
                 </div>
+            </div>
+
+            <div class="product-stock input-item">
                 <label for="stock">Cantidad</label>
-                <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock"  value="<%= chosenProductSpec.stock %>"> 
+                <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock"  value="<%= chosenProductSpec.stock %>" data-position="4"> 
+                <div class="error none">
+                    <p>Campo vacio</p>
+                </div>
             </div>
         </div>
 
         <div class="input-group">
-            <div class="product-status input-item">
-                <div class="error none">
-                    <p>Campo vacio</p>
-                </div>
+            <div class="product-color product-status input-item">
                 <label for="color">Colores</label>
-                <select name="color" id="color" >
+                <select name="color" id="color" data-position="5">
                     <option selected value="<%= chosenProductSpec.color_id %>">
                         <%= chosenProductSpec.color.name %>
                     </option>
@@ -88,14 +85,14 @@
                         <option value="<%= color.id %>"> <%= color.name %> </option>
                     <% } %>
                 </select>
-            </div>
-
-            <div class="product-status input-item">
                 <div class="error none">
                     <p>Campo vacio</p>
                 </div>
+            </div>
+
+            <div class="product-size product-status input-item">
                 <label for="size">Talle</label>
-                <select name="size" id="size" >
+                <select name="size" id="size" data-position="6">
                     <option selected value="<%= chosenProductSpec.size_id %>">
                         <%= chosenProductSpec.size.name %>
                     </option>
@@ -104,16 +101,16 @@
                         <option value="<%= size.id %>"> <%= size.name %> </option>
                     <% } %>
                 </select>
+                <div class="error none">
+                    <p>Campo vacio</p>
+                </div>
             </div>
         </div>
 
 
         <div class="product-category input-item">
-            <div class="error none">
-                <p>Campo vacio</p>
-            </div>
             <label for="category">Categoria</label>
-            <select  name="category" id="category" >
+            <select  name="category" id="category" data-position="7">
                 <option selected value="<%= product.category_id %>">
                     <%= product.category.name %>
                 </option>
@@ -122,8 +119,10 @@
 
                     <option value="<%= category.id %>"> <%= category.name %> </option>
                 <% } %>
-
             </select>
+            <div class="error none">
+                <p>Campo vacio</p>
+            </div>
         </div>
 
         <div class="product-photo input-item">
@@ -133,7 +132,7 @@
             <label for="product-image">Fotos del Producto. <span>* Campo Opcional</span></label> 
             <div class="product-photo-border">
                 <div class="input-photo-box">
-                    <input id="product-image" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image" data-info="" multiple>
+                    <input id="product-image" type="file" accept=",jpg,png" value="<%= chosenProductSpec.images[0] ? chosenProductSpec.images[0].name : 'nada.jpg' %>" name="product-image" data-info="" multiple data-position="8">
                     <div class="product-photos-list has-scrollbar">
                         <% for(let img of chosenProductSpec.images) { %>
                             <img src="/images/products/<%= img ? img.name : '' %>" alt="<%= product.name  %> - <%= chosenProductSpec.color.name %>">
@@ -163,15 +162,14 @@
 
                 </section>
             </div>
-
         </div>
 
         <div class="product-description input-item">
+            <label class="product-description__label " for="descripcion">Descripcion</label>
+            <textarea class="product-description__textarea" name="description" id="description" cols="30" rows="10" data-position="9" > <%= product.description %> </textarea>
             <div class="error none">
                 <p>Campo vacio</p>
             </div>
-            <label class="product-description__label " for="descripcion">Descripcion</label>
-            <textarea class="product-description__textarea" name="description" id="description" cols="30" rows="10" > <%= product.description %> </textarea>
         </div>
 
         <div class="form-buttons">

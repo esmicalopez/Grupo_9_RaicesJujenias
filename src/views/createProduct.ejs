@@ -36,48 +36,44 @@
 
         <div class="input-group">
             <div class="product-name input-item">
+                <label class="product-name__label" for="name">Nombre del Producto</label>
+                <input class="product-name__input input" id="name" type="text" placeholder="Nombre del Producto"  autocomplete="nombre" name="name" data-position="1">
                 <div class="error error-name none">
                     <p>Campo vacio</p>
                 </div>
-                <label class="product-name__label" for="name">Nombre del Producto</label>
-                <input class="product-name__input input" id="name" type="text" placeholder="Nombre del Producto"  autocomplete="nombre" name="name">
             </div>
 
             <div class="product-price input-item">
+                <label for="price">Precio</label>
+                <input id="price" type="number" placeholder="Precio"  class="input"  name="price" data-position="2">
                 <div class="error error-name none">
                     <p>Campo vacio</p>
                 </div>
-                <label for="price">Precio</label>
-                <input id="price" type="number" placeholder="Precio"  class="input"  name="price">
             </div>
         </div>
         
         <div class="input-group">
-            <div class="input-item product-offer">
-                <div class="error none">
+            <div class="product-offer input-item"> 
+                <label for="offer">Oferta. <span>* Campo Opcional</span></label>
+                <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20" class="" name="offer" data-position="3">
+                <div class="error error-name none">
                     <p>Campo vacio</p>
                 </div>
-                <label for="offer">Oferta. <span>* Campo Opcional</span></label>
-                <input id="offer" type="number" placeholder="Descuento en porcentaje. Ej: 5, 10, 20" class="" name="offer" min="0" max="99">
             </div>
 
-            <div class="input-item">
+            <div class="product-stock input-item">
+                <label for="stock">Cantidad</label>
+                <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock"  class="input" data-position="4">
                 <div class="error error-name none">
                     <p>Campo vacio</p>
                 </div>
-                <label for="stock">Cantidad</label>
-                <input id="stock" type="number" placeholder="Cantidad disponible"  name="stock"  class="input">
             </div>
         </div>
         
         <div class="input-group">
-            <div class="product-status input-item">
-                <div class="error error-name none">
-                    <p>Campo vacio</p>
-                </div>
-                
+            <div class="product-color product-status input-item">
                 <span>Colores</span>
-                <select name="color" id="color"  class="input">
+                <select name="color" id="color"  class="input" data-name="un Color" data-position="5">
                     <option disabled selected value="">
                         Escoge el color
                     </option>
@@ -85,14 +81,14 @@
                         <option value="<%= color.id %>"> <%= color.name %> </option>
                     <% } %>
                 </select>
-            </div>
-
-            <div class="product-status input-item">
                 <div class="error error-name none">
                     <p>Campo vacio</p>
                 </div>
+            </div>
+
+            <div class="product-size product-status input-item">
                 <span>Talle</span>
-                <select name="size" id="size"  class="input">
+                <select name="size" id="size"  class="input" data-name="un Talle" data-position="6"> 
                     <option disabled selected value="">
                         Escoge el talle
                     </option>
@@ -100,32 +96,31 @@
                         <option value="<%= size.id %>"> <%= size.name %> </option>
                     <% } %>
                 </select>
+                <div class="error error-name none">
+                    <p>Campo vacio</p>
+                </div>
             </div>
         </div>
         
         <div class="product-category input-item">
-            <div class="error error-name none">
-                <p>Campo vacio</p>
-            </div>
             <span>Categoria</span>
-            <select  name="category" id="category" class="input">
+            <select  name="category" id="category" class="input" data-name="una Categoria" data-position="7">
                 <option disabled selected value="">
                     Escoge la categoria
                 </option>
                 <% for( category of categories ) { %>
                     <option value="<%= category.id %>"> <%= category.name %> </option>
                 <% } %>
-
             </select>
-        </div>
-
-        <div class="product-photo input-item">
             <div class="error error-name none">
                 <p>Campo vacio</p>
             </div>
+        </div>
+
+        <div class="product-photo input-item">
             <label for="product-image">Fotos del Producto</label>
             <div class="input-photo-box">
-                <input id="product-image" type="file" accept=",jpg,png"  name="product-image" multiple>
+                <input id="product-image" type="file" accept=",jpg,png"  name="product-image" multiple class="input" data-position="8">
 
                 <section class="show-images-container none">
                     <h4>Images Nuevas a Subir</h4>
@@ -149,14 +144,17 @@
 
                 </section>
             </div>
-        </div>
-
-        <div class="product-description input-item">
             <div class="error error-name none">
                 <p>Campo vacio</p>
             </div>
+        </div>
+
+        <div class="product-description input-item">
             <label class="product-description__label " for="descripcion">Descripcion</label>
-            <textarea class="product-description__textarea input" name="description" id="description" cols="30" rows="10"></textarea>
+            <textarea class="product-description__textarea input" name="description" data-position="9" id="description" cols="30" rows="10"></textarea>
+            <div class="error error-name none">
+                <p>Campo vacio</p>
+            </div>
         </div>
 
         <div class="form-buttons">
