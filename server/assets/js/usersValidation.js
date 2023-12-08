@@ -34,12 +34,12 @@ window.addEventListener("load", function () {
         if (inputPassword.value === inputRepeatPassword.value && campos.password) {
             inputRepeatPassword.classList.remove("isIncorrect")
             inputRepeatPassword.classList.add("isCorrect")
-            document.querySelector("small.comparePassword").style.display = "none"
+            document.querySelector("small.comparePassword").classList.add("display")
             campos.confirmPassword = true
         } else {
             inputRepeatPassword.classList.remove("isCorrect")
             inputRepeatPassword.classList.add("isIncorrect")
-            document.querySelector("small.comparePassword").style.display = "block"
+            document.querySelector("small.comparePassword").classList.remove("display")
             campos.confirmPassword = false
         }
     }
@@ -56,12 +56,14 @@ window.addEventListener("load", function () {
         if (expresion.test(input.value)) {
             input.classList.remove("isIncorrect")
             input.classList.add("isCorrect")
-            document.querySelector(`small.${small}`).style.display = "none"
+            document.querySelector(`small.${small}`).classList.add("display")
+
             campos[campo] = true
         } else {
             input.classList.remove("isCorrect")
             input.classList.add("isIncorrect")
-            document.querySelector(`small.${small}`).style.display = "block"
+            document.querySelector(`small.${small}`).classList.remove("display")
+
             campos[campo] = false
         }
     }
@@ -103,7 +105,7 @@ window.addEventListener("load", function () {
         }
 
         if (!inputTerms.checked) {
-            document.querySelector("small.termsValidations").style.display = "block"
+            document.querySelector("small.termsValidations").classList.remove("display")
             e.preventDefault()
         }
 
@@ -115,9 +117,9 @@ window.addEventListener("load", function () {
         })
         if (!rolChecked) {
             e.preventDefault()
-            document.querySelector("small.rolValidations").style.display = "block"
+            document.querySelector("small.rolValidations").classList.remove("display")
         } else {
-            document.querySelector("small.rolValidations").style.display = "none"
+            document.querySelector("small.rolValidations").classList.add("display")
         }
 
         const [file] = image.files

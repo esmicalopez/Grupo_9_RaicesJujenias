@@ -570,6 +570,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
   }
   
   .user-profile>h3,
@@ -593,6 +594,13 @@
   .user-profile label {
     width: auto;
     display: inline;
+  }
+
+  .user-rols {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 7px 0;
   }
   
   .terms-and-conditions div  {
@@ -622,7 +630,6 @@
   }
  
   .password-container .input-item {
-    margin-bottom: 20px;
     margin-top: 0;
   }
 
@@ -956,6 +963,19 @@
     color: rgb(220, 41, 41);
     border: rgb(220, 41, 41) solid 2px;
   }
+  small {
+    display: block;
+    margin: 7px 0;
+    color: rgb(220, 41, 41);
+    font-size: 16px;
+    transition: opacity ease .3s, margin ease .3s;
+  }
+
+  small.display {
+    opacity: 0;
+    margin: -2px;
+    font-size: 1px;
+  }
   /**FOOTER*/
   
   .footer {
@@ -1255,7 +1275,7 @@
   
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
+        /* gap: 15px; */
     }
   
     .form-container input {
@@ -1277,25 +1297,28 @@
     .input-item {
         flex: 1;
         min-width: 45%;
-        margin: 6px;
+        margin: 10px;
     }
   
+    .profile-and-photo {
+      flex-direction: column;
+    }
+
     .profile-and-photo, .full-name {
       display: flex;
-      align-items: center;
+      align-items: start;
       flex-wrap: wrap;
-      gap: 15px;
       width: 100%;
     }
-  
-    .full-name {
-      align-items: end;
-    }
-  
+
     .user-profile {
-      display: block;
+      margin-left: 25px;
     }
-  
+
+    .full-name {
+      gap: 15px;
+    }
+
     .user-profile>.user-profile-left,
     .user-profile>.user-profile-right {
         margin-left: 20px;
@@ -1303,6 +1326,7 @@
     }
   
     .password-container {
+      margin-top: 10px;
       width: 100%; 
     }
 
@@ -1312,11 +1336,11 @@
     }
 
     .terms-and-conditions {
-      margin: -10px 6px -5px;
+      margin: 8px 6px
     }
 
     .form-buttons {
-        margin: 15px 0 3px;
+        margin: 15px 0;
         min-width: 100%;
     }
   
