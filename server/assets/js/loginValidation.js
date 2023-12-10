@@ -19,11 +19,13 @@ window.addEventListener("load", function () {
     const validation = (input, expresion, small, campo) => {
         if (expresion.test(input.value)) {
             input.classList.remove("isIncorrect")
-            document.querySelector(`small.${small}`).style.display = "none"
+            document.querySelector(`small.${small}`).classList.add("display")
+
             campos[campo] = true
         } else {
             input.classList.add("isIncorrect")
-            document.querySelector(`small.${small}`).style.display = "block"
+            document.querySelector(`small.${small}`).classList.remove("display")
+
             campos[campo] = false
         }
     }

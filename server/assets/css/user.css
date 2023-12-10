@@ -748,9 +748,14 @@
   }
   .left-menu div input{
       width: 100%;
-      margin: 10px 0;
+      margin: 10px 0 2px;
       padding: 3px 0;
   }
+  .left-menu div label{
+    display: block;
+    width: 100%;
+    margin: 10px 0 0;
+  } 
   .left-menu .text-form input{
       border-radius: 5px;
       padding: 10px;
