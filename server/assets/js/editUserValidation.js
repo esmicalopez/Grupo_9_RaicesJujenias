@@ -12,10 +12,18 @@ window.addEventListener("load", function () {
     image.addEventListener("change", function (e) {
         const [file] = image.files
         if (file) {
-            const newAvatarLabel = document.querySelector(".profile-avatar h5")
-            imgPreview.style.display = "block"
-            newAvatarLabel.style.display = "block"
+            const avatarPreview = document.querySelector(".avatar-setting")
+            const deletePreview = document.querySelector(".del-avatar-preview")
+            avatarPreview.classList.remove("avatar-preview-none")
+            avatarPreview.classList.add("avatar-preview")
             imgPreview.src = URL.createObjectURL(file)
+
+            deletePreview.onclick = () => {
+                avatarPreview.classList.remove("avatar-preview")
+                avatarPreview.classList.add("avatar-preview-none")
+                image.value = ""
+                imgPreview.src = ""
+            }
         }
     })
 
@@ -29,19 +37,19 @@ window.addEventListener("load", function () {
     const inputs = [inputName, inputLastName, inputEmail]
 
     const campos = {
-        name: false,
-        lastName: false,
-        email: false
+        name: true,
+        lastName: true,
+        email: true
     }
 
     const validation = (input, expresion, small, campo) => {
         if (expresion.test(input.value)) {
             input.classList.remove("isIncorrect")
-            document.querySelector(`small.${small}`).style.display = "none"
+            document.querySelector(`small.${small}`).classList.add("display")
             campos[campo] = true
         } else {
             input.classList.add("isIncorrect")
-            document.querySelector(`small.${small}`).style.display = "block"
+            document.querySelector(`small.${small}`).classList.remove("display")
             campos[campo] = false
         }
     }
