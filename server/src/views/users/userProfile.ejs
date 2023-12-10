@@ -75,7 +75,7 @@
                     <% } %>
                     <label for="name">Nombre</label>
                     <input type="text" name="name" id="name" value="<%= user.name %>" required>
-                    <small style="padding: 5px; display: none;" class="nameValidations">  • Debe tener entre 2 y 18 caracteres</small>
+                    <small class="nameValidations display">  • Debe tener entre 2 y 18 caracteres</small>
                 </div>
                 <div class="account-info">
                     <% if (locals.errors && errors.lastName) { %>
@@ -85,7 +85,7 @@
                     <% } %>
                     <label for="lastName">Apellido</label>
                     <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>" required>
-                    <small style="padding: 5px; display: none;" class="lastNameValidations">  • Debe tener entre 2 y 18 caracteres</small>
+                    <small class="lastNameValidations display">  • Debe tener entre 2 y 18 caracteres</small>
                 </div>
                 <div class="account-info">
                     <% if (locals.errors && errors.email) { %>
@@ -95,7 +95,7 @@
                     <% } %>
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="<%= user.email %>" required>
-                    <small style="padding: 5px; display: none;" class="emailValidations">  • Ingrese un email válido</small>
+                    <small class="emailValidations display">  • Ingrese un email válido</small>
                 </div>
 
                 <button type="submit">Modificar Datos</button>
