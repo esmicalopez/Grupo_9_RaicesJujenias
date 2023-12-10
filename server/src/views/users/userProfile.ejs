@@ -36,37 +36,28 @@
             </ul>
 
             <form action="/profile?_method=PUT" class="profile-info" method="post" enctype="multipart/form-data">
-                <% if (user.avatar) { %>
+                <h4 style="margin-top: 10px;">Foto de Perfil</h4>
+                <div class="avatar-menu-setting">
+
                     <div class="profile-avatar">
                         <% if (locals.errors && errors["profile-image"]) { %>
                             <div style="color: red; padding-bottom: 8px;">
-                               <%= errors["profile-image"].msg %>
+                                <%= errors["profile-image"].msg %>
                             </div>
                         <% } %>
-                        <h4>Foto de Perfil</h4>
-                        <img src="/images/users/<%= user.avatar || "defaultAvatar.png"%> " alt="">
+                        <img src="/images/users/<%= user.avatar %>" alt="">
                         <br>
                         <label for="avatar">Cambiar Imagen</label>
                         <input type="file" name="profile-image" id="avatar" accept="image/png, image/jpeg, image/jpg" hidden>
-                        <img src="" alt="" id="imgPreview" width="200" height="200" style="display: none;">
-                        <h5 style="display: none;">Nuevo avatar</h5>
                     </div>
-                <% } else { %>
-                    <div class="profile-avatar">
-                        <% if (locals.errors && errors["profile-image"]) { %>
-                            <div style="color: red; padding-bottom: 8px;">
-                               <%= errors["profile-image"].msg %>
-                            </div>
-                        <% } %>
-                        <h4>Foto de Perfil</h4>
-                        <img src="/images/users/defaultAvatar.png" alt="">
-                        <br>
-                        <label for="avatar">Cambiar Imagen</label>
-                        <input type="file" name="profile-image" id="avatar" accept="image/png, image/jpeg, image/jpg" hidden>
-                        <img src="" alt="" id="imgPreview" width="200" height="200" style="display: none;">
-                        <h5>Nuevo avatar</h5>
+                    <div class="avatar-setting avatar-preview-none">
+                        <img src="" alt="" id="imgPreview" width="240" height="240"> 
+                        <p style="margin: 16px 0 0; font-weight: bold;">Nuevo avatar</p>
+                        <button type="button" class="del-avatar-preview">Descartar imagen</button>
                     </div>
-                <% } %>
+
+                </div>
+
                 <div class="account-info">
                     <% if (locals.errors && errors.name) { %>
                         <div style="color: red; padding-bottom: 8px;">

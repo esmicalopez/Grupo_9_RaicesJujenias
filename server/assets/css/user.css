@@ -602,6 +602,25 @@
     margin: 7px 0;
   }
   
+  .avatar-preview-none {
+    display: none;
+  }
+
+  .avatar-preview {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .avatar-preview #imgPreview {
+    border: var(--terracota_2) 1px;
+    border-style: dashed;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+
   .terms-and-conditions div  {
     display: flex;
     align-items: center;
@@ -896,7 +915,6 @@
     padding-left: 12px;
     color: white;
   }
-  
   .profile-info{
     display: flex;
     flex-direction: column;
@@ -910,10 +928,10 @@
   }
   .profile-avatar{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    margin: 30px 0;
+    margin: 15px;
   }
   .profile-avatar img{
     width: 240px;
@@ -941,19 +959,6 @@
       outline: none !important;
       border: 2px solid var(--terracota);
       box-shadow: 0 0 3px #666;
-  }
-  .profile-info button{
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 10px;
-    width: 70%;
-    max-width: 230px;
-    background-color: var(--terracota);
-    color: white;
-    transition: all 300ms;
-  }
-  .profile-info button:hover{
-    background-color: #c7562d;
   }
 
 
@@ -984,6 +989,24 @@
     opacity: 0;
     margin: -2px;
     font-size: 1px;
+  }
+
+  /* BOTONES DE INFORMACION Y DE ELIMINAR AVATAR */
+
+  .profile-info button,
+  .avatar-preview .del-avatar-preview {
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 230px;
+    background-color: var(--terracota);
+    color: white;
+    transition: all 300ms;
+  }
+  .profile-info button:hover,
+  .avatar-preview .del-avatar-preview:hover {
+    background-color: #c7562d;
   }
   /**FOOTER*/
   
@@ -1365,7 +1388,12 @@
     .social-login > span > a {
       margin-top: 3px;
     }
-  
+    
+    /* PERFIL USUARIO */
+    .avatar-menu-setting{
+      display: flex;
+      justify-content: center;
+    }
  
   }
 

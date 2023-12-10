@@ -89,7 +89,10 @@
                     <% } %>
                     <label for="profile-picture">Foto de Usuario</label>
                     <input id="profile-picture" type="file" accept="image/png, image/jpeg, image/jpg" name="profile-image">
-                    <img src="" alt="" id="imgPreview" width="200" height="200" style="display: none;"> <!-- ARREGLAR ESTILOS DE IMAGEN -->
+                    <div class="avatar-setting avatar-preview-none">
+                        <img src="" alt="" id="imgPreview" width="300" height="300"> <!-- ARREGLAR ESTILOS DE IMAGEN -->
+                        <button type="button" class="del-avatar-preview">Eliminar imagen</button>
+                    </div>
                 </div>
 
 
