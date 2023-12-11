@@ -64,7 +64,7 @@ const controllers = {
             })
         }
 
-        const product = await productModel.crearProducto({ data: req.body, files: req.files })
+        const product = await productModel.crearProducto({ data: req.body, files: req.newFiles })
 
         if (product) {
             return res.redirect("/productos")
@@ -89,7 +89,7 @@ const controllers = {
 
         if (!productData) return res.send("Producto no encontrado")
 
-        const { colors, sizes, categories, product, detail, chosenProductSpec, newProductsList } = productData
+        const { colors, sizes, categories, product, detail, chosenProductSpec, newProductsList, imageIds } = productData
 
         return res.render("editProduct", {
             colors,
@@ -98,7 +98,8 @@ const controllers = {
             product,
             detail,
             chosenProductSpec,
-            newProductsList
+            newProductsList,
+            imageIds: JSON.stringify(imageIds)
         })
     },
 
@@ -125,7 +126,7 @@ const controllers = {
             })
         }
 
-        const { updateProduct, updateProductDetail } = await productModel.editarProducto({ params: req.params, data: req.body, files: req.files })
+        const { updateProduct, updateProductDetail } = await productModel.editarProducto({ params: req.params, data: req.body, files: req.newFiles, imgList: JSON.parse(req.query.imgList) })
 
         if (updateProduct && updateProductDetail) {
             console.log(updateProductDetail)

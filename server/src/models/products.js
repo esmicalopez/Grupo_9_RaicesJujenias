@@ -116,6 +116,12 @@ const productModel = {
             include: ["images", "color", "size"]
         })
 
+        const images = await db.Image.findAll({
+            where: { product_detail_id: prodSpecId }, raw: true
+        })
+
+        const imageIds = images.map(image => image.id)
+
         return {
             product,
             colors,
@@ -123,11 +129,12 @@ const productModel = {
             categories,
             detail,
             chosenProductSpec,
-            newProductsList
+            newProductsList,
+            imageIds
         }
     },
 
-    editarProducto: async ({ params, data, files }) => {
+    editarProducto: async ({ params, data, files, imgList }) => {
         const { id, productSpec } = params
         const { name, price, offer, stock, color, size, category, description } = data
 
@@ -158,13 +165,22 @@ const productModel = {
             }
         }
 
-        for (const image of files) {
-            await db.Image.update({
-                name: image.filename
-            }, {
-                where: { product_detail_id: productSpec } // le saque el => id  ||  hablar de esto
-                // borron y cuenta nueva O usar "upsert" con ayuda de una query
-            })
+        for (let i = 0; i < files.length; i++) {
+            if (imgList.length > i) {
+                await db.Image.update({
+                    name: files[i].filename
+                }, {
+                    where: { product_detail_id: productSpec, id: imgList[i] }
+                })
+            } else {
+                if (files[i] === false) {
+                    continue
+                }
+                await db.Image.create({
+                    name: files[i].originalname,
+                    product_detail_id: productSpec
+                })
+            }
         }
 
         return {

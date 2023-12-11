@@ -26,7 +26,7 @@
     <%- include("./partials/header.ejs") %>
     
 <main>
-    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/edit?_method=PUT" class="form-container" method="POST" enctype="multipart/form-data">
+    <form action="/productos/<%= product.id %>/<%= chosenProductSpec.id %>/edit?_method=PUT&imgList=<%= imageIds %>" class="form-container" method="POST" enctype="multipart/form-data">
         <h1>Editar Producto:</h1>
         <h3><%= product.name  %> / Color <%= chosenProductSpec.color.name %> - Tamaño/Talle <%= chosenProductSpec.size.name %></h3>
         <% if (locals.errores && errores.length > 0) { %>
