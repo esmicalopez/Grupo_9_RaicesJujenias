@@ -8,12 +8,18 @@ const { validationResult } = require("express-validator")
 //  Controladores
 const controllers = {
     productos: async (req, res) => {
-        const { productsList, categories } = await productModel.productos()
+        const page = req.query.page ? Number(req.query.page) : 1
+
+        const products = await productModel.productos({ page })
+
+        const { categories, limitedProducts, productsList, numberPage } = products
 
         res.render("productos", {
-            productsList,
+            limitedProducts,
             categories,
-            offerCalc
+            offerCalc,
+            productsList,
+            numberPage
         })
     },
 

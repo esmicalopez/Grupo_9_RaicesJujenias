@@ -35,7 +35,7 @@
                 </section>
 
                 <section>
-                    <%- include("./partials/products/productList.ejs", { productsList, offerCalc }) %>
+                    <%- include("./partials/products/limitedProducts.ejs", { limitedProducts, offerCalc }) %>
                 </section>
             </div>
             <% if (userLogged && user.rol_id === 1) { %>
