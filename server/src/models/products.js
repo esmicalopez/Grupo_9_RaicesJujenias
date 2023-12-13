@@ -2,7 +2,12 @@ const db = require("../database/models")
 const Op = db.Sequelize.Op
 
 const productModel = {
-    productos: async () => {
+    productos: async ({ page }) => {
+        const numberPage = page === 0 ? 1 : page
+        const productsGroup = 4 * (numberPage - 1)
+        console.log(productsGroup)
+        console.log(numberPage)
+
         const productsList = await db.Product.findAll({
             include: [{ association: "product_detail", include: ["images", "size", "color"] }, "category"],
             group: "product_id"
@@ -15,9 +20,17 @@ const productModel = {
             ]
         })
 
+        const limitedProducts = await db.Product.findAll({
+            include: [{ association: "product_detail", include: ["images", "size", "color"] }, "category"],
+            limit: 4,
+            offset: productsGroup
+        })
+
         return {
             productsList,
-            categories
+            categories,
+            limitedProducts,
+            numberPage
         }
     },
 
