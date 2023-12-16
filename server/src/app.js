@@ -10,6 +10,9 @@ const carritoRoutes = require("./routes/carrito")
 const productoRoutes = require("./routes/producto")
 const usersRoutes = require("./routes/users")
 
+// APIs
+const productRoutesAPI = require("./routes/apis/product")
+
 const cookieLoggerMid = require("./middlewares/cookieLoggerMid")
 const userLocals = require("./middlewares/userLocals")
 
@@ -48,7 +51,9 @@ app.use("/carrito", carritoRoutes)
 
 app.use("/productos", productoRoutes)
 
-// ...
+// Solicitudes de APIs
+
+app.use("/api/products", productRoutesAPI)
 
 // Iniciando el servidor en localhost:PORT
 app.listen(PORT, () => {
