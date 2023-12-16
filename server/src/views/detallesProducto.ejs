@@ -141,73 +141,69 @@
 
     </main>
 
-
-        <aside class="container-aside">
-            <section class="container-description-additional-info">
-                <div class="container-description">
-                    <div class="title-additional-information">
-                        <h4>Descripcion</h4>
-                    </div>
-                    <div class="text-additional-information">
-                        <p><%= product.description %></p>
-                    </div>
-                </div>  
-
-                <div class="container-reviews">
-                    <div class="title-reviews">
-                        <h4>Reseñas</h4>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+    <aside class="container-aside">
+        <section class="container-description-additional-info">
+            <div class="container-description">
+                <div class="title-additional-information">
+                    <h4>Descripcion</h4>
                 </div>
-
-                <div class="container-social">
-                    <span>Compartir</span>
-                    <div class="container-buttons-social">
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-                    </div>
+                <div class="text-additional-information">
+                    <p><%= product.description %></p>
                 </div>
-            </section>
+            </div>  
 
-            <section class="payment-methods">
-                <h4>Metodos de pago</h4>
-                <div class="debit">
-                    <span>Tarjeta de Debito</span>
-                    <img src="/images/products/payment-methods/master-card-credito.svg" alt="">
-                    <img src="/images/products/payment-methods/american-express-credito.svg" alt="">
-                    <img src="/images/products/payment-methods/naranja-credito.svg" alt="">
-                    <img src="/images/products/payment-methods/visa-debito.svg" alt="">
+            <div class="container-reviews">
+                <div class="title-reviews">
+                    <h4>Reseñas</h4>
+                    <i class="fa-solid fa-chevron-down"></i>
                 </div>
+            </div>
 
-                <div class="credit">
-                    <span>Tarjeta de Credito</span>
-                    <img src="/images/products/payment-methods/cabal-debito.svg" alt="">
-                    <img src="/images/products/payment-methods/maestro.svg" alt="">
-                    <img src="/images/products/payment-methods/master-card-debito.svg" alt="">
-                    <img src="/images/products/payment-methods/mercado-pago.svg" alt="">
-                    <img src="/images/products/payment-methods/visa-credito.svg" alt="">
+            <div class="container-social">
+                <span>Compartir</span>
+                <div class="container-buttons-social">
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                 </div>
-                <div class="cash">
-                    <span>Efectivo</span>
-                    <img src="/images/products/payment-methods/pago-facil.svg" alt="">
-                    <img src="/images/products/payment-methods/rapipago.svg" alt="">
+            </div>
+        </section>
 
-                </div>
-            </section>
-        </aside>
+        <section class="payment-methods">
+            <h4>Metodos de pago</h4>
+            <div class="debit">
+                <span>Tarjeta de Debito</span>
+                <img src="/images/products/payment-methods/master-card-credito.svg" alt="">
+                <img src="/images/products/payment-methods/american-express-credito.svg" alt="">
+                <img src="/images/products/payment-methods/naranja-credito.svg" alt="">
+                <img src="/images/products/payment-methods/visa-debito.svg" alt="">
+            </div>
 
-    
+            <div class="credit">
+                <span>Tarjeta de Credito</span>
+                <img src="/images/products/payment-methods/cabal-debito.svg" alt="">
+                <img src="/images/products/payment-methods/maestro.svg" alt="">
+                <img src="/images/products/payment-methods/master-card-debito.svg" alt="">
+                <img src="/images/products/payment-methods/mercado-pago.svg" alt="">
+                <img src="/images/products/payment-methods/visa-credito.svg" alt="">
+            </div>
+            <div class="cash">
+                <span>Efectivo</span>
+                <img src="/images/products/payment-methods/pago-facil.svg" alt="">
+                <img src="/images/products/payment-methods/rapipago.svg" alt="">
 
- 
+            </div>
+        </section>
+    </aside>
 
     
     <section class="container">
         <h2>Productos Relacionados</h2>
 
-        <%- include("./partials/products/productList.ejs", { productsList: newProductsList, offerCalc }) %>
+        <%- include("./partials/products/productListCarrusel.ejs", { productsList: newProductsList, offerCalc }) %>
+        
         
     </section>
 
