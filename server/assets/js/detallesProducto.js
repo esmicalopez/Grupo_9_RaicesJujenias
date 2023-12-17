@@ -12,41 +12,41 @@ imagesAside.addEventListener("mouseover", (e) => {
 
 // //       ----------
 // // --- -- Carrusel -- ---
-// const carruselWrapper = document.querySelector(".carousel-wrapper")
-// const leftButton = document.querySelector(".control-left")
-// const rightButton = document.querySelector(".control-right")
+const carruselWrapper = document.querySelector(".carousel-wrapper")
+const leftButton = document.querySelector(".control-left")
+const rightButton = document.querySelector(".control-right")
 
-// const quantityProducts = carruselWrapper.getAttribute("data-product-length")
-// const distance = 100 / (quantityProducts / 4)
-// let counter = 1
+const quantityProducts = carruselWrapper.getAttribute("data-product-length")
+const distance = 100 / (quantityProducts / 4)
+let counter = 1
 
-// rightButton.addEventListener("click", () => {
-//     const translate = distance * (counter)
-//     carruselWrapper.style.transform = `translateX(-${translate}%)`
-//     counter++
+rightButton.addEventListener("click", () => {
+    const translate = distance * (counter)
+    carruselWrapper.style.transform = `translateX(-${translate}%)`
+    counter++
 
-//     if (counter === Math.ceil(quantityProducts / 4)) {
-//         rightButton.classList.add("hidden")
-//     }
+    if (counter === Math.ceil(quantityProducts / 4)) {
+        rightButton.classList.add("hidden")
+    }
 
-//     if (counter !== 1) {
-//         leftButton.classList.remove("hidden")
-//     }
-// })
+    if (counter !== 1) {
+        leftButton.classList.remove("hidden")
+    }
+})
 
-// leftButton.addEventListener("click", () => {
-//     const translate = distance * (counter - 1) * (-1) + distance
-//     carruselWrapper.style.transform = `translateX(${translate}%)`
-//     counter--
+leftButton.addEventListener("click", () => {
+    const translate = distance * (counter - 1) * (-1) + distance
+    carruselWrapper.style.transform = `translateX(${translate}%)`
+    counter--
 
-//     if (counter === 1) {
-//         leftButton.classList.add("hidden")
-//     }
+    if (counter === 1) {
+        leftButton.classList.add("hidden")
+    }
 
-//     if (counter < Math.ceil(quantityProducts / 4)) {
-//         rightButton.classList.remove("hidden")
-//     }
-// })
+    if (counter < Math.ceil(quantityProducts / 4)) {
+        rightButton.classList.remove("hidden")
+    }
+})
 
 // slide mobile
 
@@ -61,13 +61,10 @@ function prueba () {
     } else if (slider.scrollLeft < slider.clientWidth * 2) {
         formatSelectedClass(items[1])
     } else if (slider.scrollLeft < slider.clientWidth * 3) {
-        console.log(slider.scrollLeft)
         formatSelectedClass(items[2])
     } else if (slider.scrollLeft < slider.clientWidth * 4) {
-        console.log(slider.scrollLeft)
         formatSelectedClass(items[3])
     } else if (slider.scrollLeft < slider.clientWidth * 5) {
-        console.log(slider.scrollLeft)
         formatSelectedClass(items[4])
     }
 }

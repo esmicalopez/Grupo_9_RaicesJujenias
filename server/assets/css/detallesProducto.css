@@ -176,6 +176,30 @@ body {
   --background: hsla(0, 0%, 0%, 0.1);
 }
 
+.has-scrollbar>li {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.has-scrollbar::-webkit-scrollbar-track {
+  background: var(--white);
+  border-radius: 20px;
+  outline: 2px solid var(--terracota);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--terracota);
+  border: 2px solid var(--white);
+  border-radius: 20px;
+}
+
+.has-scrollbar::-webkit-scrollbar-button {
+  width: calc(25% - 40px);
+}
 
 
 .card-banner {
@@ -194,11 +218,6 @@ body {
   transition: var(--transition-2);
 }
 
-
-/* .product-item {
-  width: 25%;
-  margin: 0 10px;
- } */
 
 
 .product-card:is(:hover, :focus) .image-contain {
@@ -317,6 +336,7 @@ body {
   color: var(--terracota);
   font-family: var(--ff-roboto);
   font-weight: var(--fw-600);
+  font-size: var(--fs-4);
 }
 
 .card-price del {
@@ -512,14 +532,66 @@ body {
   pointer-events: all;
 }
 
+  /** PRODUCTOS*/
+   
+  .filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .filter-btn {
+    color: var(--onyx);
+    padding: 10px 16px;
+    font-family: var(--ff-roboto);
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    border: 1px solid var(--gainsboro);
+    border-radius: 30px;
+  }
+  
+  .filter-btn.active {
+    background: var(--terracota);
+    color: var(--white);
+    border-color: var(--terracota);
+  }
+  
+  .product-list {
+    display: grid;
+  }
+  
+  .cta-list {
+    display: grid;
+    gap: 40px;
+  }
+  
+  .cta-card {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #000000;
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .cta-card .card-subtitle {
+    font-size: var(--fs-5);
+    margin-bottom: 15px;
+  }
+  
 
  /** DETALLE DE PRODUCTO **/
 
 
 .section-title {
   text-align: center;
-  margin: 10px 0 25px;
+  margin: 10px 0 10px;
 }
+
+
 
 main {
   max-width: 1350px;
@@ -566,8 +638,8 @@ main {
 .container-img > img {
   padding: 25px 0;
   min-width: 350px;
-  max-width: 400px;
-  height: 520px;
+  max-width: 410px;
+  height: 540px;
   margin: auto; 
   display: block; 
   align-self: center;
@@ -651,12 +723,14 @@ main {
   border-bottom: 1px solid #bebebec8; 
   font-size: 2.4rem;
   color: #000;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .card-price-product .old-price {
+  font-weight: 500;
   font-family: sans-serif;
   color: #666;
   font-size: 1.85rem;
@@ -670,7 +744,7 @@ main {
 }
 
 .card-price-product .new-price span {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .card-price-product .new-price .offer-text {
@@ -678,7 +752,7 @@ main {
 }
 
 .container-price i {
-  font-size: 19px;
+  font-size: 15px;
 }
 
 
@@ -805,7 +879,7 @@ color: #888;
   text-align: center;
   font-weight: 600;
   font-size: 1.8rem;
-  padding: 13px 35px;
+  padding: 13px 20px;
   color: #fff;
   box-shadow: 2px 1px 5px #494949ac;
 }
@@ -935,13 +1009,78 @@ color: #1bbeb4;
 }
 
 .container-carousel {
-  margin-bottom: 80px;
-  margin: auto;
+  margin: 0 auto 80px;
   width: 80%;
   max-width: 1200px;
   position: relative;
 }
 
+.carousel {
+  overflow: hidden;  
+}
+.carousel-wrapper {
+  /* Tendria que ser dinamico */
+  width: 1100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  transform: translateX();
+}
+
+.product-item {
+  /* Tendria que ser dinamico */
+  width: 100%;
+  /* margin: 0 10px; */
+ }
+
+.controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: #f17c50;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 25px;
+  display: grid;  
+  place-content: center;
+  color: #eee;
+
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-size: 25px;
+  transition: .3s ease background;
+}
+
+.control-btn:hover {
+  background: var(--terracota);
+}
+
+.control-left {
+  left: -25px;
+}
+
+.control-right {
+  right: -25px;
+}
+
+
+.hidden {
+  display: none;
+}
 
 /**FOOTER*/
 
@@ -1133,6 +1272,17 @@ a.footer-link:is(:hover, :focus) {
   .slider .img-container {
     height: 305px;
   }
+
+  .carousel-wrapper {
+    /* Tendria que ser dinamico */
+    width: 550%;
+  }
+  
+  .product-item {
+    /* Tendria que ser dinamico */
+    width: 50%;
+    margin: 0 10px;
+   }
   
 
   /**FOOTER*/
@@ -1216,13 +1366,23 @@ a.footer-link:is(:hover, :focus) {
     width: 42%;
     flex: 1;
     padding-left: 24px;
-    border-left: 1px solid #cececec8;
     border-top: none;
   }
 
+  .container-name-product {
+    padding: 5px 0;
+  }
+
+  .card-price-product .new-price {
+    padding: 2px 0
+  }
   .container-price {
     font-size: 2.6rem;
-    padding: 3px 0 16px;
+    padding: 7px 0 14px;
+  }
+
+  .container-details-product {
+    padding: 16px 0;
   }
   
   .buttons {
@@ -1248,7 +1408,7 @@ a.footer-link:is(:hover, :focus) {
   .container-aside {
     flex-direction: row;
     gap: 24px;
-    margin: 20px auto 55px;
+    margin: 30px auto 55px;
     padding: 20px 25px;
     border-top: 1px solid #ccccccc8; 
   }
@@ -1385,9 +1545,28 @@ a.footer-link:is(:hover, :focus) {
 
   /**PRODUCTOS*/
 
+  .section-title {
+    text-align: center;
+    margin: 10px 0 20px;
+  }
+
   .product-list {
       grid-template-columns: repeat(3, 1fr);
   }
+
+  .container-info-product {
+    border-left: 1px solid #cececec8;
+  }
+
+  .carousel-wrapper {
+    /* Tendria que ser dinamico */
+    width: 366%;
+  }
+  
+  .product-item {
+    /* Tendria que ser dinamico */
+    width: 33.33%;
+   }
 
   /** OFERTAS - TENDENCIAS*/
 
@@ -1484,6 +1663,16 @@ a.footer-link:is(:hover, :focus) {
   /**
    * PRODUCTS
    */
+
+   .carousel-wrapper {
+    /* Tendria que ser dinamico */
+    width: 275%;
+  }
+  
+  .product-item {
+    /* Tendria que ser dinamico */
+    width: 25%;
+   }
 
   .product-list {
       grid-template-columns: repeat(4, 1fr);
