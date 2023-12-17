@@ -25,25 +25,32 @@ const controllers = {
         } catch (error) {
             res.json(error)
         }
-    }
+    },
 
-    /* detalleProducto: async (req, res) => {
-        const { id, productSpec: prodSpecId } = req.params
+    detalleProducto: async (req, res) => {
+        const { id } = req.params
 
-        const productData = await productModel.detalleProducto({ id, prodSpecId })
+        const productData = await productModel.detalleProducto({ id })
 
-        if (!productData) return res.send("Producto no encontrado")
+        const { product, productDetail } = productData
 
-        const { product, detail, chosenProductSpec, newProductsList } = productData
+        if (!product) {
+            return res.status(404).json({
+                error: {
+                    msg: "producto no encontrado",
+                    status: 404
+                }
+            })
+        }
 
-        return res.render("detallesProducto", {
-            product,
-            detail,
-            chosenProductSpec,
-            newProductsList,
-            offerCalc
+        return res.status(200).json({
+            status: 200,
+            data: {
+                product,
+                productDetail
+            }
         })
-    } */
+    }
 
 }
 
