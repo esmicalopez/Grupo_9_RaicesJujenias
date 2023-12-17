@@ -188,10 +188,18 @@ body {
 .image-contain {
   width: 100%;
   height: 100%;
+  padding: 10px;
   object-fit: contain;
   object-position: center;
   transition: var(--transition-2);
 }
+
+
+/* .product-item {
+  width: 25%;
+  margin: 0 10px;
+ } */
+
 
 .product-card:is(:hover, :focus) .image-contain {
   transform: scale(1.1);
@@ -292,6 +300,7 @@ body {
 }
 
 .product-card .card-title {
+  font-size: var(--fs-5);
   margin-bottom: 12px;
 }
 
@@ -513,6 +522,8 @@ body {
 }
 
 main {
+  max-width: 1350px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -520,6 +531,49 @@ main {
   gap: 24px;
   padding: 10px;
 }
+
+.container-img {
+  background-color: #f7f7f9;
+  flex: 1.8;
+  display: none;
+  padding: 0 15px;
+}
+
+.container-img .img-aside {
+  padding: 10px;
+  width: 97px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+}
+
+.img-aside > img {
+  object-fit: contain;
+  width: 100%;
+  height: 90px;
+  padding: 5px;
+  border: 2px solid #bbb;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.img-aside > img.selected-image {
+  border: 2px solid #ff651d;
+} 
+
+.container-img > img {
+  padding: 25px 0;
+  min-width: 350px;
+  max-width: 400px;
+  height: 520px;
+  margin: auto; 
+  display: block; 
+  align-self: center;
+  object-fit: contain;
+  cursor: pointer;
+}  
 
 
 .container-img-mobile {
@@ -583,7 +637,6 @@ main {
   flex-direction: column;
   padding: 15px;
   border-top: 1px solid #cececec8; 
-
 }
 
 .container-name-product {
@@ -596,6 +649,8 @@ main {
 .container-price {
   padding: 3px 0 6px;
   border-bottom: 1px solid #bebebec8; 
+  font-size: 2.4rem;
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -615,15 +670,17 @@ main {
 }
 
 .card-price-product .new-price span {
-  font-size: 2.4rem;
-  color: #000;
   font-weight: 500;
 }
-
 
 .card-price-product .new-price .offer-text {
   color: #e8764cf3;
 }
+
+.container-price i {
+  font-size: 19px;
+}
+
 
 .container-details-product {
   padding: 30px 0 18px;
@@ -771,9 +828,8 @@ color: #888;
 
 /* ASIDE CONTAINER */
 
-
-
 .container-aside {
+  max-width: 1350px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -783,7 +839,6 @@ color: #888;
 }
 
 .container-description-additional-info {
-  /* padding: 0 15px; */
   margin-bottom: 15px;
 }
 
@@ -874,6 +929,19 @@ color: #1bbeb4;
   gap: 14px;
 }
   
+.container-carousel > h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.container-carousel {
+  margin-bottom: 80px;
+  margin: auto;
+  width: 80%;
+  max-width: 1200px;
+  position: relative;
+}
+
 
 /**FOOTER*/
 
@@ -1054,12 +1122,6 @@ a.footer-link:is(:hover, :focus) {
       min-width: calc(50% - 12.5px);
   }
 
-  /** Baner */
-
-  .banner-text {
-      font-size: var(--fs-7);
-      color: var(--white)
-  }
 
   /** PRODUCTOS*/
 
@@ -1067,94 +1129,11 @@ a.footer-link:is(:hover, :focus) {
       grid-template-columns: 1fr 1fr;
   }
 
-  /**TENDENCIAS - OFERTAS */
-
-  .cta-card {
-      text-align: left;
-  }
-
-  .cta-card .card-title {
-      max-width: 14ch;
-  }
-
-  .cta-card .btn-link {
-      margin-inline: 0;
-  }
-
-
-
-  /** JUJUY TIRA DE IMAGENES POST  */
-
-  .jujuy-post-list .jujuy-post-item {
-      min-width: 25%;
-  }
-
-  /* FORMULARIO */
-
-
-  .form-container {
-      width: 95%;
-      max-width: 900px;
-      margin: 15px auto 50px;
-      box-shadow: 6px 6px 15px 3px rgba(179, 179, 177, 0.336);
-
-      display: flex;
-      flex-wrap: wrap;
-  }
-
-  .input-group {
-      width: 100%;
-      display: flex;
-      align-items: start;
-      flex-wrap: wrap;
-      gap: 15px;
-  }
-
-  .error {
-      margin: 8px 0 15px;
-      font-size: var(--fs-5); 
+  /** SLIDER IMAGES PRODCUT **/
+  .slider .img-container {
+    height: 305px;
   }
   
-  .error.none {
-      margin: -1px 0;
-  }
-
-  .form-container input, .product-status select, .product-category select {
-      font-size: var(--fs-5);
-  }
-  
-  .input-item label, .input-item span {
-      font-size: var(--fs-4);
-  }
-
-
-  .form-container > h1 {
-      width: 100%;
-      margin: 20px 0 ;
-      font-size: var(--fs-2);
-
-  }
-
-  .input-item {
-      flex: 1;
-      min-width: 45%;
-      margin: 0 6px;
-  }
-
-  .form-buttons {
-      margin: 15px 0 25px;
-  }
-
-  .form-buttons, .product-description {
-      min-width: 100%;
-  }
-  
-  .product-description {
-      min-width: 99%;
-  }
-
-  
-
 
   /**FOOTER*/
 
@@ -1210,20 +1189,99 @@ a.footer-link:is(:hover, :focus) {
       margin-block-start: 0;
   }
 
-  .special-banner,
-  .special-product {
-      min-width: calc(50% - 12.5px);
+  /** IMAGES PRODUCT / SLIDER **/
+
+
+
+  main {
+    padding: 0 25px;
+    flex-direction: row;
+/* 
+    gap: 24px;
+    padding: 5px 40px; */
   }
 
-  .special-banner {
-      height: auto;
+  .container-img-mobile {
+    display: none;
+  }
+  
+  .container-img {
+    background-color: #f7f7f9;
+    flex: 1.8;
+    display: flex;
+    padding: 0 15px;
+  }
+  
+  .container-info-product {
+    width: 42%;
+    flex: 1;
+    padding-left: 24px;
+    border-left: 1px solid #cececec8;
+    border-top: none;
   }
 
-  /** JUJUY TIRA DE IMAGENES */
-
-  .jujuy-post-list .jujuy-post-item {
-      min-width: 20%;
+  .container-price {
+    font-size: 2.6rem;
+    padding: 3px 0 16px;
   }
+  
+  .buttons {
+    padding: 15px 0px;
+    min-width: 60%;
+  }
+
+  .container-add-cart {
+    border-bottom: none;
+  }
+
+  .container-add-cart .administration-methods {
+    gap: 15px;
+  }
+  
+  .container-add-cart .editProduct, .container-add-cart form > button {
+    font-size: 1.7rem;
+    background: rgba(230, 19, 40, 0.833);
+    padding: 15px 10px;
+  }
+
+
+  .container-aside {
+    flex-direction: row;
+    gap: 24px;
+    margin: 20px auto 55px;
+    padding: 20px 25px;
+    border-top: 1px solid #ccccccc8; 
+  }
+  
+  .container-description-additional-info {
+    flex: 1.8;
+    min-width: 500px;
+  }
+  
+  .container-description h4 {
+    margin-bottom: 15px;
+  }
+  
+  .container-description p {
+    color: #555;
+    margin-bottom: 13px;
+  }
+  
+  .payment-methods {
+    flex: 1;
+    padding-left: 24px;
+    border-left: 1px solid #ccccccc8; 
+    min-width: 300px;
+  }
+  
+  .payment-methods > h4 {
+    font-size: var(--fs-4);
+  }
+  
+  .payment-methods span {
+    font-size: 1.65rem;
+  }
+  
 
   .go-top-btn {
       padding: 15px;
@@ -1330,8 +1388,6 @@ a.footer-link:is(:hover, :focus) {
   .product-list {
       grid-template-columns: repeat(3, 1fr);
   }
-
-
 
   /** OFERTAS - TENDENCIAS*/
 
