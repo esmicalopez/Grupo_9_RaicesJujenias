@@ -12,6 +12,7 @@ const usersRoutes = require("./routes/users")
 
 // APIs
 const productRoutesAPI = require("./routes/apis/product")
+const userRoutesAPI = require("./routes/apis/user")
 
 const cookieLoggerMid = require("./middlewares/cookieLoggerMid")
 const userLocals = require("./middlewares/userLocals")
@@ -54,6 +55,7 @@ app.use("/productos", productoRoutes)
 // Solicitudes de APIs
 
 app.use("/api/products", productRoutesAPI)
+app.use("/api/users", userRoutesAPI)
 
 // Iniciando el servidor en localhost:PORT
 app.listen(PORT, () => {
