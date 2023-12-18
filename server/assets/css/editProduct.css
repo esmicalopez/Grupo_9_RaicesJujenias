@@ -654,6 +654,8 @@ body {
 .product-photos-list img  {
     height: 275px;
     min-width: 257px;
+    margin: auto;  /* - cambio - */
+    padding: 13px;
 
     object-fit: contain;
     border: 1px solid #a7674a;

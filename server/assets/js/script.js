@@ -22,7 +22,7 @@ const header = document.querySelector("[data-header]")
 const goTopBtn = document.querySelector("[data-go-top]")
 
 window.addEventListener("scroll", function () {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 15) {
         header.classList.add("active")
         goTopBtn.classList.add("active")
     } else {

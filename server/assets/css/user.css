@@ -440,9 +440,16 @@
   
   .navbar-link {
     color: var(--rich-black-fogra-29);
-    padding-block: 10px;
+    margin: 10px 0;
     transition: var(--transition-1);
   }
+
+
+.navbar-link.selected {
+    color: var(--terracota);
+    border-bottom: 1px solid var(--terracota);
+}
+
   
   .navbar-link:is(:hover, :focus) {
     color: var(--terracota);
@@ -567,6 +574,7 @@
   }
 
   .user-profile {
+    margin: 25px 0;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -576,31 +584,54 @@
   .interests>h3 {
     width: 100%;
   }
-  
-  .user-profile>.user-profile-left,
-  .user-profile>.user-profile-right {
-    margin: 10px;
-    width: 35%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .user-profile input {
-    margin-right: 10px;
-  }
-  
-  .user-profile input,
-  .user-profile label {
-    width: auto;
-    display: inline;
-  }
 
   .user-rols {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin: 7px 0;
   }
+  
+  .user-profile .user-profile-left,
+  .user-profile .user-profile-right {
+    text-align: center;
+    margin: 10px auto;
+    width: 35%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-profile input, .user-profile label {
+    display: inline;
+    width: auto;
+  }
+  
+  .user-profile input {
+    margin: 0;
+    margin-right: 10px;
+    height: 17px;
+    width: 17px;
+  }
+
+  .profile-picture-container {
+    min-width: 100%;
+    border: 1px solid #ccc;
+    padding: .9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-size: var(--fs-6);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .profile-picture-container > input {
+    border: none;
+    width: auto;
+    margin: auto;
+  }
+
+ 
   
   .avatar-preview-none {
     display: none;
@@ -619,6 +650,12 @@
     border-style: dashed;
     border-radius: 5px;
     margin-top: 15px;
+    object-fit: contain;
+    max-width: 274px;
+    min-width: 240px;
+    height: 290px;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .terms-and-conditions div  {
@@ -730,7 +767,7 @@
       border-radius: 10px;
       padding: 15px;
       background-color: white;
-      margin: 130px 0;
+      margin: 60px 0;
       box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   }
   .login-form a{
@@ -997,16 +1034,18 @@
   .avatar-preview .del-avatar-preview {
     margin: 20px auto;
     padding: 10px;
-    border-radius: 10px;
-    width: 70%;
-    max-width: 230px;
+    border-radius: 5px;
+    max-width: 274px;
+    min-width: 240px;
+    width: 100%;
     background-color: var(--terracota);
     color: white;
     transition: all 300ms;
+    font-size: 1.75rem;
   }
   .profile-info button:hover,
   .avatar-preview .del-avatar-preview:hover {
-    background-color: #c7562d;
+    background-color: var(--terracota_2);
   }
   /**FOOTER*/
   
@@ -1332,6 +1371,10 @@
         margin: 10px;
     }
   
+    .user-email {
+      min-width: 90%;
+    }
+
     .profile-and-photo {
       flex-direction: column;
     }
@@ -1340,23 +1383,47 @@
       display: flex;
       align-items: start;
       flex-wrap: wrap;
-      width: 100%;
+      min-width: 90%;
+    }
+
+
+    .full-name {
+      min-width: 100%;
+
     }
 
     .user-profile {
+      margin: 25px 10px 5px;
       margin-left: 25px;
     }
 
-    .full-name {
-      gap: 15px;
+    .user-profile > h3 { 
+      margin: 0;
     }
 
-    .user-profile>.user-profile-left,
-    .user-profile>.user-profile-right {
-        margin-left: 20px;
-        justify-content: start;
-    }
+  .user-rols {
+    justify-content: center;
+    margin: 0;
+  }
   
+  .user-profile .user-profile-left {
+    justify-content: end;
+
+  }
+  .user-profile .user-profile-right {
+    justify-content: start;
+  }
+  
+  .user-profile input {
+    height: 20px;
+    width: 20px;
+  }
+
+  .user-profile label {
+    font-size: var(--fs-4);
+    color: #444;
+  }
+
     .password-container {
       margin-top: 10px;
       width: 100%; 
@@ -1364,7 +1431,7 @@
 
     .password-container > div {
       display: flex;
-      gap: 15px;
+      /* gap: 15px; */
     }
 
     .terms-and-conditions {

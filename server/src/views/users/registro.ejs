@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <%- include("../partials/header.ejs") %>
+    <%- include("../partials/header.ejs", { registro: "selected" }) %>
 
 
     <main>
@@ -50,7 +50,7 @@
             </div>
 
     
-            <div class="input-item">
+            <div class="input-item user-email">
                 <% if (typeof errores !== "undefined" && errores.email) { %>
                     <div class="error error-left">
                         <p> <%= errores.email.msg %></p>
@@ -89,10 +89,12 @@
                         </div>
                     <% } %>
                     <label for="profile-picture">Foto de Usuario</label>
-                    <input id="profile-picture" type="file" accept="image/png, image/jpeg, image/jpg" name="profile-image">
-                    <div class="avatar-setting avatar-preview-none">
-                        <img src="" alt="" id="imgPreview" width="300" height="300"> <!-- ARREGLAR ESTILOS DE IMAGEN -->
-                        <button type="button" class="del-avatar-preview">Eliminar imagen</button>
+                    <div class="profile-picture-container">
+                        <input id="profile-picture" type="file" accept="image/png, image/jpeg, image/jpg" name="profile-image">
+                        <div class="avatar-setting avatar-preview-none">
+                            <img src="" alt="" id="imgPreview" width="300" height="300"> <!-- ARREGLAR ESTILOS DE IMAGEN -->
+                            <button type="button" class="del-avatar-preview">Eliminar imagen</button>
+                        </div>
                     </div>
                 </div>
 

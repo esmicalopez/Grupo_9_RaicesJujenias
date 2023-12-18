@@ -19,13 +19,13 @@
 
         <ul class="navbar-list">
           <li class="navbar-item">
-            <a href="/" class="navbar-link">Inicio</a>
+            <a href="/" class="navbar-link <%= locals.inicio ?? '' %>">Inicio</a>
           </li>
           <li class="navbar-item">
-            <a href="/productos" class="navbar-link">Productos</a>
+            <a href="/productos" class="navbar-link <%= locals.productos ?? '' %>">Productos</a>
           </li>
           <li class="navbar-item">
-            <a href="/carrito" class="navbar-link">Carrito</a>
+            <a href="/carrito" class="navbar-link <%= locals.carrito ?? '' %>">Carrito</a>
           </li>
 
           <% if (userLogged) { %>
@@ -36,10 +36,10 @@
 
           <% if (!userLogged) { %>
             <li class="navbar-item">
-              <a href="/login" class="navbar-link">Iniciar Sesion</a>
+              <a href="/login" class="navbar-link <%= locals.login ?? '' %>">Iniciar Sesion</a>
             </li>
             <li class="navbar-item">
-              <a href="/registro" class="navbar-link">Registrarse</a>
+              <a href="/registro" class="navbar-link <%= locals.registro ?? '' %>">Registrarse</a>
             </li>
           <% } %>
           

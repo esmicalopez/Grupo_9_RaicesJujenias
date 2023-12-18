@@ -219,6 +219,7 @@ body {
 .image-contain {
   width: 100%;
   height: 100%;
+  padding: 10px;
   object-fit: contain;
   object-position: center;
   transition: var(--transition-2);
@@ -486,8 +487,12 @@ body {
 
 .navbar-link {
   color: var(--rich-black-fogra-29);
-  padding-block: 10px;
+  margin: 10px 0;
   transition: var(--transition-1);
+}
+
+.navbar-link.selected {
+  color: #c1603d;
 }
 
 .navbar-link:is(:hover, :focus) {
@@ -1011,7 +1016,7 @@ a.footer-link:is(:hover, :focus) {
   /** Baner */
 
   .banner-text {
-    font-size: var(--fs-7);
+    font-size: var(--fs-4);
     color: var(--white)
   }
 
@@ -1182,6 +1187,7 @@ a.footer-link:is(:hover, :focus) {
   }
 
   .navbar-link {
+    font-size: 16.5px;
     font-family: var(--ff-roboto);
     font-weight: var(--fw-500);
   }
@@ -1304,7 +1310,7 @@ a.footer-link:is(:hover, :focus) {
   }
 
   .banner-text {
-    font-size: var(--fs-6);
+    font-size: var(--fs-4);
     max-width: 50ch;
   }
 

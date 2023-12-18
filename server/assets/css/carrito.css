@@ -453,9 +453,15 @@ body {
 
 .navbar-link {
     color: var(--rich-black-fogra-29);
-    padding-block: 10px;
+    margin: 10px 0;
     transition: var(--transition-1);
 }
+
+.navbar-link.selected {
+    color: var(--terracota);
+    border-bottom: 1px solid var(--terracota);
+}
+
 
 .navbar-link:is(:hover, :focus) {
     color: var(--terracota);
@@ -982,10 +988,9 @@ a.footer-link:is(:hover, :focus) {
     }
 
     /* CARRITO */
-    .aside section {
-        /* grid-template-columns: repeat(auto-fill, 230px); */
-
-    }
+    /* .aside section {
+        grid-template-columns: repeat(auto-fill, 230px);
+    } */
 
     .main>div {
         gap: 7px;
