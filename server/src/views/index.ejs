@@ -21,8 +21,6 @@
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
 
-  <!-- <link rel="preload" href="images/banner.png" as="image"> -->
-
 </head>
 
 <body id="top">
@@ -136,6 +134,15 @@
   <!-- ICONOS-->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    function closeMessage() {
+      const idMessege = document.getElementById("success-message")
+      idMessege.classList.remove('show');
+    }
+    setTimeout(function() {
+      closeMessage();
+    }, 4000)
+    </script>
 </body>
 
 </html>

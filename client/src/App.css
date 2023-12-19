@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.header-container {
+    background: #232323;
+    color: #fff;
+}
+
+.header-container nav {
+    padding: 5px 0;
+}
+
+
+.header-container .nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header-container .nav-list .nav-item {
+    display: grid;
+    place-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.header-container .nav-list a { 
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+/** MAIN **/
+
+.main {
+    background: #eee;
+    margin: 50px auto;
+    padding: 30px;
+}
+
+.data-info-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0 20px;
+    border-radius: 5px;
+   
+    gap: 32px;
+}
+
+.info-card {
+    border-radius: 5px;
+    background: #74b0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    gap: 10px;
+}
+
+.info-card h2, .info-card span  {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 200px;
+}
+
+
+
+.last-data {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 30px
+}
+
+
+/* FOOTER */
+.footer-container {
+    background: #232323;
+    color: #fff ;
+    padding: 20px 0;
+}
+
+
+.footer-logo > a {
+    text-decoration: none;
+    color: #eee;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo > a > span { 
+    font-size: 1.3rem;
+}
+
+.footer-logo > a > img {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.members {
+    margin-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+.members span {
+    font-size: 1.3rem;
+}
+
+.member-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.member-list .member-item  { 
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 1.05rem;
+    font-family: system-ui;
+    padding: 4px 10px;
+    transform: scale(1);
+    transition: border .3s ease, transform .3s ease;
+
+}
+
+.member-list .member-item > img { 
+    height: 1.45rem;
+}
+
+.member-list .member-item > a { 
+    text-decoration: none;
+    color: #eee;
+}
+
+.member-list .member-item:hover {
+    border: 2px solid #00f;
+    transform: scale(1.05) rotate(-1deg);
+} 
