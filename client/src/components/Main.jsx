@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LastProduct } from './LastProduct'
+import { LastData } from './LastData'
 import { Card } from './Card'
 
 export function Main () {
@@ -14,8 +14,8 @@ export function Main () {
             </section>
 
             <section className='last-data'>
-                <LastProduct name="producto"></LastProduct>
-                <LastProduct name="usuario"></LastProduct>
+                <LastData name="products"></LastData>
+                <LastData name="users"></LastData>
             </section>
         </main>
     )
