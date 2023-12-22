@@ -18,6 +18,15 @@ const controllers = {
         const { id } = req.params
         const user = await userModel.detail({ id })
 
+        if (!user) {
+            return res.status(404).json({
+                error: {
+                    msg: "usuario no encontrado",
+                    status: 404
+                }
+            })
+        }
+
         return res.status(200).json({
             status: 200,
             data: user
