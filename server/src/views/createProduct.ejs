@@ -73,12 +73,13 @@
         <div class="input-group">
             <div class="product-color product-status input-item">
                 <span>Colores</span>
-                <select name="color" id="color"  class="input" data-name="un Color" data-position="5">
+                <div class="selectedColors none"></div>
+                <select name="color" id="color"  class="input" data-name="un Color" data-position="5" multiple>
                     <option disabled selected value="">
                         Escoge el color
                     </option>
                     <% for( color of colors ) { %>
-                        <option value="<%= color.id %>"> <%= color.name %> </option>
+                        <option value="<%= color.id %>" class="colorOption" data-name="<%= color.name %>"> <%= color.name %> </option>
                     <% } %>
                 </select>
                 <div class="error error-name none">
@@ -171,7 +172,7 @@
         <ion-icon name="arrow-up-outline"></ion-icon>
     </a>
 
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 
     <!-- ICONOS-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

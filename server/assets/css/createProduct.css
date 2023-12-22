@@ -528,6 +528,13 @@ body {
     transition: border .3s ease;
 }
 
+.product-color .selectedColors{
+    color: var(--terracota);
+    padding: 5px 0;
+    margin: 0px;
+    transition: opacity ease .3s, margin ease .3s;
+}
+
 .error {
     width: 100%;
     color: #f00;
@@ -537,7 +544,8 @@ body {
     transition: opacity ease .3s, margin ease .3s;
   }
 
-.error.none {
+.error.none, 
+.product-color .selectedColors.none {
     opacity: 0;
     margin: -2px 0;
 }

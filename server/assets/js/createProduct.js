@@ -307,11 +307,42 @@ notEmpty(document.querySelector("#stock"))
 
 validateInputOffer(document.querySelector("#offer"))
 
-notEmpty(document.querySelector("#color"))
-validateSelectedValue(document.querySelector("#color"))
-
 notEmpty(document.querySelector("#size"))
 validateSelectedValue(document.querySelector("#size"))
 
 notEmpty(document.querySelector("#category"))
 validateSelectedValue(document.querySelector("#category"))
+
+// notEmpty(document.querySelector("#color"))
+// validateSelectedValue(document.querySelector("#color"))
+
+document.querySelector("#color").addEventListener("blur", function (e) {
+    if (document.querySelector(".selectedColors").innerText.length > 0) {
+        removeValidationError({ input: e.target })
+    } else {
+        handleInputValidation({ input: e.target, msg: messages.fieldSelectNotEmpty(e.target.getAttribute("data-name")) })
+    }
+})
+const colorsOptions = document.querySelectorAll("#color .colorOption")
+
+const colores = []
+
+for (const color of colorsOptions) {
+    color.addEventListener("mousedown", function (e) {
+        e.preventDefault()
+        color.parentElement.focus()
+        this.selected = !this.selected
+        const colorName = " " + this.getAttribute("data-name")
+        if (this.selected) {
+            colores.push(colorName)
+            document.querySelector(".selectedColors").classList.remove("none")
+        } else {
+            colores.splice(colores.indexOf(colorName), 1)
+            if (document.querySelector(".selectedColors").innerText.length === 0) {
+                document.querySelector(".selectedColors").classList.add("none")
+            }
+        }
+        document.querySelector(".selectedColors").innerText = colores
+        return false
+    })
+}

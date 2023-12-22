@@ -119,7 +119,8 @@ const controllers = {
 
             if (!productData) return res.send("Producto no encontrado")
 
-            const { colors, sizes, categories, product, detail, chosenProductSpec, newProductsList } = productData
+            const { colors, sizes, categories, product, detail, chosenProductSpec, newProductsList, imageIds } = productData
+
             return res.render("editProduct", {
                 errores: erroresExpressValidator.array({ onlyFirstError: true }),
                 colors,
@@ -128,7 +129,8 @@ const controllers = {
                 product,
                 detail,
                 chosenProductSpec,
-                newProductsList
+                newProductsList,
+                imageIds: JSON.stringify(imageIds)
             })
         }
 

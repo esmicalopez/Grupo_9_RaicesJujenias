@@ -35,7 +35,11 @@ const userExists = async (value, { req }) => {
 }
 
 const colorExists = async (value, { req }) => {
-    const color = await db.Color.findByPk(value)
+    const color = await db.Color.findAll({
+        where: {
+            id: value
+        }
+    })
 
     if (!color) {
         throw new Error("Ingrese un color válido")
