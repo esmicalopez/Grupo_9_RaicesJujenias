@@ -76,30 +76,41 @@ const productModel = {
     crearProducto: async ({ data, files }) => {
         const { price, stock, name, description, category, size, color } = data
 
-        const product = await db.ProductDetail.create({
-            price,
-            stock,
-            product: {
-                name,
-                description,
-                category_id: category
-            },
-            size_id: size,
-            color_id: color
+        let colors = []
+        if (typeof color === "string") {
+            colors.push(color)
+        } else {
+            colors = color
+        }
+
+        const parentProduct = await db.Product.create({
+            name,
+            description,
+            category_id: category
         }, {
-            include: [{ association: "product", include: ["category"] }]
+            include: ["category"]
         })
 
-        if (files) {
-            for (const image of files) {
-                db.Image.create({
-                    name: image.originalname, // => cambiar a "name: image.filename". Lo Cambie para que se vea el nombre original.
-                    product_detail_id: product.id
-                })
+        for (const color of colors) {
+            const product = await db.ProductDetail.create({
+                price,
+                stock,
+                product_id: parentProduct.id,
+                size_id: size,
+                color_id: Number(color)
+            })
+
+            if (files) {
+                for (const image of files) {
+                    db.Image.create({
+                        name: image.originalname, // => cambiar a "name: image.filename". Lo Cambie para que se vea el nombre original.
+                        product_detail_id: product.id
+                    })
+                }
             }
         }
 
-        return product
+        return true
     },
 
     editarProductoView: async ({ id, prodSpecId }) => {
