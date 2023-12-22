@@ -5,7 +5,7 @@ const productModel = {
     productos: async () => {
         const productsListRaw = await db.Product.findAll({
             attributes: ["id", "name", "description"],
-            include: ["category"]
+            include: [{ association: "product_detail", include: ["images", "size", "color"] }, "category"]
         })
 
         const categoriesRaw = await db.Category.findAll({

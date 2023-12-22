@@ -3,13 +3,20 @@ const db = require("../../database/models")
 const userModel = {
     list: async () => {
         const usersRaw = await db.User.findAll({
-            attributes: ["id", "name", "lastName", "email"]
+            attributes: ["id", "name", "lastName", "email", "avatar"]
         })
 
         const users = []
         for (const user of usersRaw) {
             users.push({
-                user,
+                id: user.id,
+                name: user.name,
+                lastName: user.lastName,
+                email: user.email,
+                avatar: {
+                    name: user.avatar,
+                    url: `/images/users/${user.avatar}`
+                },
                 detail: `/api/users/${user.id}`
             })
         }
