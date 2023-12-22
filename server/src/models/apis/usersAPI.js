@@ -30,6 +30,10 @@ const userModel = {
             attributes: ["id", "name", "lastName", "email", "preference_id", "avatar"]
         })
 
+        if (!userRaw) {
+            return false
+        }
+
         const user = {
             id: userRaw.id,
             name: userRaw.name,
