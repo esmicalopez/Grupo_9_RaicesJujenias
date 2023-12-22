@@ -12,25 +12,25 @@ export function LastDataCard ({cardName, image, name, info, email, price, offer}
 
     return (
         <div>
-            <span>Ultimo {cardName}</span>
-                <figure>
-                    <img src={`http://localhost:3000${image}`} alt={name} />
-                </figure>
-                <span>{name}</span>
+            <span className="last-data-title">Ultimo {cardName}</span>
+            <figure>
+                <img src={`http://localhost:3000${image}`} alt={name} />
+            </figure>
+            <span className="last-data-name">{name}</span>
 
-                <div className="email-and-price-container">
-                    {
-                        email && <span>{email}</span>
-                    }
+            <div className="email-and-price-container">
+                {
+                    email && <span>{email}</span>
+                }
 
-                    {
-                        offer && <del className="old-price">${price}</del>
-                    }
+                {
+                    offer && <del className="old-price">${price}</del>
+                }
 
-                    {
-                        price && <span className="price">${actualPrice}</span>
-                    }
-                </div>
+                {
+                    price && <span className="price">${actualPrice}</span>
+                }
+            </div>
         </div>
     )
 }

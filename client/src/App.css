@@ -27,6 +27,7 @@ body {
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 20px;
 }
 
@@ -40,7 +41,7 @@ body {
 
 .header-container .nav-list a { 
     text-decoration: none;
-    color: #000;
+    color: #7e7b7b;
 }
 
 .header-container .nav-list ul {
@@ -48,8 +49,29 @@ body {
     margin: 0;
     list-style: none;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 25px;
+    gap: 15px;
+}
+
+.header-container .nav-list ul a.selected {
+    color: #003;
+    border: 2px solid #949494;
+    border-radius: 3px;
+}
+
+.header-container .nav-list ul a {
+    font-size: 1.4rem;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    padding: 5px;
+    transition: all .3s ease;
+}
+
+
+.header-container .nav-list ul a:hover {
+    color: #363636;
+    border: 2px solid #333e78;
 }
 
 
@@ -85,10 +107,30 @@ body {
                 -17px -17px 15px #f7f7f7;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 30px 0;
+    justify-content: space-between;
+    padding: 30px;
     gap: 10px;
 }
+
+.info-card div {
+    color: #232323;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-card div span {
+    color: #343434;
+
+    font-weight: 600;
+}
+
+
+.info-card svg {
+    height: 30px;
+    opacity: .25;
+}
+
 
 .info-card h2, .info-card span  {
     margin: 0;
@@ -98,9 +140,21 @@ body {
 }
 
 
+.last-data-container {
+    border-top: 2px dashed #cdcdcd;
+    margin-top: 50px;
+}
+
+.last-data-container h1 {
+    padding-top: 25px;
+    padding-bottom: 5px;
+
+}
+
+
 
 .last-data {
-    margin: 50px auto 20px;
+    margin: 20px auto 20px;
     display: flex;
     justify-content: space-around;
     align-items: start;
@@ -123,14 +177,12 @@ body {
     padding: 30px 20px;
 }
 
-.last-data > div > span {
-    font-size: 1.35rem;
-    color: #767676;
-    font-weight: 700;
+.last-data > div > .last-data-title {
+    font-size: 1.3rem;
+    color: #777777;
+    font-weight: 600;
     text-transform: uppercase;
 }
-
-
 
 .last-data > div > figure {
     border: 2px dashed #cdcdcd;
@@ -154,11 +206,11 @@ body {
     object-fit: contain;
 }
 
-.last-data > div > span {
-
-font-size: 1.5rem;
-color: #010101;
-font-weight: 600;
+.last-data > div  .last-data-name {
+    font-size: 1.35rem;
+    text-transform: uppercase;
+    color: #010101;
+    font-weight: 600;
 }
 
 .email-and-price-container {
@@ -194,20 +246,33 @@ font-weight: 600;
                 -17px -17px 15px #f7f7f7;
 }
 
-.aside .table {
+.table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
 }
 
+.table-title {
+    margin-top: 0;
+    margin-bottom: 21px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.table img { 
+    width: 80px;
+    height: 90px;
+    object-fit: contain;
+}
+
 th, td {
-    padding: 1em;
+    padding: .7em;
     background: #efefef;
     text-align: center;
     border-bottom: 4px solid white;
     border-right: 6px solid white; 
-
 }
 
 th {
@@ -233,20 +298,31 @@ td {
 }
 
 
+.footer-logo  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .footer-logo > a {
     text-decoration: none;
-    color: #000;
+    color: #313131;
+    display: inline-block;
+}
+
+.footer-logo > a > div {
     display: flex;
     gap: 8px;
     justify-content: center;
     align-items: center;
 }
 
-.footer-logo > a > span { 
+.footer-logo > a > div span { 
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.footer-logo > a > img {
+.footer-logo > a > div img {
     background-image: linear-gradient( to bottom right, #f2f2f2 0%, #ebe8e8 20%, #eaeaea 40%, #f7f7f7 60%, #ffffff 80% );
     background-size: 200% 200%;
     padding: 5px;
@@ -282,6 +358,9 @@ td {
 
 .members span {
     font-size: 1.3rem;
+    color: #313131;
+    font-weight: 600;
+
 }
 
 .member-list {
@@ -314,7 +393,8 @@ td {
 
 .member-list .member-item > a { 
     text-decoration: none;
-    color: #000;
+    font-weight: 500;
+    color: #444;
 }
 
 .member-list .member-item:hover {

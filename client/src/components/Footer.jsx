@@ -21,8 +21,10 @@ export function Footer () {
             <div className="container footer-wrapper">
                 <div className="footer-logo">
                     <a href="http://localhost:3000/" className="logo">
-                        <span>Nuestra Proyecto: </span>
-                        <img src={logo} width="160" height="40" alt="Raices Jujeñas Logo"/>
+                        <div>
+                            <span>Nuestro Proyecto: </span>
+                            <img src={logo} width="160" height="40" alt="Raices Jujeñas Logo"/>
+                        </div>
                     </a>
                 </div>
 

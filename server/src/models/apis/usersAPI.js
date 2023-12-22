@@ -3,7 +3,8 @@ const db = require("../../database/models")
 const userModel = {
     list: async () => {
         const usersRaw = await db.User.findAll({
-            attributes: ["id", "name", "lastName", "email", "avatar"]
+            attributes: ["id", "name", "lastName", "email", "avatar"],
+            include: ["rol"]
         })
 
         const users = []
@@ -13,6 +14,7 @@ const userModel = {
                 name: user.name,
                 lastName: user.lastName,
                 email: user.email,
+                rol: user.rol.name,
                 avatar: {
                     name: user.avatar,
                     url: `/images/users/${user.avatar}`

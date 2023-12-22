@@ -11,25 +11,28 @@ export function CategoryTable () {
 
     
     return (
-        <table className="table">
-            <thead>
-                <tr>
-                    <th >Categorías</th>
-                    <th >Cantidad de productos</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                  categories && (
-                        categories.map(categorie => <tr key={categorie.name}>
-                                <td>{categorie.name}</td>
-                                <td>{categorie.totalProducts}</td>
+        <>
+            <h1 className='table-title'>Tabla de Categorias:</h1>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th >Categorias</th>
+                        <th >Cantidad de productos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                    categories && (
+                            categories.map(categorie => <tr key={categorie.name}>
+                                    <td>{categorie.name}</td>
+                                    <td>{categorie.totalProducts}</td>
 
-                            </tr>)
-                  )
-                }
+                                </tr>)
+                    )
+                    }
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </>
     );
 }
