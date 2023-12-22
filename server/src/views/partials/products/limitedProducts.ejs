@@ -1,9 +1,9 @@
-<% if (limitedProducts.length === 0) { %>
-    <h2 style="text-align: center;">Productos no encontrados</h2>
+<% if (alteredProducts.length === 0) { %>
+    <h2 style="text-align: center; margin-bottom: 20px;">Productos no encontrados</h2>
 <% } %>
 <ul class="product-list">
 
-    <% limitedProducts.forEach( p => { %>
+    <% alteredProducts.forEach( p => { %>
 
         <li class="product-item">
             <a href="/productos/<%= p.id %>/<%= p.product_detail[0].id %>">

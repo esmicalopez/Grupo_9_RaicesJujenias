@@ -9,18 +9,23 @@ const { validationResult } = require("express-validator")
 const controllers = {
     productos: async (req, res) => {
         const page = req.query.page ? Number(req.query.page) : 1
+        const category = req.query.category ? Number(req.query.category) : false
 
-        const products = await productModel.productos({ page })
+        const products = await productModel.productos({ page, category })
 
-        const { categories, limitedProducts, productsList, numberPage } = products
+        const { categories, alteredProducts, productsList, numberPage, totalProducts } = products
 
         res.render("productos", {
-            limitedProducts,
+            alteredProducts,
             categories,
             offerCalc,
             productsList,
-            numberPage
+            numberPage,
+            totalProducts,
+            categoryId: category
         })
+        console.log(totalProducts)
+        // res.send(limitedProducts)
     },
 
     detallesProducto: async (req, res) => {
