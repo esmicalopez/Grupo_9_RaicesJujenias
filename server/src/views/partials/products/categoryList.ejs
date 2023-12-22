@@ -1,12 +1,23 @@
 
 <ul class="filter-list">
-    <li>
-        <button class="filter-btn active">Todos</button>
+    <li><% if (categoryId > 0 && categoryId < 7) { %>
+        <a href="/productos"><button class="filter-btn">Todos</button></a>
+    <% } else {%>
+        <a href="/productos"><button class="filter-btn active">Todos</button></a>
+    <% } %>
     </li>
 
     <% for (category of categories) { %>
         <li>
-            <button class="filter-btn"> <%= category.name %> </button>
+            <% if (categoryId === category.id ) { %>
+                <a href="/productos?category=<%= category.id %>">
+                    <button class="filter-btn active"> <%= category.name %> </button>
+                </a>
+            <% } else { %>
+                <a href="/productos?category=<%= category.id %>">
+                    <button class="filter-btn"> <%= category.name %> </button>
+                </a>
+            <% } %>
         </li>
     <% } %>    
 

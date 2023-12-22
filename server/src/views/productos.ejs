@@ -35,20 +35,21 @@
                 </section>
 
                 <section>
-                    <%- include("./partials/products/limitedProducts.ejs", { limitedProducts, offerCalc }) %>
+                    <%- include("./partials/products/limitedProducts.ejs", { alteredProducts, offerCalc }) %>
                 </section>
             </div>
             <% if (userLogged && user.rol_id === 1) { %>
                 <div>
                     <a href="/productos/crear" 
-                    style="text-align: center; margin-top: 50px;">
+                    style="text-align: center; margin: 25px;">
                         Crear Producto
                     </a>
                 </div>
                 <% } %>
         </main>
-
-        <%- include("./partials/paginacion.ejs") %>
+        <%if (categoryId > 6 || categoryId < 1 || false) { %>
+            <%- include("./partials/paginacion.ejs") %>
+        <% } %>
 
 
         <%- include("./partials/footer.ejs") %>

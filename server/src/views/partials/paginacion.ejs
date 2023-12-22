@@ -6,7 +6,7 @@
                 <a class="pagination__link" href="productos?page=<%= numberPage - 1 %>"><li class="pagination__item"><</li></a>
             <% } %>
 
-            <% for( let i = 0; i < Math.ceil(productsList.length / 4); i++ ) { %>
+            <% for( let i = 0; i < Math.ceil(totalProducts / 4); i++ ) { %>
                 <% if (numberPage === i + 1) { %>
                     <a class="pagination__link" href="productos?page=<%= i + 1 %>"><li class="pagination__item pagination__item-active"><%= i + 1 %></li></a>
                 <% } else {%>
@@ -14,7 +14,7 @@
                 <% } %>
             <% } %>
 
-            <% if (Math.ceil(productsList.length / 4) > numberPage) { %>
+            <% if (Math.ceil(totalProducts / 4) > numberPage) { %>
                 <a class="pagination__link" href="productos?page=<%= numberPage + 1 %>"><li class="pagination__item">></li></a>
             <% } %>
 
