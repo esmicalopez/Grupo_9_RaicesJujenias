@@ -1,21 +1,49 @@
-import { useState } from 'react'
-import { LastData } from './LastData'
+import { useEffect, useState } from 'react'
+import { LastDataCard } from './LastDataCard'
 import { Card } from './Card'
 
-export function Main () {
-    const [data, setData] = useState([{ name: "products", total: 51 }, { name: "genres", total: 7 }, { name: "users", total: 12 }]) 
+export function Main ( {productData, userData }) {
+    const [lastUserData, setLastUserData] = useState()
+    const [lastProductData, setLastProductData] = useState()
+
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/users/${userData.count}`)
+        .then(res => res.json())
+        .then(data => setLastUserData(data.data))
+
+    }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/products/${productData.count}`)
+        .then(res => res.json())
+        .then(data => setLastProductData(data.data))
+
+    }, [])
+
+    console.log(lastProductData)
+    console.log(lastUserData)
+
+
     return (
         <main className='container main'>
 
-            <section className='data-info-list'>
-                {
-                    data.map( ({name, total}) => <Card key={name} name={name} total={total}></Card>)
-                }
+
+
+            <section className="data-info-list">
+                <Card name="Productos" total={productData.count}></Card>
+                <Card name="Categorias" total={productData.countByCategory.length}></Card>
+                <Card name="Usuarios" total={userData.count}></Card>
             </section>
 
             <section className='last-data'>
-                <LastData name="products"></LastData>
-                <LastData name="users"></LastData>
+                { 
+                    lastUserData && <LastDataCard cardName="Usuario" name={`${lastUserData.name} ${lastUserData.lastName}`} email={lastUserData.email} image={lastUserData.avatar.url}></LastDataCard> 
+                }
+               
+                {
+                    lastProductData && <LastDataCard cardName="Producto" name={lastProductData.product.name} price={lastProductData.productDetail[0].price} offer={lastProductData.productDetail[0].offer} image={lastProductData.productDetail[0].images[0].url}></LastDataCard>
+                }
             </section>
         </main>
     )
