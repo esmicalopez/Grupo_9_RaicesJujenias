@@ -1,5 +1,6 @@
 const productsCart = require("../data/productsCart.json")
 const productsList = require("../data/products.json")
+const productModel = require("../models/products.js")
 
 const offerCalc = require("../functions/offerCalcule")
 
@@ -16,15 +17,15 @@ function totalPrice (productsPrices) {
 }
 
 const controllers = {
-    carrito: (req, res) => {
+    carrito: async (req, res) => {
         if (!req.session.user) {
             return res.redirect("login")
         }
 
+        const { productsList } = await productModel.carrito()
+
         res.render("carrito", {
-            productsCart,
             productsList,
-            totalPrice,
             offerCalc
         })
     },

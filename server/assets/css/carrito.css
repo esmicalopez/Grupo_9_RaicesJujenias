@@ -614,6 +614,16 @@ body {
     color: #000;
 }
 
+.main .main-productos .producto .producto-nombre .producto-nombre-title {
+    font-size: 2.4rem;
+    text-align: start;
+    font-weight: 600;
+}
+
+.main .main-productos .producto .producto-nombre .producto-nombre-description {
+    color: #444;
+}
+
 .main .main-productos .producto .producto-precio {
     font-weight: bold;
 }
@@ -905,6 +915,21 @@ a.footer-link:is(:hover, :focus) {
 .go-top-btn:is(:hover, :focus) {
     background: var(--terracota_2);
 }
+
+
+/* Container */
+
+.container-carousel > h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .container-carousel {
+    padding: 0 20px ;
+    margin: 80px auto;
+    width: 100%;
+    max-width: 1200px;
+  }
 
 
 /**Multimedia*/

@@ -228,6 +228,20 @@ const productModel = {
         // })
 
         return deleteProduct
+    },
+
+    carrito: async () => {
+        const productsList = await db.Product.findAll({
+            include: [{
+                association: "product_detail",
+                include: ["images"]
+            }, "category"],
+            group: "product_id"
+        })
+
+        return {
+            productsList
+        }
     }
 
 }
